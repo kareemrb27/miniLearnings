@@ -1919,6 +1919,364 @@
   };
 
   // ============================================================
+  // COURSE 6: DATA FOUNDATIONS FOR AI AGENTS
+  // (Original teaching content. Draws on and cites the McKinsey
+  //  article "Building the foundations for agentic AI at scale"
+  //  (April 2026) for its argument and selected survey figures;
+  //  all wording, examples and diagrams here are original.)
+  // ============================================================
+  var DAT_SOURCE = "McKinsey, 'Building the foundations for agentic AI at scale' (April 2026)";
+  var DAT_MODULES = [
+    {
+      id: "d1", num: "Module 1", title: "Why Agent Pilots Stall",
+      sub: "The gap between trying agents and scaling them, and why data is usually the reason",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "The Pilot-to-Scale Gap",
+          body: "Getting an agent to work once is easy. Getting it to work every day, across a whole organisation, on real data, is a different job. "+DAT_SOURCE+" reports that nearly two-thirds of enterprises have experimented with agents, fewer than 10% have scaled them to deliver tangible value, and eight in ten cite data limitations as a roadblock. The exact figures will move. The pattern is the useful part: the constraint is rarely the model.",
+          ex: "A company runs 12 agent pilots at about $80K each, $960K in total. Two reach production. The effective cost per scaled agent is $480K, six times the cost of a pilot. Counting pilots launched flatters the programme. Counting cost per agent in production shows where the money went." },
+        { t: "Why a Demo Hides Data Problems",
+          body: "A pilot usually runs on a small, hand-picked sample, with one motivated user and an engineer quietly fixing odd records. Production has none of those. It has every record, including the incomplete, duplicated and contradictory ones, and nobody watching each run. The agent has not got worse. The data it meets has become representative.",
+          ex: "A pilot on 500 hand-cleaned records is 96% correct. In production, 18% of the two million records have missing or conflicting fields, and accuracy on those falls to 60%. Overall accuracy becomes 0.82 × 96% + 0.18 × 60% = 89.5%. At 40,000 tasks a month, errors rise from 1,600 to 4,200, and every one needs a person to find and fix it." },
+        { t: "What Agents Need That Dashboards Do Not",
+          body: "A dashboard is read by a person who supplies the missing context: they know which number to distrust and which system is the real source. An agent has no such background and it acts on what it retrieves. So agents need five things from data that reporting could do without: explicit meaning, current values, clear permission, traceable origin, and a safe way to write results back.",
+          ex: "Three systems report the number of customers as 48,200, 45,900 and 51,300, because each defines 'customer' differently. An experienced analyst knows billing is the one to trust for revenue questions. An agent asked 'how many customers do we have?' will return whichever it reaches first, with complete confidence." },
+        { t: "Two Agent Patterns and How Each Fails",
+          body: "Two broad designs are emerging. In a single-agent workflow, one agent uses several tools and data sources in sequence. In a multi-agent workflow, specialised agents work together and pass results between them. Both depend on consistent data, and they fail differently. A single agent makes inconsistent decisions when its sources disagree. A group of agents spreads one agent's mistake to all the others.",
+          ex: "Three agents work in a chain and each is 97% reliable when given good input. If nothing checks the handovers, the chain is right only 0.97 × 0.97 × 0.97 = 91% of the time, and a wrong output from the first agent is treated as fact by the next two. A validation step between agents costs a little latency and stops the error travelling." }
+      ],
+      diagrams: [
+        { title: "From pilot to production: what changes",
+          code: `flowchart LR
+  P["Pilot: curated sample, one user, engineer on hand"] --> G{"Is the data representative?"}
+  G -->|"No"| H["Hidden problems: gaps, duplicates, conflicts"]
+  H --> S["Stalls at scale"]
+  G -->|"Yes"| R["Real records, real permissions, real volume"]
+  R --> Q["Quality and meaning made explicit"]
+  Q --> O["Agent in production with an owner"]` }
+      ],
+      caseTitle: "Twelve Pilots, No Product",
+      caseText: "An insurer's innovation team has run twelve agent pilots in eighteen months. Each was demonstrated successfully to the executive committee. None is in daily use. The claims-triage pilot, for example, scored 94% in testing on 300 claims selected by the claims manager. When it was pointed at live intake it could not read a third of the documents, which arrive as scanned images, and it had no access to policy records held in a system the pilot never connected to. The team's proposal for next year is fifteen more pilots.",
+      caseTask: "Explain why the test result did not predict live performance, naming at least three differences between the pilot and production. Suggest two measures that should replace 'number of pilots' as the programme's headline metrics. Recommend what the team should do instead of fifteen new pilots, and what it would need to learn about the claims data first.",
+      everyday: {
+        title: "The same gap in ordinary projects",
+        body: "You have probably seen this pattern without AI: a spreadsheet model that works for the person who built it and breaks when a colleague adds real data, or a process that runs smoothly in a workshop and falls over on a busy Monday. When something works in a demonstration, ask what was quietly held constant. Who chose the examples? Who fixed the awkward cases? What happens when that person is on holiday? The answers tell you how far the thing is from being dependable."
+      },
+      assignment: {
+        deliverable: "Pick one AI or automation pilot you know, yours or your organisation's, whether it succeeded or stalled. Write a one-page review: what it was tested on and who chose the test data, how production data differs in completeness, format and access, which of the five agent needs (meaning, freshness, permission, origin, write-back) were not met, and an estimate of error volume at production scale using a weighted calculation like the one in this module.",
+        rubric: [
+          "The test data and who selected it are described specifically",
+          "At least three concrete differences between pilot and production data are identified",
+          "Unmet agent needs are named using the five needs in this module",
+          "Production error volume is estimated with a weighted calculation, with working shown"
+        ]
+      },
+      reflection: [
+        "Which demonstration impressed you recently, and what was held constant to make it work?",
+        "How does your organisation measure progress on AI: pilots launched, or agents in dependable daily use?",
+        "Where does a person in your team silently supply context that a system would not have?"
+      ],
+      quiz: [
+        { q: "The most common reason agent pilots fail to scale, according to the research cited in this module, is:", opts: ["Models are not capable enough","Data limitations","Lack of executive interest","Too few pilots"], correct: 1 },
+        { q: "A pilot often overstates production accuracy because:", opts: ["Pilots use newer models","The test data is hand-picked and cleaner than real data","Production has fewer records","Users are more forgiving in production"], correct: 1 },
+        { q: "An agent is 95% accurate on clean records and 50% on problem records, which are 20% of the total. Overall accuracy is:", opts: ["95%","86%","72.5%","50%"], correct: 1 },
+        { q: "In a multi-agent workflow, the characteristic failure is that:", opts: ["Agents refuse to cooperate","One agent's error is passed on and treated as fact by the others","It always costs more than one agent","Only structured data can be used"], correct: 1 }
+      ]
+    },
+    {
+      id: "d2", num: "Module 2", title: "Choosing Workflows Worth Automating",
+      sub: "Mapping work end to end, scoring value and feasibility, and listing the data each step needs",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Start with the Workflow, Not the Technology",
+          body: "An agent improves a workflow, so begin by drawing the workflow as it really runs: the steps, the decisions, the handovers, the systems touched and where work waits. Most of the elapsed time in knowledge work is waiting between steps, not doing them. That is where an agent that can gather information and move work forward makes the biggest difference, and it is invisible until you map it.",
+          ex: "A claims intake process has nine steps, four systems and three handovers. The hands-on work adds up to about 50 minutes. The claim takes six days from arrival to decision, which is 8,640 minutes. Touch time is under 1% of elapsed time. Making each step faster would barely help. Removing the waits between handovers would." },
+        { t: "Where Adoption Is Already Working",
+          body: "Survey evidence gives a useful starting prior. In the McKinsey Global Survey of mid-2025 cited by "+DAT_SOURCE+", the functions most often using generative AI regularly were marketing and sales (30% of respondents), knowledge management (29%) and IT (21%), with supply chain (7%) and manufacturing (4%) far behind. Work that is digital, text-heavy and reversible is being adopted first. Work tied to physical operations and safety is slower.",
+          ex: "Two candidate workflows: drafting responses to supplier queries, and adjusting production schedules. The first resembles the leading functions: text in, text out, a person can review before sending. The second touches physical operations where a wrong action stops a line. Use the survey as a prior, not a rule: start where conditions resemble the leaders, and treat the laggard areas as needing more data and control work first." },
+        { t: "Scoring Value, Feasibility and Fit",
+          body: "Rank candidate workflows on three things. Value: how much time, money or risk is at stake. Feasibility: whether the data is available and good enough, the steps are well defined, and mistakes can be caught. Strategic fit: whether it builds capability you will reuse. Feasibility is where candid scoring matters most, because data readiness is the factor people overrate.",
+          ex: "Score value and feasibility from 1 to 5 and multiply. Invoice matching: value 4, feasibility 4, score 16. Overriding demand forecasts: value 5, feasibility 2, score 10. Internal knowledge search: value 3, feasibility 5, score 15. The forecasting workflow has the highest value and should not go first. Start with invoice matching or search, and begin the data work that raises forecasting's feasibility." },
+        { t: "The Data Inventory and the Case for Reuse",
+          body: "For every step an agent would take, list the data it needs, where that data lives, who owns it, how good it is and whether the agent may access it. Then look across workflows for data that appears repeatedly. Fixing a shared dataset once, properly, is cheaper than working around it separately each time, and it is what turns a series of projects into a platform.",
+          ex: "The customer master record is needed by four of five candidate workflows. A workaround costs about $50K per workflow, $200K across four, and leaves four slightly different fixes. Cleaning the master record properly costs $120K once. Reuse saves $80K and removes a source of disagreement between agents." }
+      ],
+      diagrams: [
+        { title: "Selecting a workflow",
+          code: `flowchart TD
+  A["List candidate workflows"] --> B["Map each end to end"]
+  B --> C["Score value, feasibility and fit"]
+  C --> D{"Feasibility high enough?"}
+  D -->|"Yes"| E["Inventory the data per step"]
+  D -->|"No"| F["Start the data work, revisit later"]
+  E --> G["Find data reused across workflows"]
+  G --> H["Pilot with clear metrics"]` }
+      ],
+      caseTitle: "The Forecasting Agent Nobody Trusted",
+      caseText: "A consumer goods company chose demand forecasting as its first agent project because the potential value, an estimated $4M a year in reduced stock, was the largest on its list. The agent was to review forecasts and propose adjustments. Eight months and $700K later, planners ignore it. Promotions data sits in spreadsheets kept by individual account managers, product codes changed after a system migration and were never mapped, and nobody can explain why the agent suggests what it does. Meanwhile the supplier-queries team, who answer about 900 emails a week by copying from the same six documents, was never considered.",
+      caseTask: "Score both workflows for value and feasibility on a 1 to 5 scale and justify each score from the facts given. Write the data inventory for the forecasting workflow, listing what is missing or unowned. Recommend a sequence for the next six months and explain what would need to change before forecasting is attempted again.",
+      everyday: {
+        title: "Mapping your own week",
+        body: "Try the mapping exercise on a task you do regularly, such as a monthly report or onboarding a new client. Write down each step, how long you actually work on it and how long it sits waiting for someone or something. Most people find the waiting dominates. Then list the information each step needs and where you get it. The steps where you hunt for information across several places are the ones a well-fed assistant could help with, and the hunt itself tells you what would need tidying first."
+      },
+      assignment: {
+        deliverable: "List four to six candidate workflows in your area. Map the most promising one end to end with touch time and elapsed time per step. Score all candidates for value, feasibility and fit with a one-line reason each. For your top choice, write a data inventory: for every step, the data needed, its location, owner, quality and access. Mark any data that other candidates would reuse.",
+        rubric: [
+          "One workflow is mapped end to end with both touch time and elapsed time",
+          "All candidates are scored for value, feasibility and fit, with reasons",
+          "The data inventory covers every step and names an owner for each dataset",
+          "Reusable data is identified and used to justify the order of work"
+        ]
+      },
+      reflection: [
+        "Which high-value workflow in your organisation is being attempted before its data is ready?",
+        "Where is the longest wait in a process you depend on, and who owns that gap?",
+        "Which dataset would improve the most workflows if it were fixed once?"
+      ],
+      quiz: [
+        { q: "In most knowledge-work processes, the largest share of elapsed time is:", opts: ["Hands-on work","Waiting between steps and handovers","System processing","Training"], correct: 1 },
+        { q: "In the mid-2025 survey cited in this module, the functions most often using generative AI regularly included:", opts: ["Manufacturing and supply chain","Marketing and sales, and knowledge management","Legal only","None above 5%"], correct: 1 },
+        { q: "A workflow scores value 5 and feasibility 2; another scores value 3 and feasibility 5. Multiplying the scores, the better first project is:", opts: ["The first, with a score of 10","The second, with a score of 15","They are equal","Neither can be scored"], correct: 1 },
+        { q: "The main benefit of fixing a shared dataset once is that it:", opts: ["Makes pilots unnecessary","Is cheaper than separate workarounds and removes disagreement between agents","Eliminates the need for owners","Guarantees perfect accuracy"], correct: 1 }
+      ]
+    },
+    {
+      id: "d3", num: "Module 3", title: "An Agent-Ready Data Architecture",
+      sub: "The layers of the stack, what each must do for agents, and how to modernise without rebuilding",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "The Layers, and Modernising One at a Time",
+          body: "Think of the data stack as layers: sources where data enters, a platform that connects and serves it, a semantic layer that gives it meaning, data products that package it for reuse, and a consumption layer where applications and agents use it. Governance and access control run through all of them. A common pattern for the platform is to refine data in stages from raw to curated to business-ready. The practical advice is to modernise the layers a chosen workflow depends on, with replaceable parts, and not to rebuild everything first.",
+          ex: "A full platform rebuild is quoted at $6M over 24 months, with no agent in production until the end. Modernising only the two layers the first workflow needs, a governed interface on the platform and a small semantic model, costs $900K over five months and delivers a working agent. The second workflow reuses most of it." },
+        { t: "Unstructured Data and Search by Meaning",
+          body: "Most of what agents need is in documents, emails and images, not tables. To use it, content is split into passages and converted into numeric representations so that it can be searched by meaning instead of by keyword. Creating these representations is cheap. Keeping them current as documents change, and keeping access rules attached to every passage, is the real work. A stale index answers confidently from documents that are no longer true.",
+          ex: "Eighty thousand documents averaging 2,500 tokens is 200 million tokens. At $0.10 per million, creating the search representations costs about $20, once. But 3% of documents change every week: 2,400 documents that must be detected, reprocessed and re-indexed. The initial load is trivial. The weekly refresh process is what needs an owner." },
+        { t: "The Semantic Layer: Turning Data into Meaning",
+          body: "The semantic layer records what things are, how they relate and what rules apply, in a form both people and software can read. It is usually built from an agreed vocabulary of business concepts and a graph linking real records to those concepts. Without it, each agent infers meaning for itself and different agents reach different conclusions from the same data. With it, 'customer', 'order' and 'active' mean one thing everywhere.",
+          ex: "Define 'active customer' once: at least one purchase in the last 12 months and the account not closed. Applied across the three systems that previously reported 48,200, 45,900 and 51,300 customers, the shared definition yields a single figure of 44,700. The number is less important than the fact that every agent now gets the same one." },
+        { t: "Data Products and Governed Interfaces",
+          body: "A data product is a dataset packaged for reuse: it has a named owner, a stated quality standard, documented meaning and a stable interface. Agents should reach data through these interfaces and through a controlled gateway, never by direct access to underlying tables. That is what makes it possible to enforce permissions, record what was retrieved and why, and change what sits underneath without breaking every agent.",
+          ex: "A customer data product costs $150K to build and $30K a year to run, and five workflows use it: a $30K share of the build each. Building a separate pipeline for each workflow would cost about $90K apiece, $450K in total, with five versions of the truth. The product approach costs a third as much and can be governed in one place." }
+      ],
+      diagrams: [
+        { title: "The layers an agent depends on",
+          code: `flowchart TD
+  S["Sources: systems, documents, events"] --> P["Platform: ingest, refine, serve, search by meaning"]
+  P --> M["Semantic layer: shared definitions and relationships"]
+  M --> D["Data products: owned, documented, reusable"]
+  D --> C["Consumption: retrieval and orchestration"]
+  C --> A["Agents and applications"]
+  A -->|"Outputs and usage logs"| P
+  G["Governance and access control"] -.-> P
+  G -.-> M
+  G -.-> D
+  G -.-> C` }
+      ],
+      caseTitle: "The Retailer With Four Versions of the Customer",
+      caseText: "A retailer sells through shops, a website, an app and a call centre. Each channel has its own customer record. A shopper who browses on the app, buys in a shop and then phones about a return appears as three different people. The company has launched a shopping assistant agent on the website and a service agent in the call centre. The two regularly contradict each other about order status and recommend products the customer has already returned. The technology team has proposed a three-year programme to replace all four systems before doing anything else with agents.",
+      caseTask: "Identify which layers of the stack are failing and what each is missing. Propose a way to give both agents a consistent view of the customer within six months without replacing the four systems. Say what the semantic layer would need to define, and what one data product you would build first and who should own it.",
+      everyday: {
+        title: "A semantic layer for a team",
+        body: "You can practise this without any technology. Most teams have words that mean different things to different people: 'done', 'active', 'customer', 'launched'. Pick the three terms that cause the most confusion in your team's reports and write a one-sentence definition of each that everyone accepts. Put the definitions where the numbers are shown. It is a small act of semantic modelling, and it is the same discipline an agent needs, written for humans first."
+      },
+      assignment: {
+        deliverable: "For the workflow you chose in Module 2, sketch the layers it depends on: sources, platform, semantic layer, data products and consumption. Rate each layer as ready, partly ready or missing, with a sentence of evidence. Write definitions for the three to five business terms the agent must understand. Specify one data product: its owner, contents, quality standard and interface. State what you would modernise first and what you would leave alone.",
+        rubric: [
+          "Each layer is assessed with evidence, not just a rating",
+          "Three to five business terms are defined precisely enough for software to apply",
+          "A data product is specified with an owner, a quality standard and an interface",
+          "The plan modernises only what the workflow needs and names what is deliberately left unchanged"
+        ]
+      },
+      reflection: [
+        "Which business term in your organisation has the most competing definitions?",
+        "Where do applications reach directly into underlying tables instead of through a governed interface?",
+        "What large rebuild is your organisation contemplating that a narrower modernisation could avoid?"
+      ],
+      quiz: [
+        { q: "The recommended approach to preparing architecture for agents is to:", opts: ["Rebuild the whole platform before starting","Modernise the layers a chosen workflow needs, with replaceable parts","Skip architecture and rely on better models","Move all data into spreadsheets"], correct: 1 },
+        { q: "For search by meaning over documents, the ongoing effort is mainly in:", opts: ["The one-off cost of creating representations","Keeping the index current and access rules attached as content changes","Buying larger screens","Translating documents"], correct: 1 },
+        { q: "The purpose of a semantic layer is to:", opts: ["Compress data","Record what business concepts mean and how they relate, so every agent interprets data the same way","Replace the need for governance","Store images"], correct: 1 },
+        { q: "A data product costs $200K and is used by four workflows. Separate pipelines would cost $80K each. The data product saves:", opts: ["$120K","$200K","$320K","Nothing"], correct: 0 }
+      ]
+    },
+    {
+      id: "d4", num: "Module 4", title: "Data Quality That Never Stops",
+      sub: "Measuring quality, monitoring it continuously, handling documents, and checking what agents write back",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Measuring Quality Against a Purpose",
+          body: "Data quality has several dimensions: accuracy, completeness, timeliness, consistency, uniqueness and validity. None of them has a universal pass mark. Quality means fit for a particular use, so set a threshold per dimension for each use and measure against it. The same field can be good enough for a quarterly report and nowhere near good enough for an agent that acts on every record.",
+          ex: "A delivery address field is 97% complete and 91% valid, and 12% of entries are more than two years old. For a marketing report that is acceptable. For an agent that books deliveries, the requirement is 99% valid. At 5,000 bookings a month, the gap between 91% and 99% is 400 failed deliveries a month that the report never noticed." },
+        { t: "From Periodic Cleanup to Continuous Monitoring",
+          body: "Cleaning data every quarter assumes that somebody looks at it before acting. Agents act immediately and continuously, so an error lives as long as the gap between checks. Quality controls belong inside the pipelines: automatic validation as data arrives, detection of unusual values, and the ability to hold back bad data before anything consumes it. The measure to watch is how long a defect survives.",
+          ex: "A faulty feed loads wrong prices for 3% of products. An agent makes 2,000 pricing decisions a day using that field, so 60 a day are wrong. With quarterly cleanup the error can live for 90 days: 5,400 bad decisions. With a check in the pipeline that catches it within an hour, about three decisions are affected. The fix is the same. Only the detection time differs." },
+        { t: "Quality for Documents and Other Unstructured Content",
+          body: "Documents have quality problems of their own: duplicates, superseded versions, missing dates and owners, and files that contradict one another. A search system cannot tell which version is current unless something tells it. Unstructured content needs the same care as tables: classification, tags, a named owner, a review date and removal of what is out of date.",
+          ex: "A knowledge base holds 12,000 documents, of which 22% are duplicates or superseded. An agent retrieves the five most relevant passages for each question. The chance that at least one comes from a stale document is 1 − 0.78 to the power of 5, about 71%. Most answers are being built partly on outdated material, and removing 2,640 documents would help more than any change to the model." },
+        { t: "Agents Write Data Too",
+          body: "Agents do not only read. They update records, create summaries, label content and trigger transactions, and other systems and agents then rely on what they wrote. Agent output must meet the same standards as any other data: validated before it is saved, marked with its origin, reconciled against the system of record, and written through governed interfaces. Otherwise small error rates accumulate into a polluted dataset.",
+          ex: "An agent updates 1,500 customer records a day with a 2% error rate: 30 bad records a day, about 11,000 a year. Those records feed the next agent's decisions. Validation rules on write that reject two-thirds of the errors cut this to roughly 3,700 a year, and tagging every agent-written field makes the remainder possible to find and correct." }
+      ],
+      diagrams: [
+        { title: "Quality built into the flow",
+          code: `flowchart LR
+  I["Data arrives"] --> V{"Passes automatic checks?"}
+  V -->|"No"| Q["Hold back, alert the owner"]
+  V -->|"Yes"| U["Available to agents"]
+  U --> A["Agent reads and acts"]
+  A --> W["Agent writes output"]
+  W --> X{"Valid and reconciled?"}
+  X -->|"No"| Q
+  X -->|"Yes"| T["Saved, tagged with its origin"]
+  T --> U` }
+      ],
+      caseTitle: "The Knowledge Base That Answered From 2021",
+      caseText: "A professional services firm launches an internal assistant that answers staff questions about policies, rates and procedures from 30,000 documents on its shared drive. Within a month, staff stop trusting it. It quoted travel expense limits that were replaced two years ago, gave a client the 2021 rate card, and summarised a procedure from a draft that was never approved. An audit finds that about a quarter of the documents are superseded versions, most have no owner or date in their properties, and nothing is ever deleted. The team's proposed fix is to switch to a more capable model.",
+      caseTask: "Explain why a better model will not solve this. Estimate the probability that an answer drawing on four retrieved passages includes at least one stale source if 25% of documents are superseded. Propose a quality regime for the document store: what metadata is required, who owns it, how freshness is checked and what gets removed. Say how you would measure improvement.",
+      everyday: {
+        title: "Your own stale documents",
+        body: "Look at a shared folder your team relies on. How many files have names like 'final', 'final v2' and 'final revised'? If a new colleague, or an assistant, searched it for the current process, would they find the right one? A small habit fixes most of this: one current version in a known place, a date and an owner at the top of each document, and an archive folder that search ignores. It is the personal version of everything in this module, and it pays off the first time someone asks you where the latest version is."
+      },
+      assignment: {
+        deliverable: "Choose the most important dataset and the most important document collection for the workflow you selected. For the dataset, build a quality scorecard: measure or estimate each relevant dimension, set the threshold the agent needs, and show the gap. For the documents, estimate the share that is stale or duplicated and the chance of a stale source appearing in an answer. Propose where automatic checks would go, how quickly a defect should be caught, and how agent-written data will be validated and tagged.",
+        rubric: [
+          "The scorecard sets a threshold for each dimension based on what the agent needs, and shows the gap",
+          "Document staleness is estimated and its effect on answers is quantified",
+          "Automatic checks are placed in the flow, with a target for how long a defect may survive",
+          "Agent-written data has defined validation, origin tagging and reconciliation"
+        ]
+      },
+      reflection: [
+        "How long would a wrong value in your most important dataset survive before anyone noticed?",
+        "Which document collection in your organisation has no owner and no deletion policy?",
+        "What data is already being written by automations in your area, and who checks it?"
+      ],
+      quiz: [
+        { q: "Data quality is best defined as:", opts: ["100% completeness in every field","Fitness for a specific use, measured against thresholds for that use","The absence of duplicates","Compliance with a single global standard"], correct: 1 },
+        { q: "The key measure when moving from periodic cleanup to continuous monitoring is:", opts: ["The size of the data team","How long a defect survives before it is caught","The number of dashboards","Storage cost"], correct: 1 },
+        { q: "If 20% of documents are stale and an answer draws on three retrieved passages, the chance at least one is stale is about:", opts: ["20%","49%","60%","80%"], correct: 1 },
+        { q: "Data written by agents should be:", opts: ["Trusted because a model produced it","Validated, tagged with its origin and reconciled like any other data","Stored separately and never used","Exempt from governance to keep agents fast"], correct: 1 }
+      ]
+    },
+    {
+      id: "d5", num: "Module 5", title: "Operating Model and Governance for Agents",
+      sub: "Access policies, the agent life cycle, changing human roles and who owns what",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Access Policies Checked on Every Request",
+          body: "As agents take on more, governance becomes the main means of control. Write down what each agent may read, what it may change and when a person must approve, and have the system check those rules automatically on every request according to the agent's role and scope. Agents should not get special rules. They should follow the same data standards as every other system, with the least access that does the job.",
+          ex: "An HR assistant agent may read published policy documents and an employee's own leave balance. It may not read the salary table or other employees' records. A request for 'the average salary in my team' is refused by the access check before the model ever sees the data, so no instruction written into a prompt can talk it into revealing it." },
+        { t: "Managing the Agent Life Cycle",
+          body: "Agents need to be managed like any other part of the workforce or the estate: registered, given their own credentials, monitored, reviewed and retired. That means an inventory of every agent with a named owner, individual credentials instead of shared ones, automatic logging of what each agent accessed and did, performance tracking against the outcome it was built for, and a process for switching it off.",
+          ex: "An audit finds 40 agents in use. Nine have no named owner. Six share one service account, so their actions cannot be told apart in the logs. Four were built for a project that ended last year and still have access to customer data. A register and individual credentials would have made all three problems visible on the day they began." },
+        { t: "People Move from Doing to Supervising",
+          body: "When agents handle routine cases, people handle exceptions, review samples and improve the system. The work does not disappear. It changes shape, and the remaining cases are the hard ones. Plan for new roles: an owner for each agent, owners for data products, and reviewers with the time and authority to intervene. Estimate capacity from the new mix of work, not from the headline automation rate.",
+          ex: "Eight people handle 1,600 cases a week, 200 each. Agents take 75%, leaving 400 exceptions, plus a 5% review sample of the 1,200 automated cases: 60 more. Exceptions take three times as long as an average case, so the workload is 400 × 3 + 60 = 1,260 case-equivalents, which needs about 6.3 people. The headline says 75% automated. The staffing effect is closer to 20%, with more skilled work." },
+        { t: "Federated Ownership: Domains and the Centre",
+          body: "Neither full central control nor full local freedom works. A federated model splits responsibility. Business domains own their agent-enabled workflows, the outcomes, and the definitions of their own data, because they understand the meaning. A central data and AI team owns the shared platform, the guardrails and oversight, because consistency has to be enforced once. Accountability for an agent's behaviour should always trace to a named person in the business.",
+          ex: "For a claims-triage agent: the claims domain owns the workflow, the definition of a 'complex claim' and the agent's results. The central team owns the platform, the access gateway, logging and the standard checks every agent must pass. Risk and compliance set the policy both must meet. When the agent misroutes a claim, there is one accountable owner, in claims, and one place to look for the evidence." }
+      ],
+      diagrams: [
+        { title: "Who owns what",
+          code: `flowchart TD
+  POL["Risk and compliance: policy"] --> CEN["Central data and AI team"]
+  POL --> DOM["Business domain"]
+  CEN --> PL["Shared platform, gateway, logging, standard checks"]
+  DOM --> WF["Workflow, outcomes, domain definitions"]
+  PL --> AG["Agent with its own credentials"]
+  WF --> AG
+  AG --> LOG["Activity recorded automatically"]
+  LOG --> REV["Named owner reviews performance"]
+  REV --> DOM` }
+      ],
+      caseTitle: "Forty Agents and No Owner",
+      caseText: "A bank's teams have built about forty agents in a year, mostly with good intentions and little coordination. A customer complains that an agent emailed them details of another customer's mortgage application. The investigation takes three weeks, because the agent used a shared service account, its builder has left the bank, and no log records which data it retrieved. The review also finds that the central data team had a platform with access controls and logging that most teams bypassed because onboarding took two months. Leadership is considering banning all agents not built by the central team.",
+      caseTask: "List the governance failures and, for each, the control that was missing. Explain why a ban is likely to fail and what the bypass tells you about the central platform. Propose a federated model for the bank: what domains own, what the centre owns, and three things that must be true before any agent goes live. Say how you would make the governed route the easiest one.",
+      everyday: {
+        title: "Ownership in everyday tools",
+        body: "Shared accounts and ownerless automations are everywhere: the team login for a tool, the scheduled report nobody remembers setting up, the form that still emails someone who left. Each is a small version of the problems in this module. For anything automated that you rely on, you should be able to answer three questions: who owns it, what can it access, and how would I switch it off? If you cannot, write the answers down this week. It is the cheapest governance you will ever do."
+      },
+      assignment: {
+        deliverable: "For the workflow you have been developing, write a one-page operating model. Include an access policy stating what the agent may read, write and do without approval; a register entry with owner, credentials, purpose, data accessed and retirement condition; a capacity estimate for the people involved after automation, using the exception and review-sample method; and a table of who owns the workflow, the definitions, the platform and the policy. Where the agent can spend money, refer to the mandate approach in The Agent Economy course.",
+        rubric: [
+          "The access policy states read, write and approval rules that a system could check automatically",
+          "The register entry names an owner, individual credentials and a retirement condition",
+          "Post-automation capacity is estimated from exceptions and review samples, not the headline rate",
+          "Ownership is divided clearly between the domain, the central team and policy functions"
+        ]
+      },
+      reflection: [
+        "How many agents or automations in your area could you list today, with an owner for each?",
+        "Where has a slow official route pushed teams in your organisation to build around it?",
+        "If routine cases were automated tomorrow, who on your team is ready for work that is all exceptions?"
+      ],
+      quiz: [
+        { q: "Access rules for an agent are most dependable when they are:", opts: ["Described in the agent's instructions","Checked automatically on every request, outside the model","Reviewed once a year","Left to the agent's judgement"], correct: 1 },
+        { q: "Giving each agent its own credentials matters mainly because:", opts: ["It makes agents faster","Its actions can be traced and its access removed individually","It reduces token cost","It is required by search engines"], correct: 1 },
+        { q: "A team handles 1,000 cases a week. Agents take 80%. Exceptions take three times as long, and 5% of automated cases are reviewed. The remaining workload in case-equivalents is:", opts: ["200","240","640","1,000"], correct: 2 },
+        { q: "In a federated model, the definitions of a domain's data are owned by:", opts: ["The central platform team","The business domain","The model vendor","Nobody"], correct: 1 }
+      ]
+    }
+  ];
+
+  var DAT_CAPSTONE = {
+    id: "capstone", num: "Capstone", title: "An Agent-Readiness Assessment and 90-Day Plan",
+    sub: "Assess one real workflow against everything in the course and plan the first three months",
+    time: "3–5 hrs",
+    setup: "Produce an agent-readiness assessment and a 90-day plan for one workflow, written so that a business owner and a head of data could both sign it. Use the workflow you have developed through the modules. If you do not have one, use this: a 400-person distribution company wants an agent to handle supplier queries, about 900 emails a week, answered today by six people using order data in one system, delivery data in another and contract terms in a shared drive of PDFs.",
+    diagrams: [
+      { title: "The assessment in one view",
+        code: `flowchart LR
+  W["Workflow and its value"] --> D["Data inventory per step"]
+  D --> A["Architecture: which layers are ready"]
+  A --> Q["Quality: gaps against agent thresholds"]
+  Q --> G["Governance: access, owner, logging"]
+  G --> R{"Ready to pilot?"}
+  R -->|"Yes"| P["90-day plan with metrics"]
+  R -->|"Not yet"| F["Foundation work first, then revisit"]` }
+    ],
+    dataPoints: [
+      { h: "Part A: The workflow and its data (Modules 1–2)", b: "Describe the workflow with touch time and elapsed time, and the value at stake. Score it for value, feasibility and fit. Provide the data inventory per step with location, owner, quality and access. Say plainly how the data a pilot would see differs from production." },
+      { h: "Part B: Readiness (Modules 3–4)", b: "Rate each architectural layer as ready, partly ready or missing, with evidence. Define the key business terms. Present a quality scorecard for the main dataset and document collection against the thresholds the agent needs. Estimate error volume at production scale." },
+      { h: "Part C: Governance and plan (Module 5)", b: "State the access policy, the agent's owner and how activity is logged. Estimate the human workload after automation. Then give a 90-day plan: foundation work, pilot scope, metrics, and the result that would lead you to scale, rework or stop." }
+    ],
+    deliverablePoints: [
+      "Describe the workflow, its value and its scores for value, feasibility and fit (Modules 1–2)",
+      "Provide the data inventory for every step, with owners (Module 2)",
+      "Rate each architecture layer with evidence and define the key business terms (Module 3)",
+      "Present a quality scorecard against agent thresholds and estimate production error volume (Module 4)",
+      "State the access policy, the named owner and the logging approach (Module 5)",
+      "Estimate the human workload after automation using exceptions and review samples (Module 5)",
+      "Lay out a 90-day plan with metrics and explicit criteria to scale, rework or stop"
+    ],
+    rubric: [
+      "The assessment visibly uses workflow mapping, data inventory, architecture, quality and governance, and they agree with each other",
+      "Readiness ratings and quality gaps are backed by evidence and numbers, not impressions",
+      "The plan fixes only the foundations this workflow needs and identifies what will be reused later",
+      "A business owner and a head of data could each decide from the document whether to proceed"
+    ],
+    quiz: [
+      { q: "A readiness assessment should start from:", opts: ["The newest model available","A specific workflow and the value at stake","A complete platform rebuild","The number of pilots planned"], correct: 1 },
+      { q: "If the quality scorecard shows a large gap against the agent's thresholds, the sensible plan is to:", opts: ["Launch anyway and fix it later","Do the foundation work this workflow needs first, then pilot","Abandon agents permanently","Hide the gap from the business owner"], correct: 1 },
+      { q: "A good 90-day plan ends with:", opts: ["A commitment to scale regardless of results","Metrics and explicit criteria to scale, rework or stop","A request for a larger budget","A list of further pilots"], correct: 1 }
+    ]
+  };
+
+  var DAT_BONUS = {
+    linkedin: "I have just finished a course on data foundations for AI agents, and it changed where I think the effort belongs.\n\nThree things I am taking back to my team:\n\n1. Pilots are not progress. A demo runs on hand-picked data with an engineer nearby. Production has every record, including the broken ones. I now ask who chose the test data before I believe a result.\n\n2. Pick the workflow by feasibility as well as value. The highest-value idea is often the one with the worst data. Scoring both, and starting where the data is ready, gets something into daily use while the harder foundations are built.\n\n3. Quality is a detection-time problem. Agents act continuously, so an error lives as long as the gap between checks. Moving checks into the pipeline matters more than the next model upgrade. The same goes for documents: a quarter of a knowledge base being out of date means most answers lean on stale material.\n\nNone of this is glamorous. It is definitions, owners, access rules and monitoring. But it is what separates an agent people rely on from a demo people remember.\n\nWhich dataset would improve the most workflows in your organisation if it were fixed once?",
+    blogTitle: "Your Agents Are Only as Good as Your Data: A Field Guide for Technical Leaders",
+    blog: [
+      { h: "1. The demo that did not survive Monday", b: "Open with a pilot you have seen succeed in a meeting and stall in production. Describe what was different about the data it met. Keep it specific and first-person, and avoid blaming the model." },
+      { h: "2. Stop counting pilots", b: "Make the case for measuring agents in dependable daily use and cost per scaled agent. Cite the McKinsey article 'Building the foundations for agentic AI at scale' for the finding that most organisations experiment and few scale, and that data is the common obstacle." },
+      { h: "3. Choose the workflow, then check the data", b: "Walk through mapping one workflow, the gap between touch time and elapsed time, and a value-by-feasibility score. Show the data inventory you wrote and the dataset that turned out to matter to several workflows." },
+      { h: "4. Meaning is a layer", b: "Explain the semantic layer through one term your organisation defines in several ways. Show the definition you settled on and what changed when every system used it." },
+      { h: "5. Quality that keeps up with agents", b: "Use a worked example of how long a defect survives under periodic cleanup compared with a check in the pipeline. Add the stale-document calculation and what you removed as a result." },
+      { h: "6. Someone has to own it", b: "Close with the operating model: a register of agents, individual credentials, access checked on every request, and a named owner in the business. Be honest about the staffing effect of automation, and end with a question about which dataset readers would fix first." }
+    ]
+  };
+
+  // ============================================================
   // COURSE REGISTRY
   // ============================================================
   var COURSES = [
@@ -1970,6 +2328,16 @@
       icons: ["blocks","bot","card","shield","chip","flag"],
       skills: ["Tokenization","Agent mandates","Payment rails","Agent risk controls","AI unit economics"],
       modules: AGT_MODULES, capstone: AGT_CAPSTONE, bonus: AGT_BONUS
+    },
+    {
+      key: "dat",
+      name: "Data Foundations for AI Agents: From Pilot to Scale",
+      tagline: "Why agent pilots stall and what gets them into daily use: choosing the right workflow, an agent-ready data architecture, quality that is monitored continuously, and an operating model with clear ownership. Written for data and platform leaders.",
+      note: "Original content that draws on and cites the McKinsey article 'Building the foundations for agentic AI at scale' (April 2026) for its argument and selected survey figures. Independent and not affiliated with or endorsed by McKinsey. Survey figures are dated and will change.",
+      color: "#a21caf", color2: "#db2777", art: "data", level: "Intermediate", hours: "13–20 hrs",
+      icons: ["alert","route","layers","gauge","users","flag"],
+      skills: ["Workflow selection","Data architecture","Semantic modelling","Data quality monitoring","Agent governance"],
+      modules: DAT_MODULES, capstone: DAT_CAPSTONE, bonus: DAT_BONUS
     }
   ];
 
@@ -2131,6 +2499,36 @@
         { t: "Let's build the GPT Tokenizer", by: "Andrej Karpathy", note: "A hands-on walk through language tokenization. Pairs with Module 1." },
         { t: "But how does bitcoin actually work?", by: "3Blue1Brown", note: "A visual explanation of ledgers, signatures and consensus." }
       ]
+    },
+    dat: {
+      books: [
+        { t: "Fundamentals of Data Engineering", by: "Joe Reis and Matt Housley", note: "A clear map of the data life cycle and the trade-offs at each stage. Pairs with Module 3." },
+        { t: "Designing Data-Intensive Applications", by: "Martin Kleppmann", note: "The deep reference on how data systems behave under real conditions." },
+        { t: "Data Mesh", by: "Zhamak Dehghani", note: "The origin of data-as-a-product and federated ownership. Pairs with Modules 3 and 5." },
+        { t: "DAMA-DMBOK: Data Management Body of Knowledge", by: "DAMA International", note: "The standard reference for data quality dimensions and governance practice." },
+        { t: "Rewired", by: "Eric Lamarre, Kate Smaje and co-authors", note: "The book the source article builds on, covering how organisations scale digital and AI work." }
+      ],
+      blogs: [
+        { t: "Building the foundations for agentic AI at scale", by: "McKinsey, April 2026", note: "The article this course draws on and cites. Read it for the original argument and exhibits." },
+        { t: "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh", by: "Zhamak Dehghani, on martinfowler.com", note: "The essay that introduced domain ownership of data." },
+        { t: "Data Engineering Weekly", by: "Ananth Packkildurai", note: "A weekly digest of practical writing from data teams." },
+        { t: "Locally Optimistic", by: "Locally Optimistic", note: "Essays by and for analytics and data leaders on running data teams." }
+      ],
+      podcasts: [
+        { t: "Data Engineering Podcast", by: "Tobias Macey", note: "Weekly interviews on tools, architecture and practice." },
+        { t: "The Analytics Engineering Podcast", by: "dbt Labs", note: "Conversations on modelling, semantics and data team practice." },
+        { t: "Latent Space", by: "swyx and Alessio Fanelli", note: "Interviews with people building AI agents and the systems around them." }
+      ],
+      courses: [
+        { t: "Data Engineering Professional Certificate", by: "DeepLearning.AI and AWS, on Coursera", note: "A structured programme covering ingestion, modelling and serving." },
+        { t: "Data Engineering Zoomcamp", by: "DataTalks.Club", note: "A free, hands-on course run in the open with a large community." },
+        { t: "Knowledge Graphs for RAG", by: "DeepLearning.AI", note: "A short course on giving language models structured context. Pairs with Module 3." }
+      ],
+      videos: [
+        { t: "What is Retrieval-Augmented Generation (RAG)?", by: "IBM Technology", note: "A short, clear explanation of how models answer from your own documents." },
+        { t: "Data Mesh Paradigm Shift in Data Platform Architecture", by: "Zhamak Dehghani", note: "The conference talk version of the data mesh argument." },
+        { t: "Intro to Large Language Models", by: "Andrej Karpathy", note: "A one-hour general-audience talk on how models work and where they fail." }
+      ]
     }
   };
 
@@ -2221,6 +2619,8 @@
     blocks: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
     bot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5M9.5 13h0M14.5 13h0M9.5 16h5"/><circle cx="12" cy="4" r="1"/>',
     card: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+    alert: '<path d="M12 4l9 16H3l9-16z"/><path d="M12 10v4M12 17h0"/>',
+    gauge: '<path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1"/>',
     mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/>',
     play: '<circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/>',
     search: '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
@@ -2283,6 +2683,14 @@
         + '<rect x="338" y="36" width="36" height="28" rx="5" fill="#fff" opacity=".85"/><rect x="338" y="44" width="36" height="5" fill="#92400e" opacity=".55"/>'
         + '<circle cx="350" cy="150" r="13" fill="#fff" opacity=".9"/><circle cx="350" cy="150" r="22" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5" opacity=".8"/>'
         + '<circle cx="175" cy="73" r="5" fill="#fff"/><circle cx="170" cy="125" r="5" fill="#fff" opacity=".8"/><circle cx="298" cy="75" r="5" fill="#fff" opacity=".8"/>';
+    },
+    data: function(){
+      return '<circle cx="70" cy="34" r="60" fill="#fff" opacity=".08"/><circle cx="370" cy="170" r="60" fill="#fff" opacity=".08"/>'
+        + '<g fill="#fff"><rect x="196" y="140" width="170" height="26" rx="8" opacity=".3"/><rect x="206" y="108" width="150" height="26" rx="8" opacity=".45"/><rect x="216" y="76" width="130" height="26" rx="8" opacity=".62"/><rect x="226" y="44" width="110" height="26" rx="8" opacity=".9"/></g>'
+        + '<g fill="#a21caf" opacity=".55"><rect x="238" y="54" width="46" height="6" rx="3"/><rect x="228" y="86" width="60" height="6" rx="3"/><rect x="218" y="118" width="74" height="6" rx="3"/><rect x="208" y="150" width="88" height="6" rx="3"/></g>'
+        + '<line x1="281" y1="44" x2="281" y2="24" stroke="#fff" stroke-width="3" opacity=".9"/><circle cx="281" cy="18" r="8" fill="#fff"/><circle cx="281" cy="18" r="15" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5" opacity=".85"/>'
+        + '<g stroke="#fff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".7"><path d="M66 70 L196 150"/><path d="M60 120 L196 156"/><path d="M82 168 L196 160"/></g>'
+        + '<circle cx="66" cy="70" r="12" fill="#fff" opacity=".9"/><rect x="48" y="108" width="24" height="24" rx="5" fill="#fff" opacity=".75"/><polygon points="82,154 96,178 68,178" fill="#fff" opacity=".85"/>';
     },
     future: function(){
       return '<circle cx="350" cy="24" r="64" fill="#fff" opacity=".08"/><circle cx="40" cy="184" r="56" fill="#fff" opacity=".08"/>'
@@ -2419,7 +2827,7 @@
     h += "<section class='hero'><div class='hero-art'>"+heroArt()+"</div><div class='hero-copy'>";
     h += "<span class='hero-tag'>Self-paced · Quizzes · Certificates</span>";
     h += "<h1>Move from builder to leader.</h1>";
-    h += "<p>Practical courses on finance, leadership, investor thinking, strategic foresight and the agent economy, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
+    h += "<p>Practical courses on finance, leadership, investor thinking, strategic foresight, the agent economy and data foundations for AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
     h += "<a class='btn ghost' href='#fin-home'>Browse courses</a></div></div></section>";
