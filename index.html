@@ -2277,6 +2277,366 @@
   };
 
   // ============================================================
+  // COURSE 7: BUSINESS MODEL DESIGN
+  // (Original content on the general discipline of business
+  //  model design; not affiliated with or derived from any
+  //  specific provider's templates or course materials.)
+  // ============================================================
+  var BIZ_MODULES = [
+    {
+      id: "b1", num: "Module 1", title: "What a Business Model Is",
+      sub: "Four questions every model answers, why the pieces must fit, and why internal platforms count",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Four Questions Every Model Answers",
+          body: "A business model is the logic of how an organisation creates value for someone and keeps some of it. It answers four questions: who do we serve, what do we offer them, how do we reach and deliver to them, and how does money flow in and out? It is not the same as strategy (how you will win against alternatives) or a plan (what you will do this year). Two organisations can sell the same thing and be entirely different businesses because they answer these questions differently.",
+          ex: "Two firms sell a data pipeline tool. Firm A sells licences at $50K a year to 200 enterprises through a sales team: $10M. Firm B gives the software away, has 20,000 users, and 3% of them pay an average of $15K for a managed service: 600 × $15K = $9M. Revenue is similar. A needs salespeople and procurement skills. B needs a community, a cloud operation and patience. They are not interchangeable." },
+        { t: "The Pieces Must Fit",
+          body: "A model is a system, and its parts have to be consistent with each other. A premium promise needs a price that pays for it. A low price needs a cheap way to reach and serve customers. Most failing models are not missing a part. They contain two parts that contradict each other, usually a promise the revenue cannot fund. Checking fit is a matter of arithmetic, not opinion.",
+          ex: "A product costs $20 a month and promises a one-hour support response. A support engineer costs $90K a year and can look after 400 accounts at that standard: $225 per account per year. Revenue per account is $240. Support alone consumes 94% of revenue. Either the price, the promise or the way support is delivered has to change." },
+        { t: "An Internal Platform Is a Business Too",
+          body: "A platform, data or tooling team has customers (other teams), an offer, a way of delivering it and a funding arrangement that works like revenue. The same four questions apply. Internal teams rarely ask them, because adoption is assumed and the budget arrives anyway. Asking them shows whether the platform is used, by whom, and what it costs per team that actually benefits.",
+          ex: "A platform team of ten costs $1.8M a year and is meant to serve 30 product teams: $60K per team. Only 12 teams use it. The real cost is $150K per adopting team. The other 18 built their own solutions, so the organisation pays twice. The question is no longer 'is the platform good?' but 'why did 18 customers choose an alternative?'" },
+        { t: "One Unit Has to Work",
+          body: "Before a model can work at scale it has to work for one customer. Take a single typical customer and trace the money: what they pay, what it costs to serve them, what it cost to win them, and how long they stay. If one customer loses money, a thousand customers lose a thousand times as much. This is the bridge between business model design and the unit economics covered in the Finance & Data Intelligence course.",
+          ex: "A customer pays $1,200 a year, costs $400 a year to serve and costs $1,500 to acquire. The margin of $800 a year recovers the acquisition cost in $1,500 ÷ $800 = 1.9 years, about 22 months. If customers stay 18 months on average, each one is a loss. Growth would make the business bigger and worse." }
+      ],
+      diagrams: [
+        { title: "The four questions and how they connect",
+          code: `flowchart LR
+  W["Who do we serve?"] --> O["What do we offer them?"]
+  O --> R["How do we reach and deliver?"]
+  R --> M["How does money flow?"]
+  M --> F{"Do the answers fit together?"}
+  F -->|"Yes"| U["Check that one unit is profitable"]
+  F -->|"No"| X["Change the part that conflicts"]
+  X --> W` }
+      ],
+      caseTitle: "The Tool Everyone Liked and Nobody Bought",
+      caseText: "An engineering team inside a logistics company built a test-data generator that every team in the company uses. Encouraged by this, two of the engineers leave to sell it as a product. After a year they have 4,000 free users, glowing feedback and $36K of revenue from nine paying customers. They sell through a self-serve website at $4K a year. The users are test engineers. The people who would approve a purchase are heads of engineering who have never heard of it. Each paying customer asked for custom connectors that took about three weeks of work.",
+      caseTask: "Answer the four questions for this business as it stands, and identify where the answers do not fit together. Estimate the cost of three weeks of custom work against $4K of revenue, using a reasonable engineer cost. Propose two different coherent models the founders could choose between, and say what each would require them to become good at.",
+      everyday: {
+        title: "Your own work as a model",
+        body: "The four questions apply to your own role. Who actually benefits from your work? What do you offer that they would miss? How does it reach them? And how is it funded: whose budget pays for you, and what do they believe they are buying? Many frustrations at work come from a poor fit between these answers, such as serving one group while being funded and judged by another. Writing your answers down often shows who your real customer is, and it is a useful preparation for any conversation about scope or promotion."
+      },
+      assignment: {
+        deliverable: "Choose a product, service or internal platform you work on or know well. Answer the four questions in a sentence or two each. Then test the fit: list every pair of answers that conflict or strain each other. Finally trace one typical customer or adopting team: what they pay or what is funded on their behalf, the cost to serve them, the cost to win them and how long they stay. State whether one unit works.",
+        rubric: [
+          "All four questions are answered specifically, naming real customers and a real offer",
+          "At least two points of tension between the answers are identified and explained",
+          "One unit is traced with numbers for revenue or funding, cost to serve, cost to acquire and duration",
+          "A conclusion is drawn about whether the model works for one unit, with the weakest number called out"
+        ]
+      },
+      reflection: [
+        "Who is the real customer of your team's work, and is it the same person who funds it?",
+        "Which promise your organisation makes is not paid for by its price?",
+        "If your platform or service had to win its users instead of being given them, would it?"
+      ],
+      quiz: [
+        { q: "A business model describes:", opts: ["This year's project list","How an organisation creates value for someone and keeps some of it","Only the pricing page","The organisation chart"], correct: 1 },
+        { q: "Most failing business models fail because:", opts: ["They are missing a logo","Two parts contradict each other, often a promise the revenue cannot fund","They have too many customers","They use subscription pricing"], correct: 1 },
+        { q: "A platform team costs $1.2M a year and is used by 8 of 24 intended teams. The cost per adopting team is:", opts: ["$50K","$100K","$150K","$1.2M"], correct: 2 },
+        { q: "A customer yields $600 a year of margin and cost $1,800 to acquire. Payback takes:", opts: ["3 years","1 year","6 months","18 years"], correct: 0 }
+      ]
+    },
+    {
+      id: "b2", num: "Module 2", title: "Customers and the Value Proposition",
+      sub: "Choosing who to serve, understanding the job they need done, and saying why you over the alternative",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Segments: Choosing Who You Are For",
+          body: "A segment is a group of customers with a similar need who behave in a similar way. Good segments are defined by the problem and the situation, not by size or industry alone. Choosing a segment means deciding who you are not for. In business sales, also separate three roles that are often different people: the user who works with the product, the buyer who chooses it, and the approver who signs off the money.",
+          ex: "For a data catalogue, the user is an analyst who wants to find trustworthy tables, the buyer is the head of data who wants fewer conflicting reports, and the approver is a finance or security lead who wants low risk. A pitch about search speed wins the user and means nothing to the other two. Each role needs its own answer to 'what do I get?'" },
+        { t: "The Job to Be Done",
+          body: "People do not want products. They want to make progress in a particular situation, and they 'hire' whatever gets that job done. The idea, associated with Clayton Christensen, changes who you think your competitors are. The alternative to your product is often a spreadsheet, a junior employee, a habit or doing nothing. Jobs have a practical side and an emotional or social side, and the second often decides the purchase.",
+          ex: "A team lead adopts a status-reporting tool. The practical job is assembling a weekly update. The real job is walking into the Monday meeting without fear of being caught out. The competitor is not another reporting tool. It is the hour spent on Sunday evening checking tickets by hand. A product that removes the Sunday hour wins, whatever its feature list." },
+        { t: "Stating and Quantifying the Value Proposition",
+          body: "A value proposition says who it is for, what job it does, what you offer, what it replaces and why to believe it. Then put a number on it. If you cannot estimate what the job is worth to the customer in time, money or risk, you cannot price it or defend it. A common rule of thumb is to price at a modest fraction of the value delivered, so the customer keeps most of the gain.",
+          ex: "A tool saves each analyst three hours a week. For 40 analysts over 46 working weeks at $70 an hour, that is 3 × 40 × 46 × $70 = $386,400 a year. Pricing at 10% to 20% of that value gives $39K to $77K a year. A price of $15K leaves money on the table. A price of $300K leaves the customer almost nothing and will not be approved." },
+        { t: "Differentiation Depends on the Segment",
+          body: "Being better in general is rarely possible and rarely necessary. What matters is being clearly better on the thing a particular segment cares about most. The same product can lose in the broad market and win decisively in a segment that weights the criteria differently. Differentiation is therefore a choice about whom to serve as much as a choice about what to build.",
+          ex: "Score two products from 1 to 5 on speed, integration, ease and price. Ours: 5, 3, 4, 2. The incumbent: 3, 5, 3, 4. With general-market weights of 25%, 35%, 20% and 20%, we score 3.5 and the incumbent 3.9. For a segment that weights speed at 50%, integration 15%, ease 25% and price 10%, we score 4.15 and the incumbent 3.4. Same product, different segment, opposite result." }
+      ],
+      diagrams: [
+        { title: "From segment to value proposition",
+          code: `flowchart TD
+  S["Pick a segment by need and situation"] --> R["Separate user, buyer and approver"]
+  R --> J["Describe the job: practical and emotional"]
+  J --> A["List the real alternatives, including doing nothing"]
+  A --> V["Estimate the value of the job in money, time or risk"]
+  V --> P["State the proposition and the proof"]
+  P --> D{"Clearly better on what this segment values most?"}
+  D -->|"No"| S
+  D -->|"Yes"| G["Carry into pricing and go-to-market"]` }
+      ],
+      caseTitle: "A Platform Built for Everyone",
+      caseText: "A company's internal developer platform team set out to serve 'all engineering teams'. Two years on, the platform supports four programming languages, three deployment styles and a long list of optional features. Adoption is 35%. Surveys say it is 'fine'. The mobile teams say it is built for back-end services. The data teams say it cannot run their batch jobs. The back-end teams, who are 60% of engineers, say it is slower than their old scripts for the one thing they do daily: shipping a small change. The team's roadmap for next year adds a fifth language.",
+      caseTask: "Identify the segments hiding inside 'all engineering teams' and describe the main job of each. Choose one segment to serve first and justify the choice. Write a value proposition for it in the form used in this module, with a number attached. Say what the team should stop building as a result.",
+      everyday: {
+        title: "The job behind a request",
+        body: "When someone asks you for something at work, they are hiring you for a job, and the request is their guess at a solution. 'Can you build a dashboard?' may really mean 'I need to stop being surprised in the quarterly review.' Asking what progress they are trying to make, and what they do today without it, usually reveals a smaller and more useful thing to deliver. The same question helps with your own purchases: before buying a tool or a course, name the job and what you would otherwise do."
+      },
+      assignment: {
+        deliverable: "For the product, service or platform you chose in Module 1, define two or three customer segments by need and situation. For your chosen primary segment, identify the user, buyer and approver, describe the job in practical and emotional terms, and list the real alternatives. Estimate the annual value of the job with a calculation. Write the value proposition, and score your offer against the main alternative on four criteria using weights that reflect what this segment cares about.",
+        rubric: [
+          "Segments are defined by need and situation, and one is chosen with a reason",
+          "User, buyer and approver are distinguished, with what each one gains",
+          "The value of the job is estimated with a visible calculation",
+          "A weighted comparison shows where the offer wins for this segment and where it does not"
+        ]
+      },
+      reflection: [
+        "Who is your product or service not for, and has your team ever said so out loud?",
+        "What do your customers do today instead of using what you offer?",
+        "Which of the three roles, user, buyer or approver, do you know least about?"
+      ],
+      quiz: [
+        { q: "A well-defined customer segment is based mainly on:", opts: ["Company size alone","A shared need and situation","The colour of the logo","Whoever replies to emails"], correct: 1 },
+        { q: "In the jobs-to-be-done view, your real competitor is often:", opts: ["Only the largest vendor in the category","Whatever the customer does today, including a spreadsheet or nothing","The newest start-up","Your own previous version"], correct: 1 },
+        { q: "A tool saves 20 people 2 hours a week each for 50 weeks at $60 an hour. The annual value is:", opts: ["$12,000","$60,000","$120,000","$240,000"], correct: 2 },
+        { q: "The same product can lose in the general market and win in a segment because:", opts: ["Segments pay more","Different segments weight the criteria differently","Segments have no alternatives","General markets ignore price"], correct: 1 }
+      ]
+    },
+    {
+      id: "b3", num: "Module 3", title: "Revenue and Pricing Models",
+      sub: "The main ways to get paid, choosing what to charge for, how AI changes the sums, and what each model demands",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "The Main Ways to Get Paid",
+          body: "There are a handful of basic revenue models. One-off sale: paid once for a thing. Time and materials: paid for hours. Subscription: paid regularly for access. Usage-based: paid for what is consumed. Outcome-based: paid when a result is achieved. Marketplace: a share of transactions between others. Freemium: free for most, paid by some. Each one moves risk between you and the customer, and each sets a different ceiling on growth.",
+          ex: "A consultancy with ten engineers billing 1,600 hours a year at $120 earns $1.92M. To double revenue it must double the engineers. A subscription product built by the same ten people could serve 50 customers or 5,000 with roughly the same team. The revenue model, more than the technology, decides whether income is tied to headcount." },
+        { t: "Choosing What You Charge For",
+          body: "Price can be set from cost, from competitors or from the value delivered, and value is the strongest basis. Just as important is the unit you charge for, sometimes called the value metric: per user, per gigabyte, per transaction, per result. A good unit rises as the customer gets more value, is easy to understand and is hard to game. A bad one falls as your product succeeds.",
+          ex: "An automation tool is priced at $600 per seat. A customer starts with 50 seats, $30K a year. The tool works: it automates so much that only 30 people now need access, and the bill falls to $18K while the value delivered has doubled. The product is punished for succeeding. Charging per automated workflow run would rise with the value." },
+        { t: "How AI Changes the Arithmetic",
+          body: "Traditional software costs almost nothing to serve one more user, so flat per-user pricing was safe. AI features carry a real cost for every use, which varies enormously between light and heavy users. That puts gross margin back at the centre of pricing and pushes models away from flat seats towards usage tiers, credits or outcomes. It also makes it possible to lose money on your most enthusiastic customers.",
+          ex: "A plan costs $30 per user per month. Light users, 85% of the base, cost $4 each in model usage. Heavy users, 15%, cost $45 each. The blended cost is 0.85 × $4 + 0.15 × $45 = $10.15, a margin of 66%. But every heavy user loses $15 a month, and they are the ones who love the product. A fair-use limit or a usage tier fixes this without raising the base price." },
+        { t: "The Revenue Model Shapes the Organisation",
+          body: "Each model demands particular capabilities. Subscription needs retention and customer success, because the money arrives over years. Usage-based needs accurate metering and tolerance for volatile revenue. Outcome-based needs trustworthy measurement and the cash to wait. Marketplaces need both sides at once. Choosing a revenue model is choosing what your organisation must be good at, and how long it must wait for cash.",
+          ex: "A $120K annual contract paid upfront puts $120K in the bank on day one. The same contract billed monthly has delivered $30K after three months. An outcome-based deal paid 90 days after results, for a team costing $200K a month, needs $600K of cash to cover the wait. All three may be worth the same on paper. Only one of them can be started without funding." }
+      ],
+      diagrams: [
+        { title: "Choosing a revenue model",
+          code: `flowchart TD
+  V["Value delivered to the customer"] --> U{"What grows as their value grows?"}
+  U -->|"People using it"| S["Per seat or subscription"]
+  U -->|"Volume consumed"| G["Usage-based"]
+  U -->|"A measurable result"| O["Outcome-based"]
+  S --> C["Check cost to serve per unit"]
+  G --> C
+  O --> C
+  C --> M{"Margin healthy for heavy users too?"}
+  M -->|"No"| L["Add limits, tiers or a different unit"]
+  M -->|"Yes"| K["Check cash timing and capabilities required"]
+  L --> C` }
+      ],
+      caseTitle: "Per-Seat Pricing in an Automation Business",
+      caseText: "A company sells an AI assistant for accounts-payable teams at $90 per user per month. Its best customer began with 40 users, $43,200 a year. A year later the assistant handles 70% of invoices without human involvement. The customer has reduced the team to 14 users and its bill to $15,120. Meanwhile the vendor's model-usage cost for that customer has risen from $9K to $31K a year because volume grew. The customer is delighted and has just asked for a discount, pointing out that they now have fewer users.",
+      caseTask: "Calculate the vendor's margin on this customer in each year. Explain what is wrong with the unit being charged for. Propose an alternative pricing unit and an indicative price that would have risen with the customer's value, and describe one risk of the new model for the vendor and one for the customer. Say how you would move this customer across.",
+      everyday: {
+        title: "How you are paid is a revenue model",
+        body: "Your own income has a model. A salary is a subscription: steady, and judged on retention. Day-rate contracting is time and materials: capped by hours. A bonus or commission is outcome-based: higher upside, with measurement arguments. A side product is a sale or a subscription that is not tied to your hours. Each has the trade-offs in this module. If you are weighing freelance work or a side venture, ask what unit you would be charging for and whether it grows as your customer's benefit grows, or only as you work longer."
+      },
+      assignment: {
+        deliverable: "For your chosen product, service or platform, describe the current revenue or funding model and the unit charged for. Evaluate that unit: does it rise with customer value, is it understandable, can it be gamed? Propose one alternative model and compare the two in a short table covering revenue at three customer sizes, gross margin including any AI or usage cost for light and heavy users, cash timing, and the capabilities each requires. Recommend one.",
+        rubric: [
+          "The current model and its charging unit are stated and evaluated against the three tests",
+          "An alternative is compared at three customer sizes with numbers",
+          "Gross margin is shown separately for light and heavy users where usage costs apply",
+          "Cash timing and required capabilities are considered in the recommendation"
+        ]
+      },
+      reflection: [
+        "Does the unit your organisation charges for go up or down when customers get more value?",
+        "Which of your customers or internal users cost far more to serve than the rest?",
+        "What would your team have to become good at if it were paid for outcomes instead of effort?"
+      ],
+      quiz: [
+        { q: "A time-and-materials model limits growth mainly because:", opts: ["Customers dislike invoices","Revenue is tied to the number of people and hours available","It cannot be taxed","It requires a marketplace"], correct: 1 },
+        { q: "A good unit to charge for is one that:", opts: ["Falls as the product succeeds","Rises as the customer gets more value","Changes every month","Is kept secret from customers"], correct: 1 },
+        { q: "A $20 plan has 90% light users costing $2 and 10% heavy users costing $40. The blended cost per user is:", opts: ["$2.00","$5.80","$21.00","$40.00"], correct: 1 },
+        { q: "Outcome-based pricing most requires:", opts: ["A large sales team","Trustworthy measurement and the cash to wait for payment","No contract","Free users"], correct: 1 }
+      ]
+    },
+    {
+      id: "b4", num: "Module 4", title: "Go-to-Market and the Capabilities Behind It",
+      sub: "Matching the sales motion to the price, the cost of serving customers, and what the model depends on you doing well",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Match the Sales Motion to the Deal Size",
+          body: "There are a few ways to reach customers: self-serve, where people find, try and buy without talking to anyone; inside sales by phone and video; field sales to large organisations; and partners who sell on your behalf. The cost of each differs by orders of magnitude. The rule is that the cost of winning a customer must be affordable at the price they pay. A product priced for self-serve cannot fund a field sales team, and a complex enterprise product will not sell itself.",
+          ex: "A field salesperson costs about $300K a year fully loaded and closes 12 deals: $25K per deal. On a $150K contract that is 17% of first-year revenue, which is workable. On a $5K contract it is five times the revenue. A self-serve motion that costs $300 per customer suits a $2K product. The price decides which motions are available to you." },
+        { t: "The Cost of Serving a Customer",
+          body: "Winning a customer is only the start. Onboarding, integration, support and customisation all cost money, and they are easy to overlook because they sit in different budgets. A product that needs heavy hand-holding is partly a services business and has the margins of one. Reducing the effort to get a customer to value is often the highest-return engineering work available.",
+          ex: "Each new customer needs 80 hours of integration work at a cost of $100 an hour: $8K against first-year revenue of $20K, or 40%. Building standard connectors cuts that to 20 hours, $2K, or 10%. On 60 new customers a year the saving is $360K, and customers reach value in a week instead of a month." },
+        { t: "Core Capabilities, and What You Will Not Do",
+          body: "Every model depends on two or three things the organisation must do better than others: perhaps a low-cost delivery method, a specialist skill, a trusted brand or a dataset. Name them, invest in them and protect them. Everything else is a candidate for a partner or a standard tool. Deciding what you will not do yourself is as much a part of the model as what you will.",
+          ex: "An analytics firm lists what it does: data engineering, modelling, dashboards, hosting, training and 24-hour support. Its customers choose it for one thing, industry-specific models. Hosting and round-the-clock support consume 30% of cost and win no deals. Moving both to partners lets it put that 30% into the capability customers pay for." },
+        { t: "What Gets Better with Scale, and What Does Not",
+          body: "Some models improve as they grow: costs per customer fall, the product gets better with more data, or each new participant makes the service more useful to the others. These effects are often claimed and less often real. Test the claim with numbers. If cost per customer is flat or rising as you grow, there is no scale advantage yet, whatever the pitch says.",
+          ex: "At 500 customers, support costs $400 per customer, $200K in total. At 2,000 customers, shared help content and tooling bring it to $250 per customer, $500K in total. Revenue has grown four times and support cost two and a half times. That is a real scale effect. If the figure had stayed at $400, support would simply have quadrupled alongside revenue." }
+      ],
+      diagrams: [
+        { title: "Fitting go-to-market to the model",
+          code: `flowchart LR
+  P["Price and deal size"] --> M{"Which sales motion is affordable?"}
+  M -->|"Small deals"| A["Self-serve"]
+  M -->|"Mid-size deals"| B["Inside sales"]
+  M -->|"Large deals"| C["Field sales or partners"]
+  A --> S["Cost to onboard and serve"]
+  B --> S
+  C --> S
+  S --> K["Core capabilities to invest in"]
+  K --> T{"Does cost per customer fall with scale?"}
+  T -->|"Yes"| Y["Scale advantage is real"]
+  T -->|"No"| N["Fix delivery before growing"]` }
+      ],
+      caseTitle: "Enterprise Sales for a Five-Thousand-Dollar Product",
+      caseText: "A start-up sells a data-quality monitoring tool at $5K a year. Its investors urged it to 'move upmarket', so it hired four field salespeople at about $280K each. After a year they have closed 46 customers between them. Each new customer also needs about 60 hours of setup from an engineer. Meanwhile 300 smaller teams signed up through the website without any contact, at roughly $400 each in marketing cost, and they renew at a higher rate than the sales-led customers. The board's plan for next year is to double the sales team.",
+      caseTask: "Calculate the acquisition cost per customer for the field sales team and compare it with revenue. Add the setup cost at a reasonable engineer rate. Compare with the self-serve channel. Recommend a go-to-market approach consistent with the price, and say what would have to change about the product or price for field sales to make sense.",
+      everyday: {
+        title: "Reaching your own customers",
+        body: "The same matching problem applies to getting your own work adopted. A small improvement cannot justify a roadshow of meetings, so it has to spread by itself: good documentation, an easy first step, a colleague's recommendation. A large change deserves direct time with the people who must approve it. Before promoting an idea at work, estimate its size and choose the effort to match. Also notice your cost to serve: if every user of your tool needs you personally to set it up, that is the first thing to fix."
+      },
+      assignment: {
+        deliverable: "For your chosen product, service or platform, describe how customers or internal teams find, try and adopt it today. Estimate the cost of winning one and compare it with what they pay or what is funded for them. Estimate the hours and cost to onboard and support one customer in the first year. Name the two or three capabilities the model depends on and one activity you would stop or hand to a partner. Check whether cost per customer has fallen as you have grown.",
+        rubric: [
+          "The current sales or adoption motion is described and its cost per customer estimated",
+          "Acquisition cost is compared with deal size and judged affordable or not",
+          "First-year cost to onboard and serve one customer is quantified",
+          "Core capabilities are named, with at least one activity identified to stop or outsource"
+        ]
+      },
+      reflection: [
+        "Is the way your product or platform reaches people affordable at the price or funding it receives?",
+        "How many hours does it take to get one new customer or team to their first real result?",
+        "Which activity does your team do out of habit that no customer chooses you for?"
+      ],
+      quiz: [
+        { q: "The sales motion a product can afford is determined mainly by:", opts: ["The founder's preference","The price and deal size","The office location","The programming language"], correct: 1 },
+        { q: "A salesperson costs $240K a year and closes 16 deals. The acquisition cost per deal is:", opts: ["$1,500","$15,000","$24,000","$240,000"], correct: 1 },
+        { q: "A product that needs heavy integration work for every customer behaves financially like:", opts: ["A pure software business","Partly a services business, with lower margins","A marketplace","A charity"], correct: 1 },
+        { q: "A genuine scale advantage is shown when:", opts: ["Revenue grows","Cost per customer falls as the number of customers grows","The team gets bigger","The price goes up"], correct: 1 }
+      ]
+    },
+    {
+      id: "b5", num: "Module 5", title: "Testing and Changing a Business Model",
+      sub: "Treating the model as assumptions, testing cheaply, reading the right numbers and deciding when to change",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "A Model Is a Set of Assumptions",
+          body: "Until customers behave as you expect, every part of a business model is a guess. The guesses fall into three groups: desirability (do people want it?), viability (will they pay enough, and can you reach them affordably?) and feasibility (can you deliver it?). List them, then rank each by how much the model depends on it and how much evidence you have. The assumptions that are critical and unproven are where to spend your first effort.",
+          ex: "For a new internal platform: 'teams want a standard deployment path' is critical with strong evidence from interviews. 'Teams will migrate existing services' is critical with no evidence. 'We can build it in two quarters' is important with moderate evidence. The migration assumption should be tested before the build starts, because if it is false nothing else matters." },
+        { t: "Cheap Experiments Before You Build",
+          body: "Most assumptions can be tested without building the product. Talk to customers about what they do today. Describe the offer and ask for a commitment. Deliver the service by hand to a few customers before automating it. Offer a price and see who accepts. The quality of evidence matters: what people do is worth far more than what they say, and a commitment of money or time is the strongest evidence short of a sale.",
+          ex: "In 40 interviews, 30 people say they would buy the product: 75%. The same 40 are asked to sign a letter of intent with a $500 refundable deposit. Four do: 10%. Plan on 10%. The other 26 were being polite, and the gap between the two numbers is the most useful thing the experiment produced." },
+        { t: "The Numbers That Show a Model Is Working",
+          body: "A few measures tell you whether a model holds: whether customers stay, how quickly acquisition cost is repaid, the margin on each customer, and whether existing customers spend more over time. Retention is the most telling, because it reflects whether the value is real, and small differences compound into very different businesses. Look at customers by the month they joined, so that growth does not hide a leak.",
+          ex: "Two products each sign 100 customers. After a year one has kept 60 and the other 85. With annual loss rates of 40% and 15%, the average customer lifetime is about 1 ÷ 0.40 = 2.5 years and 1 ÷ 0.15 = 6.7 years. The second business earns more than two and a half times as much from each customer it wins, from a 25-point difference in retention." },
+        { t: "Change, Persist or Stop",
+          body: "When the evidence disagrees with the model, change one element and keep the rest: a different segment, a different proposition, a different channel or a different way of charging. Changing everything at once throws away what you have learned and makes the next result impossible to interpret. Decide in advance what result would lead you to change or stop, as with the kill criteria in the Investor Thinking course, so the decision is not made in the heat of the moment.",
+          ex: "Before a 90-day trial with 50 teams, the rule is written down: if fewer than 5 convert to paid at the target price, keep the product and price and change the segment. Six weeks in, it is clear the trial will produce 3. The team knows what to do next, and nobody has to argue about whether the result is a failure." }
+      ],
+      diagrams: [
+        { title: "The test-and-adjust loop",
+          code: `flowchart TD
+  A["List the model's assumptions"] --> B["Rank by importance and evidence"]
+  B --> C["Pick the riskiest one"]
+  C --> D["Design the cheapest test and set the pass mark in advance"]
+  D --> E["Run it and look at what people did"]
+  E --> F{"Passed?"}
+  F -->|"Yes"| G["Move to the next riskiest assumption"]
+  F -->|"No"| H["Change one element: segment, offer, channel or pricing"]
+  G --> C
+  H --> A` }
+      ],
+      caseTitle: "The Pivot That Changed Everything at Once",
+      caseText: "A team built a forecasting tool for small retailers, priced at $200 a month and sold through online adverts. After nine months it had 70 customers and was losing 8% of them every month. Customer conversations suggested the forecasts were valued but owners had no time to act on them. The team decided to pivot: they would now sell to large supermarket chains, through a field sales team, at $100K a year, with a new feature set built around supply-chain integration. Six months later they have no enterprise customers, the original 70 have fallen to 31, and they cannot say which of the four changes was the mistake.",
+      caseTask: "List the assumptions behind the original model and mark which one the evidence had actually challenged. Explain what was lost by changing segment, price, channel and product together. Propose a single-element change the team could have tested first, the cheapest experiment for it, and the result that would have told them to proceed. Estimate the average customer lifetime at an 8% monthly loss rate.",
+      everyday: {
+        title: "Testing before committing",
+        body: "The same approach protects personal decisions. Before retraining, changing role or starting a side venture, write down what must be true for it to work and find the cheapest way to test the shakiest belief. Spend a day shadowing someone in the role. Sell the service to one customer by hand before building anything. Ask for a commitment, not an opinion. And decide beforehand what result would make you stop. It is far easier to walk away from a two-week experiment than from a two-year plan."
+      },
+      assignment: {
+        deliverable: "List the eight to ten assumptions your chosen business model rests on, grouped as desirability, viability and feasibility. Score each for importance and for strength of evidence, and identify the two riskiest. For each of those, design an experiment that costs under two weeks of effort, state what you will measure and set the pass mark in advance. Describe what single element of the model you would change if it fails.",
+        rubric: [
+          "Assumptions are specific, testable and grouped by desirability, viability and feasibility",
+          "Each is scored for importance and evidence, and the riskiest are identified",
+          "Experiments measure what people do or commit to, with a pass mark set beforehand",
+          "The response to failure changes one element of the model, not all of it"
+        ]
+      },
+      reflection: [
+        "Which assumption in your current work is both critical and untested?",
+        "When did you last treat an opinion as evidence, and what would a commitment have told you instead?",
+        "What result, decided now, would lead you to stop something you are currently investing in?"
+      ],
+      quiz: [
+        { q: "The assumptions to test first are those that are:", opts: ["Easiest to test","Critical to the model and backed by little evidence","Already proven","Least important"], correct: 1 },
+        { q: "The strongest evidence that customers want a product, short of a sale, is:", opts: ["Saying they like it","A commitment of money or time","A survey score","A large number of website visits"], correct: 1 },
+        { q: "A business loses 20% of its customers each year. The average customer lifetime is about:", opts: ["2 years","5 years","8 years","20 years"], correct: 1 },
+        { q: "When evidence contradicts the model, the better response is usually to:", opts: ["Change segment, price, channel and product together","Change one element and keep the rest","Ignore the evidence","Raise more money"], correct: 1 }
+      ]
+    }
+  ];
+
+  var BIZ_CAPSTONE = {
+    id: "capstone", num: "Capstone", title: "A One-Page Business Model for Your Product or Platform",
+    sub: "Put the whole model on one page, check that it fits, and name the test that matters most",
+    time: "3–5 hrs",
+    setup: "Write a one-page business model, with a two-page supporting note, for a product, service or internal platform you work on. It should be clear enough that a leader who has never seen it could explain how it creates value, how it is paid for and what would have to be true for it to work. If you do not have one of your own, use this: your data platform team of eight is asked to justify its $1.5M annual budget by treating the platform as a product with internal customers.",
+    diagrams: [
+      { title: "The one-page model",
+        code: `flowchart LR
+  A["Who we serve"] --> B["Job and value proposition"]
+  B --> C["How we charge and what for"]
+  C --> D["How we reach and serve them"]
+  D --> E["Capabilities we depend on"]
+  E --> F["One unit: does it pay?"]
+  F --> G["Riskiest assumption and its test"]` }
+    ],
+    dataPoints: [
+      { h: "Part A: Customers and value (Modules 1–2)", b: "Name the primary segment and the user, buyer and approver within it. Describe the job, the real alternatives and the value of the job with a calculation. State the value proposition and show where you win for this segment." },
+      { h: "Part B: Money and delivery (Modules 3–4)", b: "State the revenue or funding model and the unit charged for, with gross margin for light and heavy users where usage costs apply. Describe how customers are reached and what it costs to win and serve one. Name the two or three capabilities the model depends on and what you will not do." },
+      { h: "Part C: Fit and test (Modules 1 and 5)", b: "Trace one unit to show whether it pays. List the points where parts of the model strain against each other. Identify the riskiest assumption, the cheapest test for it, the pass mark and what single element you would change if it fails." }
+    ],
+    deliverablePoints: [
+      "Name the primary segment and distinguish user, buyer and approver (Module 2)",
+      "State the job, the alternatives and the value of the job with a calculation (Module 2)",
+      "State the revenue or funding model and the unit charged for, with margins (Module 3)",
+      "Describe the route to customers and the cost to win and serve one (Module 4)",
+      "Name the core capabilities and one thing you will stop or outsource (Module 4)",
+      "Show that one unit pays, and list where the model's parts strain (Module 1)",
+      "State the riskiest assumption, its test, the pass mark and the planned response (Module 5)"
+    ],
+    rubric: [
+      "The one page answers who, what, how and money, and the answers are consistent with each other",
+      "Value, price, cost to acquire and cost to serve are supported by numbers",
+      "The riskiest assumption is identified and paired with a cheap test and a pass mark set in advance",
+      "A leader unfamiliar with the work could explain the model and its main risk after one reading"
+    ],
+    quiz: [
+      { q: "A one-page business model is most useful when its parts are:", opts: ["As detailed as possible","Consistent with each other and supported by numbers","Written in technical language","Kept confidential from the team"], correct: 1 },
+      { q: "For an internal platform, the equivalent of revenue is:", opts: ["The number of features","The funding it receives on behalf of the teams it serves","The size of the team","Lines of code"], correct: 1 },
+      { q: "The capstone ends with the riskiest assumption and a test because:", opts: ["A model is a set of guesses until customers behave as expected","Tests are required by law","It makes the page longer","Assumptions never change"], correct: 0 }
+    ]
+  };
+
+  var BIZ_BONUS = {
+    linkedin: "I have just finished a course on business model design, written for technical people, and it reframed how I look at what my team builds.\n\nThree ideas I am taking back:\n\n1. An internal platform is a business. It has customers, an offer, a way of reaching them and funding that works like revenue. When I counted the teams that actually use ours, the cost per adopting team was far higher than the number on the budget slide.\n\n2. The unit you charge for matters as much as the price. If your product makes customers need fewer seats, per-seat pricing punishes you for succeeding. With AI features, flat pricing can also mean losing money on your most enthusiastic users.\n\n3. A model is a set of guesses. Rank the assumptions by how critical and how unproven they are, test the riskiest one cheaply, and decide the pass mark before you look at the result. What people commit to is worth far more than what they say.\n\nNone of it needs an MBA. It is four questions, some arithmetic and the discipline to check that the answers fit together.\n\nWho is the real customer of your team's work, and is it the same person who funds it?",
+    blogTitle: "Your Platform Is a Product: Business Model Thinking for Technical Leaders",
+    blog: [
+      { h: "1. The question I could not answer", b: "Open with a moment when someone asked how your product, service or platform creates value and who pays for it, and you realised you had a feature list and not an answer. Keep it specific and first-person." },
+      { h: "2. Four questions", b: "Introduce who, what, how and money. Use the example of two organisations selling the same thing as different businesses. Show your own answers and the point where two of them conflicted." },
+      { h: "3. Customers are not 'everyone'", b: "Explain segments, the job to be done and the difference between user, buyer and approver. Share the job behind a request you once took at face value, and the calculation of what that job was worth." },
+      { h: "4. What you charge for", b: "Walk through revenue models and the unit of charge, including the trap of per-seat pricing in automation and the margin problem with heavy AI users. Say what unit would rise with your customer's value." },
+      { h: "5. The cost nobody budgets", b: "Cover matching the sales or adoption effort to the size of the deal, and the cost to onboard and serve. Describe one activity your team stopped or handed off after working out who chose you for it." },
+      { h: "6. Test the riskiest guess first", b: "Close with the assumption you ranked as most critical and least proven, the cheap experiment you ran and what it showed. End by inviting readers to name the real customer of their own team's work. Credit the published thinkers behind the ideas, including business model canvases and jobs-to-be-done, so readers can go to the sources." }
+    ]
+  };
+
+  // ============================================================
   // COURSE REGISTRY
   // ============================================================
   var COURSES = [
@@ -2338,6 +2698,16 @@
       icons: ["alert","route","layers","gauge","users","flag"],
       skills: ["Workflow selection","Data architecture","Semantic modelling","Data quality monitoring","Agent governance"],
       modules: DAT_MODULES, capstone: DAT_CAPSTONE, bonus: DAT_BONUS
+    },
+    {
+      key: "biz",
+      name: "Business Model Design for Technical Leaders",
+      tagline: "How a product, service or internal platform creates value and gets paid for it: customers and the job they need done, revenue and pricing models, go-to-market, and testing the riskiest assumption first. Includes how AI changes pricing.",
+      note: "Original content on the general discipline of business model design. Not affiliated with any course or template provider.",
+      color: "#3f6212", color2: "#65a30d", art: "model", level: "Intermediate", hours: "13–20 hrs",
+      icons: ["blocks","users","coin","megaphone","flask","flag"],
+      skills: ["Business model design","Value propositions","Pricing models","Go-to-market","Assumption testing"],
+      modules: BIZ_MODULES, capstone: BIZ_CAPSTONE, bonus: BIZ_BONUS
     }
   ];
 
@@ -2529,6 +2899,37 @@
         { t: "Data Mesh Paradigm Shift in Data Platform Architecture", by: "Zhamak Dehghani", note: "The conference talk version of the data mesh argument." },
         { t: "Intro to Large Language Models", by: "Andrej Karpathy", note: "A one-hour general-audience talk on how models work and where they fail." }
       ]
+    },
+    biz: {
+      books: [
+        { t: "Business Model Generation", by: "Alexander Osterwalder and Yves Pigneur", note: "The book that popularised putting a whole business model on one page." },
+        { t: "Value Proposition Design", by: "Alexander Osterwalder, Yves Pigneur, Greg Bernarda and Alan Smith", note: "A practical companion on fitting an offer to customer needs. Pairs with Module 2." },
+        { t: "Competing Against Luck", by: "Clayton Christensen and co-authors", note: "The fullest statement of the jobs-to-be-done idea. Pairs with Module 2." },
+        { t: "Monetizing Innovation", by: "Madhavan Ramanujam and Georg Tacke", note: "Why to design the price and the product together. Pairs with Module 3." },
+        { t: "The Lean Startup", by: "Eric Ries", note: "Treating a business as a series of experiments. Pairs with Module 5." },
+        { t: "Team Topologies", by: "Matthew Skelton and Manuel Pais", note: "Makes the case for treating internal platforms as products with customers." }
+      ],
+      blogs: [
+        { t: "Stratechery", by: "Ben Thompson", note: "Analysis of how technology companies' business models work and change." },
+        { t: "Lenny's Newsletter", by: "Lenny Rachitsky", note: "Practical writing on product, pricing and growth from operators." },
+        { t: "What I Talk About When I Talk About Platforms", by: "Evan Bottcher, on martinfowler.com", note: "A widely cited essay on what makes an internal platform worth using." },
+        { t: "Business Model Template", by: "Stratechi", note: "A free worksheet template that can be a starting point for a team workshop." }
+      ],
+      podcasts: [
+        { t: "Acquired", by: "Ben Gilbert and David Rosenthal", note: "Company histories that show business models being built and changed." },
+        { t: "How I Built This", by: "Guy Raz, NPR", note: "Founders describing how they found customers and a way to be paid." },
+        { t: "Lenny's Podcast", by: "Lenny Rachitsky", note: "Interviews with product and growth leaders, often on pricing and go-to-market." }
+      ],
+      courses: [
+        { t: "How to Build a Startup", by: "Steve Blank, on Udacity", note: "A free course on customer discovery and testing a business model." },
+        { t: "Startup School", by: "Y Combinator", note: "Free lectures on customers, pricing and early growth." },
+        { t: "Business Model Canvas: A Tool for Entrepreneurs and Innovators", by: "University System of Georgia, on Coursera", note: "A project-based introduction to mapping a model on one page." }
+      ],
+      videos: [
+        { t: "Business Model Canvas Explained", by: "Strategyzer", note: "A two-minute overview of the one-page canvas." },
+        { t: "Understanding the Job", by: "Clayton Christensen", note: "The well-known milkshake story that explains jobs-to-be-done." },
+        { t: "Startup Pricing 101", by: "Kevin Hale, Y Combinator", note: "A clear talk on value-based pricing and common mistakes." }
+      ]
     }
   };
 
@@ -2692,6 +3093,15 @@
         + '<g stroke="#fff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".7"><path d="M66 70 L196 150"/><path d="M60 120 L196 156"/><path d="M82 168 L196 160"/></g>'
         + '<circle cx="66" cy="70" r="12" fill="#fff" opacity=".9"/><rect x="48" y="108" width="24" height="24" rx="5" fill="#fff" opacity=".75"/><polygon points="82,154 96,178 68,178" fill="#fff" opacity=".85"/>';
     },
+    model: function(){
+      return '<circle cx="60" cy="170" r="60" fill="#fff" opacity=".08"/><circle cx="350" cy="26" r="60" fill="#fff" opacity=".08"/>'
+        + '<g fill="#fff"><rect x="190" y="34" width="58" height="60" rx="9" opacity=".34"/><rect x="254" y="34" width="58" height="60" rx="9" opacity=".92"/><rect x="318" y="34" width="58" height="60" rx="9" opacity=".34"/><rect x="190" y="100" width="90" height="62" rx="9" opacity=".5"/><rect x="286" y="100" width="90" height="62" rx="9" opacity=".26"/></g>'
+        + '<g fill="#3f6212" opacity=".6"><rect x="264" y="46" width="30" height="6" rx="3"/><rect x="264" y="58" width="38" height="6" rx="3"/><rect x="264" y="70" width="22" height="6" rx="3"/></g>'
+        + '<g fill="#fff" opacity=".85"><rect x="200" y="112" width="40" height="6" rx="3"/><rect x="200" y="124" width="56" height="6" rx="3"/><rect x="296" y="112" width="34" height="6" rx="3"/></g>'
+        + '<circle cx="84" cy="74" r="20" fill="#fff" opacity=".9"/><path d="M48 136 a36 30 0 0 1 72 0 z" fill="#fff" opacity=".9"/>'
+        + '<g stroke="#fff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".75" fill="none"><path d="M118 82 C 150 70, 160 64, 188 62"/><path d="M122 118 C 150 126, 164 130, 188 132"/></g>'
+        + '<circle cx="283" cy="64" r="44" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 6" opacity=".7"/>';
+    },
     future: function(){
       return '<circle cx="350" cy="24" r="64" fill="#fff" opacity=".08"/><circle cx="40" cy="184" r="56" fill="#fff" opacity=".08"/>'
         + '<polygon points="70,104 350,20 350,188" fill="#fff" opacity=".1"/><polygon points="70,104 350,62 350,146" fill="#fff" opacity=".12"/>'
@@ -2827,7 +3237,7 @@
     h += "<section class='hero'><div class='hero-art'>"+heroArt()+"</div><div class='hero-copy'>";
     h += "<span class='hero-tag'>Self-paced · Quizzes · Certificates</span>";
     h += "<h1>Move from builder to leader.</h1>";
-    h += "<p>Practical courses on finance, leadership, investor thinking, strategic foresight, the agent economy and data foundations for AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
+    h += "<p>Practical courses on finance, leadership, strategy, business models and AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
     h += "<a class='btn ghost' href='#fin-home'>Browse courses</a></div></div></section>";
