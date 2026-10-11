@@ -260,6 +260,16 @@
   .bonus-block { white-space: pre-wrap; font-size: 14.5px; line-height: 1.7; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
   .copy-btn { margin-top: 12px; }
 
+  /* ---------- References ---------- */
+  .ref-list { display: grid; gap: 10px; }
+  .ref-item { display: flex; align-items: center; gap: 14px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+  .ref-item:hover { border-color: color-mix(in srgb, var(--cc) 40%, white); background: color-mix(in srgb, var(--cc) 4%, white); }
+  .ref-text { flex: 1; min-width: 0; }
+  .ref-title { font-weight: 800; font-size: 15px; line-height: 1.35; }
+  .ref-by { font-size: 13px; color: var(--cc); font-weight: 700; margin-top: 1px; }
+  .ref-note { font-size: 13.5px; color: var(--ink2); margin-top: 4px; line-height: 1.5; }
+  .ref-go { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 800; color: var(--cc); white-space: nowrap; }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
     body.has-side .menu-btn { display: inline-flex; }
@@ -1194,6 +1204,360 @@
   };
 
   // ============================================================
+  // COURSE 4: STRATEGIC FORESIGHT
+  // (Original content on the general discipline of strategic
+  //  foresight and scenario planning; not affiliated with or
+  //  derived from any specific provider's course materials.)
+  // ============================================================
+  var FUT_MODULES = [
+    {
+      id: "f1", num: "Module 1", title: "Foresight Fundamentals: Thinking in Multiple Futures",
+      sub: "Forecast vs. foresight, the range of futures, focal questions and fragile assumptions",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Forecast vs. Foresight",
+          body: "A forecast extends the past into one expected number. Foresight accepts that the future cannot be known and prepares for several different ones. Forecasts work when the system is stable and the horizon is short. They fail quietly when the rules change, because a single number hides the range around it. Foresight is not prediction. It is the discipline of asking 'what could happen, and would we be ready?' before the answer is obvious.",
+          ex: "A platform team sizes its three-year capacity plan on a forecast of 30% annual data growth. Actual growth in the previous three years was 12%, 55% and 28%. The forecast missed by 18 points, 25 points and 2 points, so it was badly wrong in two years out of three. A foresight view plans for a 10% to 60% range and asks which design choices hold across all of it." },
+        { t: "The Range of Futures: Possible, Plausible, Probable, Preferred",
+          body: "Picture the future as a cone widening from today. The widest ring is the possible (anything that does not break physics). Inside it is the plausible (could happen given what we know about how the world works). Inside that is the probable (the continuation of current trends). Cutting across them is the preferred future, the one you would choose to build. Most planning lives entirely in the probable. Most surprises come from the plausible.",
+          ex: "Question: how will clients buy data engineering in 2031? Probable: more managed platforms, steady demand for skilled teams. Plausible: clients bring build work in-house with AI assistance and outsourced build revenue falls 40%. Possible: a new rule requires all processing to stay in-country. Preferred: we are known for outcome-priced platform operations. A plan that only covers the first line is exposed to the second." },
+        { t: "The Focal Question and the Time Horizon",
+          body: "Foresight work starts from a decision, not from curiosity. The focal question names who is deciding, what they are deciding, and by when. The time horizon should cover the life of that decision: far enough that today's assumptions can break, near enough that people still care. A useful rule is to look at least as far as the commitment lasts, which is usually well past the budget cycle.",
+          ex: "Weak question: 'What is the future of AI?' Strong question: 'How will mid-size logistics clients staff and buy data engineering by 2031, and what should we build or stop building by 2027?' For a platform choice with an 18-month migration and a five-year contract, the commitment runs 6.5 years, so the horizon is six to seven years, not the next 12 months." },
+        { t: "Planning Assumptions and Their Shelf Life",
+          body: "Every plan rests on assumptions that nobody wrote down because they felt like facts. Foresight makes them visible and asks how long each will stay true. Rate every assumption for importance to the plan and for your confidence that it holds across the horizon. The dangerous ones are important and shaky. Those become the questions your scanning and scenarios must answer.",
+          ex: "Score importance and confidence from 1 to 5, then fragility = importance × (6 − confidence). 'Clients keep paying per engineer-day': importance 5, confidence 2, fragility 5 × 4 = 20 out of 25. 'Cloud remains the default deployment': importance 4, confidence 5, fragility 4 × 1 = 4. The roadmap should be stress-tested against the first assumption, not the second." }
+      ],
+      diagrams: [
+        { title: "Framing a foresight question",
+          code: `flowchart LR
+  A["A real decision"] --> B["Focal question"]
+  B --> C["Time horizon: life of the commitment"]
+  C --> D["List planning assumptions"]
+  D --> E{"Important and shaky?"}
+  E -->|"Yes"| F["Explore with signals and scenarios"]
+  E -->|"No"| G["Note it and move on"]` }
+      ],
+      caseTitle: "The Five-Year Plan Built on One Number",
+      caseText: "A mid-size software testing services firm has a five-year plan built on one forecast: billable testing days grow 15% a year. About 70% of revenue comes from engineers billed by the day. The plan funds a new delivery centre on a seven-year lease and a hiring pipeline of 120 people. In the last year, two clients asked whether pricing could be tied to releases shipped rather than days worked, and machine-generated test suites cut effort on one account by a third. Neither fact appears in the plan.",
+      caseTask: "Rewrite the plan's implicit question as a proper focal question with a decision-maker and a date. Choose a time horizon and justify it from the commitments in the case. List six planning assumptions, score each for importance and confidence, calculate fragility, and name the two the firm must explore before signing the lease.",
+      everyday: {
+        title: "Your own five-year assumptions",
+        body: "Your career plan is also a forecast with hidden assumptions: that your current skill stays scarce, that your industry keeps buying it the same way, that your employer's model survives. Write down five assumptions behind your next three years and score them for importance and confidence. The exercise takes fifteen minutes and usually shows one assumption you have been treating as a fact. The same check works for a side venture, a house move or a long course of study: pick the horizon by how long the commitment lasts, not by how far ahead feels comfortable."
+      },
+      assignment: {
+        deliverable: "Choose one real decision you own or influence with consequences of three years or more, such as a platform choice, a team structure, a service offering or a venture. Write a one-page framing: the focal question, the time horizon with your reasoning, one line each for the probable, a plausible alternative and your preferred future, and a table of at least eight planning assumptions scored for importance, confidence and fragility. You will reuse this framing in every later module.",
+        rubric: [
+          "The focal question names a decision, a decision-maker and a date",
+          "The time horizon is justified by the length of the commitment, not by the planning cycle",
+          "At least eight assumptions are written as testable statements and scored",
+          "The two or three most fragile assumptions are called out as the questions to explore next"
+        ]
+      },
+      reflection: [
+        "Which plan you are currently working to rests on a single forecast, and what range sits around that number?",
+        "What is one assumption in your team's roadmap that everyone treats as a fact?",
+        "How far ahead does your organisation actually look, and how long do its largest commitments last?"
+      ],
+      quiz: [
+        { q: "The main difference between a forecast and foresight is that foresight:", opts: ["Produces a more precise number","Prepares for several different futures instead of predicting one","Only looks one quarter ahead","Replaces the need for data"], correct: 1 },
+        { q: "In the range-of-futures cone, most strategic surprises come from futures that are:", opts: ["Plausible but outside the probable","Physically impossible","Already in the budget","Preferred by leadership"], correct: 0 },
+        { q: "A good time horizon for foresight work is best set by:", opts: ["The annual budget cycle","Whatever the newest trend report uses","How long the decision's commitments last","The length of the current sprint"], correct: 2 },
+        { q: "An assumption scores importance 5 and confidence 2. Using fragility = importance × (6 − confidence), its score is:", opts: ["10","7","20","25"], correct: 2 }
+      ]
+    },
+    {
+      id: "f2", num: "Module 2", title: "Horizon Scanning: Signals, Trends and Drivers",
+      sub: "Finding early evidence of change and sorting it from noise",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Signals, Trends and Drivers",
+          body: "A signal is a small, specific, recent observation that something may be changing: a product, a policy, a behaviour, a job advert. A trend is a direction of change over time, visible when many signals point the same way. A driver is the deeper force that pushes the trend along. Signals are evidence, trends are patterns, drivers are causes. Working upward from signals keeps you honest, because every claim about the future traces back to something that actually happened.",
+          ex: "Signals: a 40-person competitor advertises for an 'agent supervisor' instead of a QA engineer; three clients ask about pricing per verified release in one quarter; an open-source tool generates regression suites from a specification. Trend: testing work is shifting from execution to oversight. Driver: the falling cost of machine-generated code and tests." },
+        { t: "Scanning Wide with STEEP",
+          body: "Technical people scan technology and miss everything else. STEEP is a simple checklist that forces breadth: Social, Technological, Economic, Environmental and Political. Change that reshapes a market often starts outside the category you watch. Rules, costs, demographics and attitudes move more slowly than software, but they decide which technologies get adopted and who is allowed to use them.",
+          ex: "A team logs 20 signals and 17 are technological. Rebalanced with a floor of two per category, the scan picks up a new data-residency rule (political), rising electricity prices for compute (economic and environmental) and clients piloting a four-day week (social). The residency rule turns out to matter more to next year's architecture than any of the 17 technology items." },
+        { t: "Scoring Signals: Novelty, Impact and Evidence",
+          body: "Not every signal deserves attention. Score each one from 1 to 5 on novelty (is this new?), impact on your focal question (would it change the decision?) and evidence (is someone paying, using or legislating, or is it a demo?). High novelty with low evidence is where hype lives. High impact with solid evidence is rare and deserves action even when it looks unexciting.",
+          ex: "Signal A, a viral demo of a fully autonomous tester: novelty 5, impact 4, evidence 1, total 10. Signal B, two paying clients moving contracts to pay-per-verified-release: novelty 3, impact 5, evidence 4, total 12. A is more exciting, but B scores higher and has evidence behind it. Investigate B now and keep A on the watch list." },
+        { t: "Building a Scanning Habit",
+          body: "Scanning works as a habit, not an annual event. Keep a shared signal log with the date, the source, what happened, the STEEP category and a one-line 'so what'. Look at the edges: small competitors, adjacent industries, regulators, job adverts, what your newest hires use. Review the log on a fixed rhythm to cluster signals into trends. The value comes from the clustering, not from any single entry.",
+          ex: "Thirty minutes a week and five signals logged gives about 250 signals a year (5 × 50 weeks). A team of six logging two each gives 12 a week, or about 600 a year. A 45-minute monthly review that clusters them into five or six trends costs each person 9 hours a year, which is less than one working day." }
+      ],
+      diagrams: [
+        { title: "From signal to implication",
+          code: `flowchart TD
+  S1["Signal: something specific happened"] --> C["Cluster similar signals"]
+  S2["Signal"] --> C
+  S3["Signal"] --> C
+  C --> T["Trend: direction of change"]
+  T --> D["Driver: the force behind it"]
+  D --> I["Implication for the focal question"]` }
+      ],
+      caseTitle: "The Scan That Only Looked at Technology",
+      caseText: "A data engineering team at a logistics company runs a quarterly 'tech radar'. It is thorough: 34 entries covering engines, orchestration tools and AI assistants. This year the team was surprised twice. A customs authority began requiring shipment data to be stored in-country, forcing an unplanned regional deployment. Then two large customers started asking for emissions reporting per shipment, which the data model could not support. Both changes had been discussed publicly for more than a year.",
+      caseTask: "Sort the two surprises into STEEP categories and write the signals the team could have logged a year earlier. Propose a scanning routine for this team: sources, cadence, log fields and who reviews it. Score the two missed signals for novelty, impact and evidence as they would have looked a year ago.",
+      everyday: {
+        title: "Scanning for your own career",
+        body: "You already scan without calling it that: you notice which skills appear in job adverts, which tools your peers quietly stop using, which roles get created and which stop being replaced. Make it deliberate. Keep a note with one signal a week about how work in your field is changing, and tag each one with a STEEP letter so the list does not become all technology. After three months, read the list in one sitting. The pattern you see is a trend, and it is better evidence for a career decision than any single article."
+      },
+      assignment: {
+        deliverable: "Using the focal question from Module 1, collect at least 15 real signals from the last 12 months, with at least two in each STEEP category. Log each with its date, source, a one-sentence description and a 'so what'. Score every signal for novelty, impact and evidence. Cluster them into three to five trends and name the driver behind each.",
+        rubric: [
+          "Every signal is a specific, dated, sourced observation rather than an opinion or a general trend",
+          "All five STEEP categories are represented, with no more than half the signals in one category",
+          "Signals are scored on novelty, impact and evidence, and the scores change what you pay attention to",
+          "Each trend is supported by at least three signals and has a named driver"
+        ]
+      },
+      reflection: [
+        "Which STEEP category do you almost never look at, and what might be hiding there?",
+        "What was the last change that surprised your team, and how early were the signals publicly visible?",
+        "Where are the 'edges' of your field, and who do you know who works there?"
+      ],
+      quiz: [
+        { q: "Which of these is a signal rather than a trend or a driver?", opts: ["Remote work is increasing","Compute keeps getting cheaper","A named competitor posted a job advert for an 'agent supervisor' last month","Society is ageing"], correct: 2 },
+        { q: "The main purpose of scanning with STEEP is to:", opts: ["Rank technologies by maturity","Force breadth beyond the category you naturally watch","Replace scenario planning","Produce a single forecast"], correct: 1 },
+        { q: "A signal scores novelty 5, impact 4 and evidence 1. The sensible response is to:", opts: ["Act on it immediately","Ignore it permanently","Keep it on the watch list until evidence improves","Treat it as a driver"], correct: 2 },
+        { q: "The most valuable step in a scanning habit is:", opts: ["Collecting as many signals as possible","Regularly clustering signals into trends","Only logging technology news","Scanning once a year"], correct: 1 }
+      ]
+    },
+    {
+      id: "f3", num: "Module 3", title: "Scenario Building: Mapping Plausible Worlds",
+      sub: "Critical uncertainties, the two-axis matrix and scenario narratives",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Scenarios Are Not Best, Base and Worst",
+          body: "Best, base and worst cases turn one dial up and down: the same world with more or less of the same thing. Scenarios describe worlds that differ in kind, where the rules, the customers or the business model have changed. Best, base and worst is the right tool for a budget. Scenarios are the right tool when you suspect the model behind the budget may not survive.",
+          ex: "Budget view: revenue of $10M with a best case of +20% and a worst case of −20%. All three assume clients buy engineer-days. Scenario view: in one world clients still buy days, in another they pay only for outcomes delivered, and in a third they do the work in-house. The second and third worlds are not on the +20% to −20% dial at all." },
+        { t: "Finding the Critical Uncertainties",
+          body: "List the drivers from your scan and score each for impact on the focal question and for uncertainty about how it will play out. High impact with low uncertainty is a predetermined element: it will happen, so build it into every scenario. High impact with high uncertainty is a critical uncertainty: these are the candidates for scenario axes. Low-impact drivers can be watched or dropped.",
+          ex: "Eight drivers scored 1 to 5. Retirement of senior specialists: impact 4, uncertainty 1, predetermined, so it appears in every scenario. Level of AI autonomy in delivery: impact 5, uncertainty 5. How clients choose to buy: impact 5, uncertainty 4. Those two become the axes. A new office-design fashion: impact 2, uncertainty 5, dropped." },
+        { t: "The Two-Axis Matrix",
+          body: "Take the two most critical uncertainties and give each two contrasting end states. Crossing them produces four distinct worlds. The axes must be independent: if one outcome on the first axis makes one outcome on the second nearly certain, you really have two scenarios, not four. Give each world a short memorable name so people can refer to it in later conversations.",
+          ex: "Axis 1, AI in delivery: assistive or autonomous. Axis 2, clients buy: capacity or outcomes. The four worlds: 'Faster Hands' (assistive, capacity), 'Priced by Results' (assistive, outcomes), 'Thin Benches' (autonomous, capacity) and 'Software That Ships Itself' (autonomous, outcomes). Each one implies a different team shape and a different price list." },
+        { t: "Scenario Narratives and Consistency",
+          body: "A scenario becomes useful when it is written as a short story told from the horizon year: a headline, the three or four events that led there, who gained and who lost, and what an ordinary week looks like for a named customer or employee. Test each story four ways. Is it plausible? Is it clearly different from the others? Is it internally consistent? Does it challenge today's plan? A scenario nobody finds uncomfortable is usually the official forecast in disguise.",
+          ex: "Consistency check on 'Software That Ships Itself': the draft says AI handles most delivery and also that the firm's headcount grows 20%. Those two statements conflict unless the story explains the new work. Revised: delivery headcount falls by a third, while roles in assurance, client outcomes and agent oversight double from a small base." }
+      ],
+      diagrams: [
+        { title: "From drivers to four scenarios",
+          code: `flowchart TD
+  A["Drivers from the scan"] --> B["Score impact and uncertainty"]
+  B --> C{"High impact?"}
+  C -->|"No"| D["Watch or drop"]
+  C -->|"Yes, low uncertainty"| E["Predetermined: in every scenario"]
+  C -->|"Yes, high uncertainty"| F["Critical uncertainties"]
+  F --> G["Pick two independent axes"]
+  G --> H["Four named scenarios"]
+  E --> H
+  H --> I["Write each as a story from the horizon year"]` }
+      ],
+      caseTitle: "Three Scenarios That Were Really One",
+      caseText: "A regional health-technology company prepares 'three scenarios' for its board: optimistic (revenue up 30%), expected (up 12%) and pessimistic (down 10%). All three assume hospitals keep buying annual software licences and that the current reimbursement rules stay in place. In the same board pack, a separate page notes that two insurers are trialling payment tied to patient outcomes and that a large hospital group has begun building its own tools with a small internal team.",
+      caseTask: "Explain why the three cases are a single scenario. Using the facts in the case, identify one predetermined element and two critical uncertainties, define the two axes with their end states, and name the four resulting worlds. Write a five-sentence narrative for the world the board would find least comfortable.",
+      everyday: {
+        title: "Four versions of your next five years",
+        body: "The same matrix works for a personal decision. Take two things you cannot control that matter a great deal, for example whether your specialism stays in demand and whether your employer grows or shrinks. Cross them into four worlds and write three lines about your life in each. You will usually find one world you have been planning for and three you have never considered. The aim is not to predict which arrives. It is to notice which choices today would still look sensible in most of them."
+      },
+      assignment: {
+        deliverable: "From the drivers in your Module 2 scan, score each for impact and uncertainty. Identify the predetermined elements and choose two independent critical uncertainties as axes. Build the two-axis matrix, name all four scenarios, and write a narrative of 150 to 200 words for each, dated in your horizon year. End with a short note on which scenario your current plan silently assumes.",
+        rubric: [
+          "Drivers are scored for impact and uncertainty, with predetermined elements separated from critical uncertainties",
+          "The two axes are independent and each has clearly contrasting end states",
+          "All four scenarios are named, written from the horizon year and different in kind, not just in size",
+          "Each narrative is internally consistent and the plan's default scenario is identified"
+        ]
+      },
+      reflection: [
+        "Which scenario does your organisation's current plan quietly assume, and who chose it?",
+        "Which of your four worlds would be most uncomfortable to present to leadership, and why?",
+        "What predetermined element is your team behaving as if it were still uncertain?"
+      ],
+      quiz: [
+        { q: "Best, base and worst cases differ from scenarios because they:", opts: ["Describe worlds that differ in kind","Vary one dial within the same assumed world","Always use four quadrants","Ignore revenue"], correct: 1 },
+        { q: "A driver with high impact and low uncertainty should be treated as:", opts: ["A scenario axis","Something to drop","A predetermined element present in every scenario","A weak signal"], correct: 2 },
+        { q: "The two axes of a scenario matrix must be:", opts: ["Independent of each other","Both about technology","Measured in currency","Agreed by every stakeholder in advance"], correct: 0 },
+        { q: "A scenario that nobody on the team finds uncomfortable is most likely:", opts: ["The best one to plan around","Too detailed","The official forecast in disguise","Internally inconsistent"], correct: 2 }
+      ]
+    },
+    {
+      id: "f4", num: "Module 4", title: "Stress-Testing Strategy Against the Future",
+      sub: "Robustness testing, a portfolio of moves, early-warning indicators and the cost of waiting",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Testing Options Against Every Scenario",
+          body: "Scenarios earn their keep when you run your strategic options through each of them, the way an engineer tests a design under different loads. List the options as rows and the scenarios as columns, then score how each option performs in each world from −2 (harmful) to +2 (strong). You are looking for two things: options that hold up everywhere, and options that are excellent in one world and damaging in another.",
+          ex: "Across the four scenarios, 'double offshore testing headcount' scores +2, 0, −2, −2 for a total of −2. 'Build an outcome-priced testing service' scores 0, +2, +1, +2 for +5. 'Train everyone in AI-assisted delivery' scores +1, +1, +1, +1 for +4. The training option is never the best in any world, but it never loses, and the headcount option is a bet on one future." },
+        { t: "A Portfolio: Robust Moves, Hedges, Options and Big Bets",
+          body: "Sort the tested options into four kinds. Robust moves pay off in every scenario, so do them now. Hedges cost a little and protect you in a scenario that would hurt. Options are small investments that buy the right to move quickly later. Big bets win heavily in one or two worlds and lose in the others. A sound strategy is a deliberate mix, with the size of each bet written down rather than discovered afterwards.",
+          ex: "A $1M change budget split as a portfolio: $500K (50%) on robust moves such as cross-training, $200K (20%) on four $50K pilots that act as options, $200K (20%) on one big bet, and $100K (10%) on a hedge. If the big bet's world never arrives, 80% of the money still did useful work." },
+        { t: "Early-Warning Indicators and Trigger Points",
+          body: "You cannot know which scenario is arriving, but you can watch for evidence. For each scenario, choose two or three indicators that are observable, specific and would move early. Give each a threshold and agree in advance what you will do when it is crossed. Deciding the response before the trigger fires removes the debate at the moment when people are most inclined to explain the evidence away.",
+          ex: "Indicator for 'Priced by Results': the share of new requests for proposal that ask for outcome-based pricing. Today it is 5%. Trigger: 20% for two consecutive quarters. Pre-agreed action: convert the outcome-pricing pilot into a standard offer and move two senior people onto it. Owner: head of delivery. Reviewed: quarterly." },
+        { t: "The Cost of Waiting and the Cost of Being Early",
+          body: "Acting before the future is clear costs money that may be wasted. Waiting until it is clear costs position that may not be recoverable. A small early investment can be valued by what it would be worth to be ready, weighted by how likely that world is. If readiness is worth far more than the pilot costs, run the pilot. If not, write down the indicator and wait on purpose.",
+          ex: "A pilot costs $60K now. If the outcome-pricing world arrives, judged 35% likely, being ready is worth $900K of margin compared with $300K when you start 12 months late. Value of readiness = 0.35 × ($900K − $300K) = $210K. That is 3.5 times the cost of the pilot, so the option is worth buying even though the scenario is more likely not to happen." }
+      ],
+      diagrams: [
+        { title: "From scenarios to a monitored portfolio",
+          code: `flowchart LR
+  A["Strategic options"] --> B["Score each against every scenario"]
+  B --> C{"How does it perform?"}
+  C -->|"Good everywhere"| D["Robust move: do now"]
+  C -->|"Protects a bad case"| E["Hedge"]
+  C -->|"Small now, scale later"| F["Option"]
+  C -->|"Wins big in one world"| G["Big bet: size it"]
+  D --> H["Indicators and trigger points"]
+  E --> H
+  F --> H
+  G --> H
+  H --> I["Quarterly review"]` }
+      ],
+      caseTitle: "The Strategy That Only Worked in One Future",
+      caseText: "A retail analytics firm has four scenarios for 2030 and three strategic options. Scored from −2 to +2 across the four scenarios: Option A, build a large in-house data labelling operation, scores +2, +2, −2, −1. Option B, retrain analysts to supervise automated pipelines, scores +1, +1, +1, 0. Option C, launch a self-service insights product priced per answer, scores −1, 0, +2, +2. Leadership favours Option A because it scores highest in the two scenarios they consider most likely, and proposes to put the whole $2M budget behind it.",
+      caseTask: "Total each option and classify it as a robust move, an option, a hedge or a big bet. Explain the risk in leadership's proposal using the scores. Propose a split of the $2M across the three options, and define one early-warning indicator with a threshold and a pre-agreed action for the scenarios where Option A performs badly.",
+      everyday: {
+        title: "Robust moves in your own plans",
+        body: "Run your personal options through your four worlds from Module 3. Some moves pay off whatever happens: building a public body of work, keeping savings that cover a few months, maintaining relationships outside your current employer. Those are robust moves, and they are usually unglamorous. A new qualification for one specific technology is a big bet. A weekend spent trying a tool before committing to it is an option. Decide your indicators too: what would you need to see, and by when, before you scale the bet up or let it go?"
+      },
+      assignment: {
+        deliverable: "List four to six strategic options for the decision you framed in Module 1. Build a matrix scoring each option against your four scenarios from −2 to +2, with a one-line reason for every score. Classify each option as a robust move, hedge, option or big bet, and propose a portfolio with rough sizes. Define at least one indicator per scenario with a threshold, a pre-agreed action, an owner and a review date.",
+        rubric: [
+          "Every option is scored against every scenario with a stated reason, not just a number",
+          "Options are classified, and at least one robust move is identified for immediate action",
+          "The portfolio states the size of each commitment and what is lost if a big bet fails",
+          "Each scenario has an observable indicator with a threshold, an action, an owner and a date"
+        ]
+      },
+      reflection: [
+        "Which of your team's current initiatives would be damaging in at least one of your scenarios?",
+        "What robust move have you been postponing because it is not exciting?",
+        "When evidence last contradicted your plan, how long did it take to act, and what would a pre-agreed trigger have changed?"
+      ],
+      quiz: [
+        { q: "An option scores +1, +1, +1, +1 across four scenarios. It is best described as:", opts: ["A big bet","A robust move","A hedge","A weak signal"], correct: 1 },
+        { q: "The main reason to agree the response to a trigger point in advance is to:", opts: ["Avoid having to collect data","Remove the debate when people are most likely to explain evidence away","Guarantee the scenario happens","Reduce the number of scenarios"], correct: 1 },
+        { q: "A pilot costs $40K. Readiness is worth $500K more than starting late, in a scenario that is 30% likely. The value of readiness is:", opts: ["$150K","$40K","$500K","$12K"], correct: 0 },
+        { q: "Putting the whole budget behind the option that scores best in the two 'most likely' scenarios is risky because:", opts: ["Robust moves are always cheaper","Likelihood estimates are uncertain and the option may be harmful in the other scenarios","Scenarios should never be scored","It leaves no budget for scanning"], correct: 1 }
+      ]
+    },
+    {
+      id: "f5", num: "Module 5", title: "From Vision to Action: Preferred Futures and Backcasting",
+      sub: "Choosing a direction, working backward from it, making it tangible and keeping the practice alive",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Choosing a Preferred Future",
+          body: "Scenarios describe what might happen to you. A preferred future describes what you intend to make happen. It is a choice, not a prediction, and it should be specific about the people you serve and what will be different for them. It must also be reachable from at least some of your scenarios, otherwise it is a wish. A good preferred future is concrete enough that someone could disagree with it.",
+          ex: "Vague: 'Be the leading AI-enabled data partner.' Specific: 'By 2030 an operations manager at a mid-size logistics client can go from a data question to a trusted answer in one working day, and we are paid for answers delivered rather than hours worked.' The second version names a person, a measure and a business model, so a team can test their plans against it." },
+        { t: "Backcasting: Working Backward from the Goal",
+          body: "Forecasting asks where today's path leads. Backcasting starts at the preferred future and asks what must already be true one step earlier, then one step before that, until you reach something you can start this quarter. It exposes the long-lead items that a forward plan postpones, and it turns a distant aim into a chain of dated conditions that can each be checked.",
+          ex: "Goal for 2030: 60% of revenue from outcome-priced work. So by 2029 it must be 40%, with the pricing model accepted by procurement teams. By 2028: 20%, proven with ten clients. By 2027: three paid pilots and a reliable way to measure outcomes. This quarter: choose one willing client and agree the outcome metric. The measurement system is the long-lead item, and it has to start now." },
+        { t: "Making the Future Tangible",
+          body: "People do not act on a matrix. They act on something they can picture. Turn the preferred future into an artefact that looks as if it came from that year: a press release, a job advert, a customer's diary entry, a mock dashboard or a one-page price list. A concrete artefact draws out specific objections ('we could never hire for that'), and those objections are exactly the obstacles the plan must address.",
+          ex: "A job advert dated 2030: 'Delivery lead. You will run a team of four engineers and around thirty software agents, own outcome targets for three clients and review exceptions rather than pull requests.' Shown to the current team, it raises better questions in ten minutes than a strategy deck does in an hour: who trains for this, what happens to today's roles, and how exceptions are priced." },
+        { t: "Foresight as a Team Habit",
+          body: "A single foresight exercise goes stale within a year. The value comes from a light, repeated rhythm: a running signal log, a quarterly review of indicators against their triggers, and an annual refresh of the scenarios. Involve people with different vantage points, including newer staff, client-facing roles and at least one outsider, because a group that shares the same assumptions will produce the same blind spots. Hold the work with realistic optimism: the purpose is to find where you have room to act.",
+          ex: "A team of six runs four one-hour quarterly reviews and one half-day (four-hour) annual refresh. That is 8 hours each, or 48 person-hours a year. Against roughly 10,800 working hours for the team (6 × 1,800), the practice costs about 0.4% of capacity. One avoided wrong commitment pays for many years of it." }
+      ],
+      diagrams: [
+        { title: "Backcasting from a preferred future",
+          code: `flowchart LR
+  A["Preferred future in the horizon year"] --> B["What must be true one year earlier?"]
+  B --> C["And the year before that?"]
+  C --> D["Long-lead items identified"]
+  D --> E["First step this quarter"]
+  E --> F["Indicators checked each quarter"]
+  F -->|"Evidence changes"| A` }
+      ],
+      caseTitle: "The Vision Nobody Could Picture",
+      caseText: "The head of a 60-person analytics consultancy announces a 2030 vision: 'to be the most trusted, AI-first insights partner in our region.' Staff agree with it in the town hall and nothing changes. Six months later the roadmap is the same as before, hiring follows the old role descriptions, and the sales team still quotes day rates. When asked, team leads say they support the vision but cannot tell what they are supposed to do differently on Monday.",
+      caseTask: "Rewrite the vision as a specific preferred future that names who is served and what is different for them. Backcast from 2030 to this quarter in four or five dated steps and mark the long-lead item. Describe one artefact from 2030 you would create to make it tangible, and say which objection you expect it to draw out.",
+      everyday: {
+        title: "Backcasting a personal goal",
+        body: "Pick something you want to be true in five years and write it as specifically as the examples above: who you work with, what you are known for, how you are paid. Then work backward one year at a time until you reach an action for this month. The step people skip is the one that needs the longest lead time, such as a body of published work, a qualification or a relationship that takes years to build. Write a short note dated five years from now describing an ordinary working day. If you cannot picture the day, the goal is not specific enough yet."
+      },
+      assignment: {
+        deliverable: "Write a preferred future for the decision you have been working on, in two or three sentences that name who is served, what is different for them and how you would measure it. Check it against your four scenarios and note where it is reachable. Backcast from the horizon year to this quarter in at least five dated steps, marking long-lead items. Create one tangible artefact from the future, and outline a one-page rhythm for keeping the work current.",
+        rubric: [
+          "The preferred future is specific enough that a reasonable person could disagree with it",
+          "The backcast runs from the horizon year to a concrete action this quarter, with long-lead items marked",
+          "A tangible artefact from the future is produced, not just described",
+          "The practice rhythm names the cadence, the participants and who owns the indicators"
+        ]
+      },
+      reflection: [
+        "Is your team's stated vision specific enough that someone could argue against it?",
+        "What is the long-lead item for the future you want, and when did work on it need to start?",
+        "Who is missing from the room when your team talks about the future?"
+      ],
+      quiz: [
+        { q: "A preferred future differs from a scenario because it is:", opts: ["A prediction of what is most likely","A chosen direction you intend to work toward","Always the best-case forecast","Written by an outside expert"], correct: 1 },
+        { q: "Backcasting works by:", opts: ["Extending current trends forward","Starting from the goal and asking what must be true at each earlier step","Averaging the four scenarios","Ignoring the present"], correct: 1 },
+        { q: "The main reason to create a tangible artefact from the future is that it:", opts: ["Looks impressive in a slide deck","Replaces the need for indicators","Draws out specific objections and makes the future easier to act on","Proves the scenario will happen"], correct: 2 },
+        { q: "A foresight exercise delivers lasting value when it is:", opts: ["Done once in great depth","Kept as a light, repeated rhythm with varied participants","Delegated entirely to one specialist","Limited to technology trends"], correct: 1 }
+      ]
+    }
+  ];
+
+  var FUT_CAPSTONE = {
+    id: "capstone", num: "Capstone", title: "A Foresight Brief for a Real Decision",
+    sub: "Run the full method on one decision and hand leadership something they can act on",
+    time: "3–5 hrs",
+    setup: "Take the decision you framed in Module 1 and carry it through the whole method: frame the question, scan for signals, build four scenarios, stress-test your options, choose a preferred future and backcast to a first step. The output is a foresight brief of three to four pages that a leadership team could read in fifteen minutes and use to make a decision this quarter. If you have not got a live decision, use this one: your team must choose whether to commit to a five-year platform and operating model built around today's way of delivering work.",
+    diagrams: [
+      { title: "The full foresight method",
+        code: `flowchart LR
+  Q["Focal question and horizon"] --> S["Scan: signals, trends, drivers"]
+  S --> SC["Four scenarios"]
+  SC --> T["Stress-test options"]
+  T --> P["Portfolio and indicators"]
+  P --> V["Preferred future"]
+  V --> B["Backcast to a first step"]
+  B --> R["Review each quarter"]
+  R --> S` }
+    ],
+    dataPoints: [
+      { h: "Part A: Understand the range (Modules 1–3)", b: "State the focal question, the horizon and your most fragile assumptions. Summarise your scan in a short table of trends, each backed by signals from at least three STEEP categories overall. Present the two critical uncertainties, the four named scenarios and a short narrative for each. Say plainly which scenario the current plan assumes." },
+      { h: "Part B: Decide and commit (Modules 4–5)", b: "Show the option-by-scenario matrix with scores and reasons. Recommend a portfolio of robust moves, hedges, options and any big bet, with rough sizes. Define indicators with thresholds and pre-agreed actions. State the preferred future, backcast it to this quarter and include one artefact from the horizon year." },
+      { h: "Foresight brief template", b: "1) The decision, the focal question and the horizon. 2) What we are assuming, and which assumptions are fragile. 3) What is changing: trends, drivers and the evidence. 4) Four scenarios in brief. 5) How our options perform in each. 6) Recommended portfolio and what we do now. 7) Indicators, triggers and owners. 8) Preferred future, backcast and first step. 9) What would make us revisit this brief." }
+    ],
+    deliverablePoints: [
+      "State the focal question, decision-maker, date and time horizon in one paragraph (Module 1)",
+      "List the three most fragile planning assumptions with their scores (Module 1)",
+      "Summarise the scan as three to five trends with supporting signals and drivers (Module 2)",
+      "Present the two axes and four named scenarios, each with a short narrative (Module 3)",
+      "Include the option-by-scenario matrix and classify every option (Module 4)",
+      "Recommend a sized portfolio and define indicators with thresholds, actions and owners (Module 4)",
+      "State the preferred future, backcast it to a first step this quarter and attach one artefact from the future (Module 5)"
+    ],
+    rubric: [
+      "The brief visibly uses framing, scanning, scenarios, stress-testing and backcasting, and each step builds on the last",
+      "The scenarios differ in kind and the recommendation holds up in more than one of them",
+      "Indicators are observable and have thresholds, pre-agreed actions, owners and review dates",
+      "A leadership team could decide what to start, stop or continue this quarter from the brief alone"
+    ],
+    quiz: [
+      { q: "In the foresight brief, scenarios are mainly used to:", opts: ["Predict which future will happen","Test how well each option performs across different plausible worlds","Replace the budget","Rank technologies"], correct: 1 },
+      { q: "A strong brief ends with:", opts: ["A single forecast","A list of interesting trends","A decision for this quarter, plus the indicators that would change it","A request for more research"], correct: 2 },
+      { q: "If your recommendation only works in the scenario you consider most likely, you should:", opts: ["Add robust moves, hedges or options so it holds up elsewhere","Delete the other scenarios","Raise the probability of that scenario","Extend the time horizon"], correct: 0 }
+    ]
+  };
+
+  var FUT_BONUS = {
+    linkedin: "I have just finished a course on strategic foresight, and it changed how I think about planning.\n\nI used to treat the future as a number to forecast. Three ideas replaced that habit:\n\n1. A forecast is one future. Our capacity plans, roadmaps and hiring plans usually rest on a single line drawn forward from the past. The real question is which of our assumptions are important and shaky, and what we would do if they broke.\n\n2. Scenarios are not best, base and worst. Those three turn one dial up and down. Useful scenarios describe worlds that differ in kind: different buyers, different pricing, different team shapes. Then you test your options against all of them and look for the moves that hold up everywhere.\n\n3. Decide your triggers in advance. For each plausible future, pick an indicator, set a threshold and agree what you will do when it is crossed. It removes the argument at the moment when everyone is tempted to explain the evidence away.\n\nNone of this is prediction. It is preparation, and it costs a few hours a quarter.\n\nWhat assumption in your current plan would you least like to be wrong about?",
+    blogTitle: "Stop Forecasting, Start Preparing: Foresight for Technical Leaders",
+    blog: [
+      { h: "1. The plan that was right until it wasn't", b: "Open with a real plan from your own work that rested on one forecast, and the moment the assumption underneath it moved. Keep it specific and first-person. Make the point that the plan was not careless, it was simply built for one future." },
+      { h: "2. Write down what you are assuming", b: "Walk through the assumptions audit: list them, score importance and confidence, and find the fragile ones. Show two or three from your own roadmap and say which one surprised you when you scored it." },
+      { h: "3. Look wider than technology", b: "Explain signals, trends and drivers, and why technical teams over-scan technology. Give one example of a change from the social, economic, environmental or political side that mattered more to your architecture or team than any tool release." },
+      { h: "4. Four worlds, not three cases", b: "Contrast best, base and worst with a two-axis scenario matrix. Share your two axes and the four names you gave the worlds. Be honest about which world your organisation is silently planning for." },
+      { h: "5. Test the options, then set the tripwires", b: "Show a small option-by-scenario matrix and what it revealed: the unglamorous move that works everywhere and the popular one that only works once. Then describe one indicator, its threshold and the action you agreed in advance." },
+      { h: "6. Work backward to Monday", b: "Close with your preferred future, the backcast and the long-lead item it exposed. Finish with the first step you took and a question inviting readers to share the assumption they would least like to be wrong about. Credit the foresight and scenario-planning practitioners whose published work shaped these ideas so readers can go to the sources." }
+    ]
+  };
+
+  // ============================================================
   // COURSE REGISTRY
   // ============================================================
   var COURSES = [
@@ -1225,8 +1589,149 @@
       icons: ["coin","dice","radar","network","target","flag"],
       skills: ["Margin of safety","Expected value","Signal vs. hype","Value-chain mapping","Thesis writing"],
       modules: INV_MODULES, capstone: INV_CAPSTONE, bonus: INV_BONUS
+    },
+    {
+      key: "fut",
+      name: "Strategic Foresight: Planning for Multiple Futures",
+      tagline: "Look past the planning cycle without pretending to predict: scan for signals of change, build plausible scenarios, stress-test your strategy against them, and work backward from the future you choose to a first step this quarter.",
+      note: "Original content on the general discipline of strategic foresight and scenario planning. Not affiliated with any course provider.",
+      color: "#0e7490", color2: "#059669", art: "future", level: "Intermediate", hours: "13–20 hrs",
+      icons: ["compass","signal","grid","shield","route","flag"],
+      skills: ["Horizon scanning","Scenario planning","Strategy stress-testing","Early-warning indicators","Backcasting"],
+      modules: FUT_MODULES, capstone: FUT_CAPSTONE, bonus: FUT_BONUS
     }
   ];
+
+  // ---------- REFERENCES (further reading per course) ----------
+  // Each item: t = title, by = author or publisher, note = why it is worth the time.
+  // Items link to a web search rather than a fixed URL, so links cannot go stale.
+  var REF_CATS = [
+    { key: "books", label: "Books", ico: "book" },
+    { key: "blogs", label: "Blogs & newsletters", ico: "edit" },
+    { key: "podcasts", label: "Podcasts", ico: "mic" },
+    { key: "courses", label: "Courses", ico: "layers" },
+    { key: "videos", label: "Videos & talks", ico: "play" }
+  ];
+  var REFERENCES = {
+    fin: {
+      books: [
+        { t: "Financial Intelligence", by: "Karen Berman and Joe Knight", note: "The clearest plain-language guide to reading income statements, balance sheets and cash flow." },
+        { t: "How Finance Works", by: "Mihir Desai", note: "Builds intuition for valuation, capital allocation and how investors read a company." },
+        { t: "Storytelling with Data", by: "Cole Nussbaumer Knaflic", note: "Practical rules for dashboards and charts that lead to a decision. Pairs with Module 1." },
+        { t: "Trustworthy Online Controlled Experiments", by: "Ron Kohavi, Diane Tang and Ya Xu", note: "The standard reference on A/B testing and its pitfalls. Pairs with Module 4." }
+      ],
+      blogs: [
+        { t: "For Entrepreneurs", by: "David Skok", note: "Long-form articles on SaaS metrics, unit economics and CAC payback." },
+        { t: "Kellblog", by: "Dave Kellogg", note: "A former CEO and CFO writing on SaaS metrics, planning and board reporting." },
+        { t: "16 Startup Metrics", by: "Andreessen Horowitz (a16z)", note: "A short, widely cited explainer of the metrics that are most often misused." }
+      ],
+      podcasts: [
+        { t: "Acquired", by: "Ben Gilbert and David Rosenthal", note: "Deep company histories that show unit economics and strategy at work." },
+        { t: "Planet Money", by: "NPR", note: "Short, well-told episodes that make economic ideas stick." },
+        { t: "HBR IdeaCast", by: "Harvard Business Review", note: "Weekly interviews on management, strategy and decision-making." }
+      ],
+      courses: [
+        { t: "Finance for Non-Finance Professionals", by: "Rice University, on Coursera", note: "A gentle, structured walk through the core concepts in this course." },
+        { t: "Introduction to Corporate Finance", by: "Wharton, University of Pennsylvania, on Coursera", note: "Time value of money, NPV and discounting in more depth. Pairs with Module 5." },
+        { t: "Finance and Capital Markets", by: "Khan Academy", note: "Free short lessons you can dip into for any single concept." }
+      ],
+      videos: [
+        { t: "How the Economic Machine Works", by: "Ray Dalio", note: "A 30-minute animated overview of credit, cycles and productivity." },
+        { t: "Valuation and corporate finance lectures", by: "Aswath Damodaran, NYU Stern", note: "Full university lecture series, free online, from a leading teacher of valuation." },
+        { t: "Everything You Need to Know About Finance and Investing in Under an Hour", by: "William Ackman, Big Think", note: "A fast primer that follows one small business from start-up to funding." }
+      ]
+    },
+    lead: {
+      books: [
+        { t: "The Pyramid Principle", by: "Barbara Minto", note: "The source for answer-first, structured executive communication. Pairs with Module 3." },
+        { t: "Bulletproof Problem Solving", by: "Charles Conn and Robert McLean", note: "Issue trees and structured problem solving, with worked cases. Pairs with Module 2." },
+        { t: "The Manager's Path", by: "Camille Fournier", note: "The stages from tech lead to senior leadership, written by an engineering leader." },
+        { t: "Crucial Conversations", by: "Kerry Patterson, Joseph Grenny, Ron McMillan and Al Switzler", note: "Tools for high-stakes conversations when opinions differ." },
+        { t: "Radical Candor", by: "Kim Scott", note: "A simple model for giving direct feedback while showing you care." }
+      ],
+      blogs: [
+        { t: "Irrational Exuberance", by: "Will Larson", note: "Essays on engineering strategy, organisation design and staff-plus leadership." },
+        { t: "The Pragmatic Engineer", by: "Gergely Orosz", note: "Well-researched newsletter on how engineering organisations actually run." },
+        { t: "LeadDev", by: "LeadDev", note: "Articles and conference talks written by and for engineering leaders." },
+        { t: "Lara Hogan's blog", by: "Lara Hogan", note: "Practical writing on feedback, one-to-ones and sponsoring others." }
+      ],
+      podcasts: [
+        { t: "Coaching for Leaders", by: "Dave Stachowiak", note: "Weekly, practical interviews on specific leadership skills." },
+        { t: "WorkLife", by: "Adam Grant", note: "Evidence-based episodes on teams, motivation and resilience." },
+        { t: "Manager Tools", by: "Manager Tools", note: "Step-by-step guidance on the basics: one-to-ones, feedback, delegation." }
+      ],
+      courses: [
+        { t: "AI For Everyone", by: "Andrew Ng, DeepLearning.AI, on Coursera", note: "A non-technical grounding in what AI can and cannot do. Pairs with Module 5." },
+        { t: "Successful Negotiation: Essential Strategies and Skills", by: "University of Michigan, on Coursera", note: "A complete, practical negotiation framework." },
+        { t: "Inspiring and Motivating Individuals", by: "University of Michigan, on Coursera", note: "The research behind motivation, goals and feedback." }
+      ],
+      videos: [
+        { t: "How Great Leaders Inspire Action", by: "Simon Sinek, TED", note: "The 'start with why' talk on communicating purpose." },
+        { t: "Building a Psychologically Safe Workplace", by: "Amy Edmondson, TEDx", note: "Why teams that can speak up learn faster, from the researcher who named the idea." },
+        { t: "The Power of Vulnerability", by: "Brené Brown, TED", note: "On trust and connection, the base of the relationship-building module." }
+      ]
+    },
+    inv: {
+      books: [
+        { t: "The Intelligent Investor", by: "Benjamin Graham", note: "The origin of margin of safety and the difference between price and value." },
+        { t: "The Most Important Thing", by: "Howard Marks", note: "Short chapters on risk, cycles and second-level thinking." },
+        { t: "Thinking in Bets", by: "Annie Duke", note: "Separating decision quality from outcome quality. Pairs with Module 2." },
+        { t: "Thinking, Fast and Slow", by: "Daniel Kahneman", note: "The research behind the biases this course asks you to control." },
+        { t: "The Goal", by: "Eliyahu Goldratt", note: "A novel that teaches the theory of constraints. Pairs with Module 4." }
+      ],
+      blogs: [
+        { t: "Farnam Street", by: "Shane Parrish", note: "Mental models and decision-making, explained with care." },
+        { t: "Memos from Howard Marks", by: "Oaktree Capital", note: "Decades of free memos on risk, cycles and market psychology." },
+        { t: "Stratechery", by: "Ben Thompson", note: "Value-chain and aggregation analysis of technology businesses." },
+        { t: "Collab Fund blog", by: "Morgan Housel and colleagues", note: "Short essays on behaviour, risk and long-term thinking." }
+      ],
+      podcasts: [
+        { t: "Invest Like the Best", by: "Patrick O'Shaughnessy", note: "Long interviews with investors and operators about how they decide." },
+        { t: "The Knowledge Project", by: "Shane Parrish", note: "Conversations on judgement and decision-making across fields." },
+        { t: "Masters in Business", by: "Barry Ritholtz, Bloomberg", note: "Interviews with fund managers, economists and authors." }
+      ],
+      courses: [
+        { t: "Financial Markets", by: "Robert Shiller, Yale University, on Coursera", note: "How markets, risk and behavioural finance fit together." },
+        { t: "Model Thinking", by: "Scott Page, University of Michigan, on Coursera", note: "A toolkit of models for reasoning about complex systems." },
+        { t: "Valuation", by: "Aswath Damodaran, NYU Stern", note: "A full, free valuation class with lecture videos and materials." }
+      ],
+      videos: [
+        { t: "The Psychology of Human Misjudgment", by: "Charlie Munger", note: "The classic talk on the standard causes of bad decisions." },
+        { t: "Thinking in Bets", by: "Annie Duke, Talks at Google", note: "The book's core argument in under an hour." },
+        { t: "The Most Important Thing: Origins and Inspirations", by: "Howard Marks, Talks at Google", note: "Marks on risk and second-level thinking in his own words." }
+      ]
+    },
+    fut: {
+      books: [
+        { t: "The Art of the Long View", by: "Peter Schwartz", note: "The classic introduction to scenario planning. Pairs with Module 3." },
+        { t: "Scenarios: The Art of Strategic Conversation", by: "Kees van der Heijden", note: "A deeper, practitioner-level treatment of building and using scenarios." },
+        { t: "The Signals Are Talking", by: "Amy Webb", note: "A method for telling real emerging trends from noise. Pairs with Module 2." },
+        { t: "Imaginable", by: "Jane McGonigal", note: "Accessible exercises for imagining and preparing for unlikely futures." },
+        { t: "Superforecasting", by: "Philip Tetlock and Dan Gardner", note: "What makes some people measurably better at judging uncertain events." }
+      ],
+      blogs: [
+        { t: "Institute for the Future", by: "IFTF", note: "Free forecasts, maps and tools from a long-running foresight research group." },
+        { t: "Shell Scenarios", by: "Shell", note: "Published scenarios from the company that made the method famous in business." },
+        { t: "Long Now Ideas", by: "The Long Now Foundation", note: "Essays and talks on long-term thinking and responsibility." },
+        { t: "Journal of Futures Studies", by: "Tamkang University", note: "Open-access academic and practitioner papers on foresight methods." }
+      ],
+      podcasts: [
+        { t: "FuturePod", by: "FuturePod", note: "Interviews with working futurists about their methods and careers." },
+        { t: "Long Now: Seminars About Long-term Thinking", by: "The Long Now Foundation", note: "Recorded lectures from scientists, historians and technologists." },
+        { t: "Flash Forward", by: "Rose Eveleth", note: "Each episode explores one possible future in detail. The archive remains available." }
+      ],
+      courses: [
+        { t: "Futures Thinking Specialization", by: "Institute for the Future, on Coursera", note: "A five-course sequence covering signals, scenarios and simulation." },
+        { t: "Foresight certificate programme", by: "University of Houston", note: "A professional certificate from one of the oldest academic foresight programmes." },
+        { t: "Oxford Scenarios Programme", by: "Saïd Business School, University of Oxford", note: "An executive programme focused on scenario planning practice." }
+      ],
+      videos: [
+        { t: "Three Horizons Framework: a quick introduction", by: "Kate Raworth", note: "A short explainer of a widely used model for thinking about transitions." },
+        { t: "Emerging tech trends talks at SXSW", by: "Amy Webb", note: "An annual talk walking through signals, trends and scenarios for the year ahead." },
+        { t: "The Long Now", by: "Stewart Brand, TED", note: "The case for extending how far ahead we think." }
+      ]
+    }
+  };
 
   var UNIT_INDEX = {};
   COURSES.forEach(function(course){
@@ -1307,6 +1812,15 @@
     radar: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12l6-6"/><circle cx="12" cy="12" r="1"/>',
     network: '<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M11 7l-5 9M13 7l5 9M7 18h10"/>',
     target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/>',
+    signal: '<path d="M5 13a7 7 0 0 1 14 0M8.5 13a3.5 3.5 0 0 1 7 0M12 13v8"/>',
+    grid: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/>',
+    shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>',
+    route: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/>',
+    mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/>',
+    play: '<circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/>',
+    search: '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+    bookmark: '<path d="M6 3h12v18l-6-4-6 4V3z"/>',
     check: '<path d="M5 12l5 5 9-10"/>',
     home: '<path d="M3 11l9-8 9 8M5 10v10h14V10"/>',
     award: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/>',
@@ -1353,6 +1867,15 @@
         + '<g stroke="#fff" stroke-width="2" opacity=".55"><line x1="270" y1="50" x2="330" y2="100"/><line x1="270" y1="50" x2="236" y2="120"/><line x1="330" y1="100" x2="300" y2="165"/><line x1="236" y1="120" x2="300" y2="165"/><line x1="330" y1="100" x2="372" y2="48"/></g>'
         + '<circle cx="270" cy="50" r="9" fill="#fff" opacity=".9"/><circle cx="330" cy="100" r="14" fill="#fff"/><circle cx="236" cy="120" r="9" fill="#fff" opacity=".75"/><circle cx="300" cy="165" r="9" fill="#fff" opacity=".9"/><circle cx="372" cy="48" r="7" fill="#fff" opacity=".7"/>'
         + '<circle cx="330" cy="100" r="24" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5" opacity=".9"/>';
+    },
+    future: function(){
+      return '<circle cx="350" cy="24" r="64" fill="#fff" opacity=".08"/><circle cx="40" cy="184" r="56" fill="#fff" opacity=".08"/>'
+        + '<polygon points="70,104 350,20 350,188" fill="#fff" opacity=".1"/><polygon points="70,104 350,62 350,146" fill="#fff" opacity=".12"/>'
+        + '<g fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 6" opacity=".55"><path d="M170 74v60"/><path d="M260 47v114"/></g>'
+        + '<g fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity=".85"><path d="M70 104 L350 28"/><path d="M70 104 L350 80"/><path d="M70 104 L350 130"/><path d="M70 104 L350 180"/></g>'
+        + '<circle cx="70" cy="104" r="11" fill="#fff"/><circle cx="70" cy="104" r="20" fill="none" stroke="#fff" stroke-width="2.5" opacity=".5"/>'
+        + '<circle cx="350" cy="28" r="8" fill="#fff" opacity=".75"/><circle cx="350" cy="80" r="12" fill="#fff"/><circle cx="350" cy="130" r="8" fill="#fff" opacity=".75"/><circle cx="350" cy="180" r="8" fill="#fff" opacity=".6"/>'
+        + '<circle cx="350" cy="80" r="20" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5" opacity=".9"/>';
     }
   };
   function bannerArt(course, bare){
@@ -1463,6 +1986,7 @@
     h += "<div class='side-label'>Capstone</div>" + sideItem(capId, "flag", course.capstone.title, moduleStatus(capId), route);
     h += "<div class='side-label'>Extras</div>";
     h += sideItem(course.key+"-bonus", "sparkle", "LinkedIn post + blog outline", null, route);
+    if (REFERENCES[course.key]) h += sideItem(course.key+"-references", "bookmark", "References", null, route);
     h += sideItem(course.key+"-certificate", courseAllComplete(course) ? "award" : "lock", "Certificate", null, route);
     sb.innerHTML = h;
   }
@@ -1479,7 +2003,7 @@
     h += "<section class='hero'><div class='hero-art'>"+heroArt()+"</div><div class='hero-copy'>";
     h += "<span class='hero-tag'>Self-paced · Quizzes · Certificates</span>";
     h += "<h1>Move from builder to leader.</h1>";
-    h += "<p>Practical courses on finance, leadership and investor thinking, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
+    h += "<p>Practical courses on finance, leadership, investor thinking and strategic foresight, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
     h += "<a class='btn ghost' href='#fin-home'>Browse courses</a></div></div></section>";
@@ -1566,6 +2090,7 @@
     });
     var complete = courseAllComplete(course);
     h += "<a class='syl-item' href='#"+course.key+"-bonus'>"+thumb(course,"sparkle",54)+"<div class='syl-text'><div class='syl-num'>Bonus</div><div class='syl-title'>LinkedIn post + blog outline</div><div class='syl-sub'>Reflection content ready to personalize and publish</div></div></a>";
+    if (REFERENCES[course.key]) h += "<a class='syl-item' href='#"+course.key+"-references'>"+thumb(course,"bookmark",54)+"<div class='syl-text'><div class='syl-num'>References</div><div class='syl-title'>Further reading, listening and watching</div><div class='syl-sub'>Recommended books, blogs, podcasts, courses and videos</div></div></a>";
     h += "<a class='syl-item' href='#"+course.key+"-certificate'>"+thumb(course,"award",54)+"<div class='syl-text'><div class='syl-num'>Certificate</div><div class='syl-title'>Certificate of completion</div><div class='syl-sub'>Unlocks when every unit is complete</div></div><span class='status-pill "+(complete?"done":"locked")+"'>"+(complete?icon("check",13)+"Unlocked":icon("lock",13)+"Locked")+"</span></a>";
     h += "</div>";
     main.innerHTML = h;
@@ -1781,6 +2306,36 @@
     });
   }
 
+  // ---------- REFERENCES ----------
+  function renderReferences(course){
+    var main = setMain("");
+    var refs = REFERENCES[course.key];
+    var cats = REF_CATS.filter(function(c){ return refs[c.key] && refs[c.key].length; });
+    var h = "<div class='page' style='"+cvars(course)+"'>";
+    h += "<div class='crumbs'><a href='#home'>All courses</a> / <a href='#"+course.key+"-home'>"+course.name+"</a></div>";
+    h += "<div class='unit-head'>"+thumb(course,"bookmark",60)+"<div><div class='eyebrow'>References</div><h1>Further reading, listening and watching</h1><p>Recommended sources to go deeper on the ideas in this course. Each one opens a web search for the title, so you can choose where to read, listen or watch.</p></div></div>";
+    h += "<div class='subnav'>"+cats.map(function(c){ return "<button type='button' data-target='ref-"+c.key+"'>"+c.label+"</button>"; }).join("")+"</div>";
+    cats.forEach(function(c){
+      var list = "<div class='ref-list'>";
+      refs[c.key].forEach(function(r){
+        var q = encodeURIComponent(r.t + " " + r.by);
+        list += "<a class='ref-item' href='https://www.google.com/search?q="+q+"' target='_blank' rel='noopener noreferrer'><div class='ref-text'><div class='ref-title'>"+escapeHtml(r.t)+"</div><div class='ref-by'>"+escapeHtml(r.by)+"</div><div class='ref-note'>"+escapeHtml(r.note)+"</div></div><span class='ref-go'>"+icon("search",15)+" Find</span></a>";
+      });
+      list += "</div>";
+      h += secWrap("ref-"+c.key, c.ico, c.label, list);
+    });
+    h += "<div class='note-box'>These are independent recommendations. This course is not affiliated with or endorsed by any of the authors or publishers listed.</div>";
+    h += "<div class='nav-buttons no-print'><a class='btn outline' href='#"+course.key+"-bonus'>"+icon("arrow-left",16)+" Bonus content</a><a class='btn' href='#"+course.key+"-certificate'>Go to certificate "+icon("arrow-right",16)+"</a></div>";
+    h += "</div>";
+    main.innerHTML = h;
+    document.querySelectorAll(".subnav button").forEach(function(b){
+      b.addEventListener("click", function(){
+        var el = document.getElementById(b.getAttribute("data-target"));
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
   // ---------- CERTIFICATE ----------
   function renderCertificate(course){
     var main = setMain("");
@@ -1825,6 +2380,7 @@
       renderSidebar(course, route);
       if (rest === "home") renderCourseHome(course);
       else if (rest === "bonus") renderBonus(course);
+      else if (rest === "references" && REFERENCES[course.key]) renderReferences(course);
       else if (rest === "certificate") renderCertificate(course);
       else if (UNIT_INDEX[route]) renderModule(course, UNIT_INDEX[route].def);
       else renderCourseHome(course);
