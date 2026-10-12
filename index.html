@@ -2990,6 +2990,354 @@
   };
 
   // ============================================================
+  // COURSE 9: STORYTELLING
+  // (Original content on the general craft of persuasive
+  //  communication and data storytelling; not affiliated with
+  //  or derived from any specific provider's course materials.)
+  // ============================================================
+  var STY_MODULES = [
+    {
+      id: "t1", num: "Module 1", title: "Why Facts Alone Do Not Move People",
+      sub: "Attention, memory, how decisions are really made, and the expert's blind spot",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Attention Is the Scarce Resource",
+          body: "Your audience arrives distracted, with a dozen other things competing for the same half hour. They decide within the first minute whether to engage, and they can hold only three or four new things in mind at once. A presentation that treats every detail as equally important guarantees that the listener, not you, chooses what is remembered. The first job of any communication is to earn attention and then spend it on very little.",
+          ex: "A 40-slide review with about 12 figures per slide puts 480 numbers in front of an executive group. A week later they will recall perhaps three, and you do not control which. Deciding in advance that the three are the cost of the problem, the size of the request and the date a decision is needed changes what gets said in the room afterwards." },
+        { t: "Stories Are How Memory Works",
+          body: "People remember events connected by cause and effect far better than they remember lists. A story is a sequence in which something happens to someone, for a reason, with a consequence. That structure gives the listener a thread to follow and something to retell. A list of findings has no thread, so each item must be memorised separately, and most are not.",
+          ex: "Version one of an incident summary: 'Root causes: certificate expiry, alert misrouting, runbook gap.' Version two: 'At 2am a certificate expired. The alert went to a team that had been disbanded in March, so nobody was paged for 50 minutes. The engineer who finally responded had never seen the system and found no runbook.' Both contain the same three facts. Only the second can be repeated accurately the next day." },
+        { t: "Decisions Need a Reason to Care",
+          body: "People like to believe they decide on evidence. In practice they first need a reason to care, then use the evidence to check and justify the choice. Sound analysis is necessary and is rarely enough. If the audience does not feel what is at stake, for someone they can picture, a strong business case is simply filed. Showing the stakes is not manipulation. It is completing the argument.",
+          ex: "A migration proposal with a 3.1 times return over three years is deferred twice. The third version opens with the on-call engineer who was paged eleven times last month, twice during a family holiday, and has started interviewing elsewhere. The numbers are unchanged and now sit in the second half. It is approved, and the approver quotes the engineer's story when explaining the decision to finance." },
+        { t: "The Expert's Blind Spot",
+          body: "Once you understand something well, it is very hard to remember what it was like not to. Experts skip steps, use terms the audience does not share and speak in abstractions that feel precise to them and empty to everyone else. The cure is to move deliberately between the general point and a concrete example the listener can see, and to test your explanation on someone outside the field.",
+          ex: "Abstract: 'We have eventual consistency issues in the replication layer.' Concrete: 'A customer pays, refreshes the page, and for about 40 seconds their order is missing. Around 300 of them phoned us about it last month.' The first is accurate and gets a nod. The second gets a budget, because the listener can see the customer and count the calls." }
+      ],
+      diagrams: [
+        { title: "What has to happen for an idea to land",
+          code: `flowchart LR
+  A["Earn attention in the first minute"] --> B["Give a thread to follow: cause and effect"]
+  B --> C["Show what is at stake, for someone specific"]
+  C --> D["Support it with the evidence that matters"]
+  D --> E["Make the next step clear"]
+  E --> F["Remembered and retold"]` }
+      ],
+      caseTitle: "The Proposal With the Best Numbers",
+      caseText: "A staff engineer proposes replacing a fragile batch system. Her deck has 34 slides: architecture diagrams, a comparison of four technologies across 15 criteria, a three-year cost model and a risk register. The analysis is excellent and the return is strong. She presents for 28 of her 30 minutes. The leadership group thanks her, asks for 'more detail on option C' and defers the decision for the second time. Afterwards one director tells a colleague, 'I am sure she is right, I just could not tell you what she wants us to do.' Meanwhile the batch system fails roughly weekly, and the two people who understand it are both considering leaving.",
+      caseTask: "Diagnose why excellent analysis did not produce a decision, using the ideas in this module. Identify the three things the audience should have remembered. Find the human stake that was missing from the presentation, and rewrite the first 60 seconds of the talk so that it earns attention and makes the request clear.",
+      everyday: {
+        title: "Noticing what you remember",
+        body: "Think about the last presentation you sat through. What can you recall from it now? It is probably a moment, an example or one surprising number, not the structure of the argument. Now turn that around: the next time you explain something, to a colleague or at home, decide beforehand which single thing you want them to be able to repeat, and attach it to a concrete example. You will find yourself saying less, and being quoted more."
+      },
+      assignment: {
+        deliverable: "Choose a real idea, proposal or update you need to communicate in the next month. You will develop it through the course. Write down what you would normally present, as a list of points. Then answer four questions: what three things should the audience remember, what is at stake and for whom, which terms or abstractions would an outsider not follow, and what concrete example makes the main point visible? Explain your idea aloud to someone outside your field and note where they looked lost.",
+        rubric: [
+          "Three things for the audience to remember are chosen and stated plainly",
+          "The stake is specific and attached to a person or group the audience can picture",
+          "Jargon and abstractions are identified and replaced with concrete examples",
+          "An outsider test was carried out, with the points of confusion recorded"
+        ]
+      },
+      reflection: [
+        "When did you last have the right answer and fail to persuade the room?",
+        "Which terms do you use daily that your stakeholders do not understand?",
+        "What do you remember from the last presentation you attended, and why that?"
+      ],
+      quiz: [
+        { q: "A presenter has a 30-minute slot and 60 slides. At two minutes a slide, the talk would take:", opts: ["30 minutes","60 minutes","120 minutes","15 minutes"], correct: 2 },
+        { q: "People remember a story better than a list mainly because a story:", opts: ["Is longer","Connects events by cause and effect, giving a thread to follow","Uses more numbers","Avoids facts"], correct: 1 },
+        { q: "In most decisions, evidence is used chiefly to:", opts: ["Create the initial reason to care","Check and justify a choice once people care about it","Replace judgement entirely","Fill the appendix"], correct: 1 },
+        { q: "The expert's blind spot is best countered by:", opts: ["Adding more technical detail","Moving between the general point and a concrete example, and testing on an outsider","Speaking faster","Using more acronyms"], correct: 1 }
+      ]
+    },
+    {
+      id: "t2", num: "Module 2", title: "The Audience and the One Idea",
+      sub: "Who you are talking to, what you need from them, and a message that fits in a sentence",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Start from the Audience",
+          body: "The same facts need different stories for different people. Before writing anything, describe the audience: who decides, what they already know, what they believe now, what they worry about and what would make them say no. Most technical communication is organised around what the speaker did. It should be organised around what the listener needs in order to act.",
+          ex: "A proposal to rebuild a data pipeline goes to three people. The finance director asks what it costs and when it pays back. The head of engineering asks what it does to the roadmap. The analysts ask whether their reports will break. A single talk that covers the technical design in depth answers none of them. Three openings, each leading with that person's question, do." },
+        { t: "From and To",
+          body: "Every communication that aims to influence has a starting point and a destination: what the audience thinks and does now, and what you need them to think and do afterwards. Writing both down exposes two common problems. Sometimes there is no 'do', in which case you have an update, not a case. Sometimes the gap is too large to cross in one conversation, and you need an intermediate step.",
+          ex: "From: 'The platform team is a cost centre and should take a 20% cut like everyone else.' To: 'The platform is the reason three product teams release weekly. Protect its budget and fund the one missing piece.' Stated like this, the task is clear: the talk must connect the platform to something the audience already values, namely release speed." },
+        { t: "The One Idea in One Sentence",
+          body: "If you cannot state your message in a sentence, the audience will not be able to either. A good one-sentence message has a point of view and makes the stakes plain. It is a claim, not a topic. Test it by asking whether a listener could repeat it to a colleague tomorrow without your slides. Everything else in the communication exists to support that sentence.",
+          ex: "Topic: 'An overview of our data quality initiative.' Message: 'A third of our pricing decisions use out-of-date data, and a $90K fix would stop about 400 wrong prices a week.' The first tells the audience what the next half hour is about. The second tells them what to think and what to do, and it survives being repeated in a corridor." },
+        { t: "What to Leave Out",
+          body: "Cutting is the hardest part and the most valuable. For each point, chart or slide, ask whether it serves the one idea for this audience. If it does not, move it to an appendix, however much work it took. Material you leave out is not wasted. It is what lets you answer questions with confidence. The audience judges you on clarity, not on volume.",
+          ex: "A talk has a ten-minute slot. At about two minutes a slide, that is five slides. The draft has 22. Seven carry the argument: the problem, who it hurts, the cost, the proposal, the evidence it works, the request and the next step. Trimmed to five by merging, with 15 in an appendix. In the meeting, three appendix slides answer questions and the rest are never opened." }
+      ],
+      diagrams: [
+        { title: "From audience to message",
+          code: `flowchart TD
+  A["Who decides, and what do they believe now?"] --> B["From: what they think and do today"]
+  B --> C["To: what you need them to think and do"]
+  C --> D{"Is there something to do?"}
+  D -->|"No"| E["This is an update: say so and keep it short"]
+  D -->|"Yes"| F["Write the one idea in one sentence"]
+  F --> G{"Could they repeat it tomorrow?"}
+  G -->|"No"| F
+  G -->|"Yes"| H["Keep only what supports it"]` }
+      ],
+      caseTitle: "One Deck for Three Audiences",
+      caseText: "An engineering manager must win support for moving her team from project-based funding to a standing team with a yearly budget. She builds one 25-slide deck and presents it three times in a week: to the finance committee, to her peers in engineering, and to her own team. Finance questions the headcount numbers on slide 19 and loses interest. Her peers argue about the team's scope. Her team hears mainly that their projects may be cancelled. All three meetings end without a decision, and each group later describes the proposal differently.",
+      caseTask: "For each of the three audiences, write what they believe now, what they fear, and the 'from' and 'to'. Write a one-sentence message for each. Say which five slides each audience needs and what should move to an appendix. Identify one thing that must be identical across all three versions and explain why.",
+      everyday: {
+        title: "One sentence before you speak",
+        body: "The one-sentence test works for any conversation that matters: asking for a pay rise, giving feedback, explaining a decision to a relative. Before you start, complete this sentence privately: 'When we finish, I want them to think or do…' If you cannot complete it, you are not ready, and the conversation will wander. If you can, you will find it much easier to notice when you are drifting and to stop once you have said it."
+      },
+      assignment: {
+        deliverable: "For the idea you chose in Module 1, write an audience profile: who decides, what they know, what they believe, what they fear and what would make them refuse. Write the 'from' and the 'to'. Draft your one-sentence message and test it on two people by asking them to repeat it back an hour later. List everything you could include, then mark what stays, what goes to an appendix and what is dropped, with a time budget for the slot you have.",
+        rubric: [
+          "The audience profile covers knowledge, beliefs, fears and likely objections",
+          "A clear 'from' and 'to' are stated, including what the audience should do",
+          "The one-sentence message is a claim with stakes, and was tested by playback",
+          "Content is cut to fit the time available, with an appendix for the rest"
+        ]
+      },
+      reflection: [
+        "Which of your regular updates has no 'do' in it, and should it be an email?",
+        "What did you include in your last presentation because it was hard work, not because it helped?",
+        "Who is the real decision-maker for your current idea, and what do they fear?"
+      ],
+      quiz: [
+        { q: "Technical communication is most effective when organised around:", opts: ["What the speaker did, in order","What the listener needs in order to act","The tools used","The length of the project"], correct: 1 },
+        { q: "If a planned talk has a 'from' but no 'to' that involves action, it is:", opts: ["A persuasive case","An update, and should be treated as one","A story","A proposal"], correct: 1 },
+        { q: "A good one-sentence message is:", opts: ["A topic such as 'an overview of the project'","A claim with a point of view and clear stakes","A list of three findings","A question for the audience"], correct: 1 },
+        { q: "You have a 15-minute slot and plan about three minutes a slide. The number of slides to present is about:", opts: ["5","15","25","45"], correct: 0 }
+      ]
+    },
+    {
+      id: "t3", num: "Module 3", title: "Narrative Structure for Technical Work",
+      sub: "Situation, tension and resolution, and how to use them in proposals, incident reviews and roadmaps",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Situation, Tension, Resolution",
+          body: "Almost every story that works has three parts, a shape described since Aristotle: a beginning that sets the scene, a middle in which something is wrong or at risk, and an end that resolves it. In working life: here is where we are, here is the problem or opportunity, here is what we should do. Technical people tend to skip the tension and go from background to solution, which leaves the audience wondering why any of it matters.",
+          ex: "Without tension: 'Our deployment system was built in 2019. We propose moving to a new one.' With tension: 'Our deployment system was built in 2019 for four teams. We now have nineteen. Last quarter it failed during six releases, and each failure cost a day. We propose moving to a new one.' The middle sentence is what makes the last one worth listening to." },
+        { t: "Stakes and a Character",
+          body: "Tension needs two things: someone it happens to, and something that will be lost if nothing changes. The character can be a customer, a colleague or a team, and should be specific enough to picture. The stakes should be counted where possible. The cost of doing nothing is the strongest and most neglected number in technical proposals, because inaction always looks free until it is priced.",
+          ex: "Six engineers each lose about 14 hours a week to manual release work. Over 46 working weeks at $85 an hour, that is 14 × 6 × 46 × $85 = $328,440 a year for doing nothing. Put beside one engineer by name, who describes spending every Thursday babysitting a release, the number has both scale and a face." },
+        { t: "Contrast: What Is and What Could Be",
+          body: "Persuasive talks move back and forth between the present and a better possibility, and the gap between the two creates the wish to act. Describe today concretely, then describe the alternative just as concretely. Abstract benefits such as 'improved efficiency' create no gap. A specific day in the life, before and after, does. Analysts of well-known speeches, notably Nancy Duarte, have shown how consistently this pattern appears.",
+          ex: "What is: 'A fix for a customer-facing bug takes nine days to reach production and needs four approvals.' What could be: 'The engineer who fixes it at ten o'clock sees it live by lunchtime, with the checks run automatically.' The audience can now feel the nine days, and the proposal has become a way to close a gap they can picture." },
+        { t: "Using the Structure in Everyday Formats",
+          body: "The three-part shape fits the documents you already write. A proposal is situation, the cost of the problem, the recommendation. An incident review is a timeline told as cause and effect, ending in what changes. A roadmap is a set of chapters, each resolving a tension for a customer. A status update is where we are, what is in the way, and what we need. When a senior audience wants the answer first, as taught in the Adaptive Leadership course, lead with the request and then use the story to earn it.",
+          ex: "A status update with 14 bullet points becomes: 'We are two weeks behind because the supplier's interface changed without notice. We can recover one week by dropping the export feature from this release. We need a decision on that by Friday.' Situation, tension and resolution in three sentences, with the request impossible to miss." }
+      ],
+      diagrams: [
+        { title: "The three-part shape",
+          code: `flowchart LR
+  S["Situation: where we are"] --> T["Tension: what is wrong or at risk"]
+  T --> W["Who is affected, and what it costs to do nothing"]
+  W --> C["Contrast: what is, and what could be"]
+  C --> R["Resolution: what we should do"]
+  R --> N["The request and the next step"]` }
+      ],
+      caseTitle: "The Incident Review Nobody Read",
+      caseText: "After a four-hour outage affecting 12,000 customers, a team writes an eleven-page review. It opens with a system architecture section, followed by a table of 63 timestamped log entries, a list of nine contributing factors in no particular order, and 17 action items. It is accurate and complete. Three weeks later, a survey shows that four of the forty engineers it was sent to read past the first page. Two of the nine contributing factors recur in another team's outage the following month. The author says, with some justice, that all the information was there.",
+      caseTask: "Rewrite the opening of the review as a one-paragraph narrative using situation, tension and resolution. Choose the three contributing factors you would feature and say how you would decide. Identify the character and the stakes. Propose a structure for the whole document that keeps the detail available while making the story readable in two minutes.",
+      everyday: {
+        title: "Three sentences for any request",
+        body: "Next time you need something from someone, try the three-part shape in three sentences: where things stand, what the problem is, and what you are asking for. 'The report is due Thursday. The data I need from finance has not arrived. Could you ask them today?' It is faster to write than a long explanation and far easier to act on. If you cannot find the middle sentence, the tension, ask yourself whether the request is necessary."
+      },
+      assignment: {
+        deliverable: "Rewrite your chosen idea using the three-part structure. Write the situation in two or three sentences, the tension with a specific character and a calculated cost of doing nothing, a contrast between what is and what could be described as a concrete before and after, and the resolution with a clear request. Then produce a three-sentence version for a senior reader who wants the answer first.",
+        rubric: [
+          "Situation, tension and resolution are all present and clearly separated",
+          "The tension has a specific character and a calculated cost of inaction",
+          "The contrast describes a concrete before and after, not abstract benefits",
+          "A three-sentence answer-first version is included, with the request explicit"
+        ]
+      },
+      reflection: [
+        "Which of your documents goes straight from background to solution with no tension?",
+        "What is the cost of doing nothing about the thing you most want to change?",
+        "Who is the character in your story, and would your audience recognise them?"
+      ],
+      quiz: [
+        { q: "The part of the three-part structure that technical presenters most often skip is:", opts: ["The situation","The tension","The resolution","The appendix"], correct: 1 },
+        { q: "Five engineers each lose 10 hours a week for 46 weeks at $80 an hour. The annual cost of doing nothing is:", opts: ["$36,800","$184,000","$368,000","$1,840,000"], correct: 1 },
+        { q: "Contrast between 'what is' and 'what could be' works best when both are:", opts: ["Described abstractly","Described concretely enough to picture","Left to the audience's imagination","Placed in the appendix"], correct: 1 },
+        { q: "When a senior audience wants the answer first, you should:", opts: ["Refuse and tell the story in order","Lead with the request, then use the story to support it","Remove the story entirely","Add more background"], correct: 1 }
+      ]
+    },
+    {
+      id: "t4", num: "Module 4", title: "Stories with Data",
+      sub: "Choosing the one number, the one chart and the human example, and staying honest",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "The One Number",
+          body: "Data-rich presentations fail by offering too many numbers and explaining none. Choose the single figure that carries your message and make it meaningful by giving it a scale people can feel: per day, per customer, compared with something familiar. A percentage is often the least vivid way to express a quantity. Translate it into time, money or people.",
+          ex: "A service is available 99.5% of the time, which sounds excellent. The other 0.5% of a year is 0.005 × 8,760 hours, about 44 hours. 'We are down for nearly two full days a year, usually in working hours' is the same fact, and it is the version that produces a conversation about whether that is acceptable." },
+        { t: "One Chart, One Message",
+          body: "A chart should make one point, and its title should say what the point is. Most charts are titled with a description of the axes and leave the audience to work out the conclusion, which they do differently from each other. State the conclusion in the title, highlight the part of the data that supports it and remove whatever does not: extra series, gridlines, decoration and unnecessary precision.",
+          ex: "Descriptive title: 'Response times by region, Q1 to Q4', over a chart with six coloured lines. Message title: 'Response times doubled in Asia after the March change', with the Asia line in a strong colour, the other five in grey and a marker at March. The data is identical. Only the second chart can be understood in five seconds, and by everyone in the same way." },
+        { t: "Pair the Number with a Person",
+          body: "A statistic shows how big a problem is. A single example shows what it is like. Each is weak alone: the number is abstract and the anecdote may be unrepresentative. Together they are persuasive and fair. Choose an example that is typical of the data, say that it is typical, and let the number confirm that the person is not a one-off.",
+          ex: "'We had 4,200 failed deliveries last month' is a figure to be noted. 'One of them was a customer who took three mornings off work for the same parcel and then cancelled a six-year account. Our data shows 4,200 failures last month, and one in nine of those customers left' gives the audience a face, a scale and a consequence in three sentences." },
+        { t: "Honest Storytelling",
+          body: "Persuasion with data carries a duty. Do not select only the figures that suit you, cut off an axis to exaggerate a change, quote a percentage without its base, or present an unusual case as typical. State what you do not know and how sure you are. Apart from being right, this is practical: an audience that catches one distortion will discount everything else you say, now and later.",
+          ex: "'Errors fell by 50%' may mean a fall from 4 to 2 in a small sample, which could be chance. 'Errors fell from 4 to 2 in the first month. That is encouraging and too few to be sure, so we will report again after three months' is less striking and far more credible. Similarly, a chart whose axis starts at 96% makes a move from 97% to 98% look like a doubling." }
+      ],
+      diagrams: [
+        { title: "Building a data story",
+          code: `flowchart TD
+  M["The one idea"] --> N["Choose the one number that carries it"]
+  N --> S["Give it a human scale: per day, per customer, in hours or money"]
+  S --> C["One chart whose title states the conclusion"]
+  C --> P["Pair with one typical, real example"]
+  P --> H{"Honest? Base stated, axis fair, uncertainty shown"}
+  H -->|"No"| N
+  H -->|"Yes"| D["Ready to present"]` }
+      ],
+      caseTitle: "Fifty Percent Better",
+      caseText: "A product team presents the results of a new onboarding flow to the leadership group. The headline slide reads 'Activation up 50%' above a bar chart whose vertical axis starts at 18%. The detail, on a later slide not shown, is that activation moved from 20% to 30% in a two-week test with 240 users in the new flow, during a period that included a marketing campaign. The team also has three customer quotes, all from users who loved it. A director asks how many users were in the test. The presenter does not know offhand, and for the rest of the meeting every other number is questioned.",
+      caseTask: "List the ways the presentation overstated or under-supported its claim. Rewrite the headline so that it is accurate and still compelling. Describe how the chart should be drawn. Say what the team should state about uncertainty and the marketing campaign, and how the customer quotes should be chosen and presented.",
+      everyday: {
+        title: "Translating numbers for people",
+        body: "You can practise this whenever a number comes up in conversation. Convert percentages into counts and time: 'a 2% fee' on a $400,000 mortgage is $8,000. Ask for the base when someone quotes a change: 50% more than what? And when you want someone to care about a figure, add one real example. These habits make you harder to mislead as well as easier to understand, and they take seconds once they are automatic."
+      },
+      assignment: {
+        deliverable: "For your chosen idea, select the one number that best carries the message and express it three ways: as a percentage or raw figure, in a human scale such as hours, money or people, and in comparison with something familiar. Design one chart with a title that states the conclusion, and list what you removed from it. Pair the number with one real, typical example. Then write an honesty check: the base, the sample, what you left out and what you are unsure of.",
+        rubric: [
+          "One number is chosen and expressed in a human scale as well as its raw form",
+          "The chart makes a single point, with the conclusion in its title and clutter removed",
+          "A real, typical example is paired with the number and described as typical",
+          "The honesty check states the base, the sample, omissions and uncertainty"
+        ]
+      },
+      reflection: [
+        "Which number do you quote often that would mean more in hours, money or people?",
+        "Do the titles on your charts describe the axes or state the conclusion?",
+        "When did you last present only the data that supported your case, and what did you leave out?"
+      ],
+      quiz: [
+        { q: "A service is available 99% of the time. Over a year of 8,760 hours, it is unavailable for about:", opts: ["9 hours","44 hours","88 hours","876 hours"], correct: 2 },
+        { q: "The title of a chart should:", opts: ["Describe the axes","State the conclusion the chart supports","Be left blank","List the data source only"], correct: 1 },
+        { q: "Pairing a statistic with a single example is effective because:", opts: ["The example replaces the need for data","The number shows scale and the example shows what it is like","Examples are always representative","It makes the talk longer"], correct: 1 },
+        { q: "'Errors fell 50%' from a base of 4 to 2 should be presented:", opts: ["As proof of success","With the base and a caution that the sample is small","Without any numbers","As a chart with a cut-off axis"], correct: 1 }
+      ]
+    },
+    {
+      id: "t5", num: "Module 5", title: "Drafting, Testing and Delivery",
+      sub: "Rough versions first, feedback that helps, tone, and fitting the story to the format",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Rough First, and Fast",
+          body: "The usual approach is to open the slide tool and polish for hours before anyone hears the idea. Do the reverse. Tell the story aloud in two minutes, or sketch it on a single page, before making anything. A rough version shows at once whether the structure works, and because you have invested little you are willing to change it. Polishing an argument that does not hold is the most expensive mistake in communication.",
+          ex: "One presenter spends six hours on slides, presents and discovers that the audience disagreed with the premise on slide two. Another spends twenty minutes on a spoken draft, tries it on a colleague over coffee, learns that the premise needs evidence, and then spends three hours on slides that address it. The second used half the time and found the flaw before the meeting." },
+        { t: "Feedback That Helps",
+          body: "Asking 'what do you think?' produces politeness. Ask your listener to play the story back instead: what was my main point, what would you do next, and where did you get lost or bored? If what they repeat is not your one idea, the story needs work, however much they say they enjoyed it. Test on someone who resembles your real audience, not on the colleague who already knows the subject.",
+          ex: "A draft is tried on three people. Asked for the main point, one says 'the system is old', another 'you want more people', and the third 'something about release speed'. The intended message was that a $90K change would halve release time. Nobody played it back, so the presenter moves that sentence to the opening and repeats it at the close. On the next test, all three get it." },
+        { t: "Tone and Voice",
+          body: "The same content can sound like a warning, an apology, a sales pitch or a recommendation from someone you trust. Tone is set by word choice, sentence length and how much certainty you claim. Match it to the audience and the stakes. In technical settings, plain words and calm confidence persuade better than excitement. Use your own voice. An audience can tell when someone is performing a style that is not theirs.",
+          ex: "Hype: 'This game-changing platform will revolutionise how we deliver!' Apology: 'I know budgets are tight, and this might not be the right time, but…' Trusted adviser: 'This will cut release time roughly in half. It costs $90K and I am confident in the first number and less sure of the second. Here is why.' The third is the only one that sounds like someone whose recommendation you would act on." },
+        { t: "Fitting the Format and the Time",
+          body: "A story must be reshaped for its container. A document is read alone and must explain itself. A deck supports you while you speak and should carry less text. A two-minute verbal version is what you will actually get when the meeting overruns. Build the two-minute version first: if the story works there, it will expand easily. AI tools can help draft and critique, but the facts, the judgement and the voice have to be yours.",
+          ex: "People speak at about 140 words a minute. Two minutes is roughly 280 words, about half a page. Ten minutes is about 1,400 words. A presenter who writes 3,000 words for a ten-minute slot will either rush or be cut off before the request. Writing the 280-word version first forces the choice of what matters, and it is ready when someone says 'we only have a couple of minutes'." }
+      ],
+      diagrams: [
+        { title: "The draft-and-test loop",
+          code: `flowchart TD
+  A["Tell it aloud in two minutes"] --> B["Try it on someone like the audience"]
+  B --> C{"Can they play back the one idea and the request?"}
+  C -->|"No"| D["Fix the structure, not the slides"]
+  D --> A
+  C -->|"Yes"| E["Choose the format: document, deck or spoken"]
+  E --> F["Set the tone for this audience"]
+  F --> G["Build it, keeping the two-minute version ready"]
+  G --> H["Deliver, then note what to change next time"]` }
+      ],
+      caseTitle: "Six Hours on Slides",
+      caseText: "A team lead has 20 minutes at the quarterly planning meeting to ask for two additional engineers. He spends six hours across three evenings on a 24-slide deck with custom diagrams and animated builds. He does not show it to anyone beforehand, because it is 'not ready'. On the day, the previous item overruns and he is given seven minutes. He races through the first nine slides, never reaches the request on slide 21, and is asked to 'send the deck round'. Two people open it. A colleague later tells him that the chair had been open to the request and would have agreed if it had been made clearly.",
+      caseTask: "Identify the decisions that led to this outcome. Write the two-minute version he should have prepared, in about 280 words or as a tight outline. Describe how he should have tested the draft, with whom and with which questions. Suggest what the follow-up message should say now to recover the request.",
+      everyday: {
+        title: "The two-minute version of anything",
+        body: "Having a two-minute version ready is useful far beyond presentations. It is what you say when a senior colleague asks in the lift how the project is going, when a friend asks what you do, or when a meeting is cut short. Practise by summarising your current piece of work aloud in two minutes: where it stands, what is in the way, and what you need. If you can do that easily, you understand your own work better than most people understand theirs."
+      },
+      assignment: {
+        deliverable: "Produce a two-minute spoken version of your story, about 280 words, and record yourself delivering it. Test it on two people who resemble your real audience using the playback questions, and record what each said your main point and request were. Revise. Then choose the format you will use for real, state the tone you are aiming for with one example sentence, and build the final version. Note how you used any AI tool and what you changed in its output.",
+        rubric: [
+          "A two-minute version of about 280 words exists and has been spoken aloud",
+          "Two playback tests were run, with what each listener repeated recorded",
+          "The revision responds to the tests by changing structure, not decoration",
+          "Format and tone are chosen deliberately for the audience, with an example sentence"
+        ]
+      },
+      reflection: [
+        "How long do you usually spend polishing before anyone else hears your idea?",
+        "When you ask for feedback, do you ask for an opinion or for a playback?",
+        "What would your current project sound like in two minutes, and could you deliver it now?"
+      ],
+      quiz: [
+        { q: "The main reason to make a rough version before polishing is that:", opts: ["Rough versions look more creative","It reveals whether the structure works while changes are still cheap","Audiences prefer rough slides","It avoids the need for feedback"], correct: 1 },
+        { q: "The most useful feedback question is:", opts: ["Did you like it?","What was my main point, and what would you do next?","Was it too long?","Were the slides attractive?"], correct: 1 },
+        { q: "At about 140 words a minute, a five-minute talk is roughly:", opts: ["140 words","280 words","700 words","1,400 words"], correct: 2 },
+        { q: "In technical settings, the tone that usually persuades best is:", opts: ["Excited and promotional","Apologetic","Plain, calm and candid about uncertainty","Highly formal and abstract"], correct: 2 }
+      ]
+    }
+  ];
+
+  var STY_CAPSTONE = {
+    id: "capstone", num: "Capstone", title: "Tell One Story That Matters",
+    sub: "Take a real proposal or update from a list of facts to a story that gets a decision",
+    time: "3–5 hrs",
+    setup: "Take the idea you have developed through the course and deliver it for real, or as close to real as you can arrange: to the actual decision-maker, to a colleague standing in for them, or as a recording. Submit the story in its final format with a short note on how you built and tested it. If you do not have an idea of your own, use this one: you lead a team that maintains an ageing internal system which fails about once a week, and you have ten minutes at next month's leadership meeting to ask for a quarter of dedicated time to replace it.",
+    diagrams: [
+      { title: "From facts to a story that gets a decision",
+        code: `flowchart LR
+  A["Audience, from and to"] --> B["One idea in one sentence"]
+  B --> C["Situation, tension, resolution"]
+  C --> D["One number, one chart, one person"]
+  D --> E["Two-minute draft, tested by playback"]
+  E --> F["Final format and tone"]
+  F --> G["Deliver and ask"]
+  G --> H["What happened, and what to change"]` }
+    ],
+    dataPoints: [
+      { h: "Part A: Audience and message (Modules 1–2)", b: "Describe the audience, what they believe and fear, and the 'from' and 'to'. State the one idea in a sentence and the three things they should remember. Show what you cut and where it went." },
+      { h: "Part B: Structure and evidence (Modules 3–4)", b: "Lay out the situation, the tension with a character and a calculated cost of inaction, the contrast and the resolution. Present your one number in a human scale, your one chart with a conclusion title, and your typical example. Include the honesty check." },
+      { h: "Part C: Test and deliver (Module 5)", b: "Provide the two-minute version and the results of two playback tests. Deliver the final version in the chosen format. Report what happened: what the audience said or decided, what you would change, and how the result compares with how you would previously have presented it." }
+    ],
+    deliverablePoints: [
+      "Describe the audience and write the 'from' and 'to' (Module 2)",
+      "State the one idea in a sentence and the three things to remember (Modules 1–2)",
+      "Structure the story as situation, tension and resolution, with a character and a cost of inaction (Module 3)",
+      "Present one number in a human scale, one chart and one typical example (Module 4)",
+      "Complete an honesty check on your data and examples (Module 4)",
+      "Provide a two-minute version and two playback test results (Module 5)",
+      "Deliver the final version and report the outcome and what you would change (Module 5)"
+    ],
+    rubric: [
+      "The story visibly uses audience analysis, a single idea, narrative structure, data storytelling and testing",
+      "A listener can state the main point and the request after one hearing",
+      "The data is presented honestly, with base, scale and uncertainty stated",
+      "The submission includes evidence of testing and a candid account of the result"
+    ],
+    quiz: [
+      { q: "The strongest sign that a story has worked is that the audience can:", opts: ["Praise the slides","Repeat the main point and the request afterwards","Recall every statistic","Ask for the deck"], correct: 1 },
+      { q: "In the capstone, the cost of doing nothing belongs in:", opts: ["The appendix","The tension, where it creates the reason to act","The title slide","The acknowledgements"], correct: 1 },
+      { q: "An honesty check on your data is included because:", opts: ["One distortion, once noticed, discounts everything else you say","It makes the story longer","Audiences never check numbers","It replaces the need for a chart"], correct: 0 }
+    ]
+  };
+
+  var STY_BONUS = {
+    linkedin: "I have just finished a course on storytelling for technical leaders. I expected presentation tips. What I got was an explanation of why my best analysis keeps getting deferred.\n\nThree things I am doing differently:\n\n1. One idea, in one sentence. If I cannot say what I want the room to think and do in a single sentence, they will not be able to either. I now write that sentence before I open a slide tool, and cut everything that does not serve it.\n\n2. Do not skip the tension. Engineers go from background straight to solution. The missing middle is what is wrong, who it happens to, and what it costs to do nothing. I priced the cost of inaction on one proposal and it was the only number anyone quoted afterwards.\n\n3. Test by playback. I used to ask 'what do you think?' and get politeness. Now I ask 'what was my main point, and what would you do next?' The first time, three people gave three different answers, and none of them was mine.\n\nThe part I value most was on honesty: state the base, show the uncertainty, choose a typical example. Persuasion that needs a cut-off axis is not worth having.\n\nWhat is the one sentence you want your next audience to repeat?",
+    blogTitle: "The Right Answer Is Not Enough: Storytelling for Engineers Who Need a Decision",
+    blog: [
+      { h: "1. The meeting where I was right and lost", b: "Open with a specific time you presented solid analysis and the decision was deferred. Describe what you showed and what someone said afterwards. Keep it honest and unflattering." },
+      { h: "2. What the room can hold", b: "Explain attention and memory limits, and the expert's blind spot. Give the abstract sentence you used to say and the concrete version that replaced it." },
+      { h: "3. One sentence", b: "Walk through the audience, the 'from' and 'to', and your one-sentence message. Show the first draft of the sentence and the final one, and list what you cut." },
+      { h: "4. The missing middle", b: "Introduce situation, tension and resolution. Show the cost-of-inaction calculation for a real proposal and the person you used to make it visible. Note that senior audiences may want the request first." },
+      { h: "5. One number, one chart, one person", b: "Share a figure you translated into hours, money or people, and a chart whose title you changed from a description to a conclusion. Include your honesty check, including what you were unsure of." },
+      { h: "6. Two minutes, tested", b: "Close with the two-minute version, what playback testing revealed and what happened when you delivered it. End by asking readers for the one sentence they want their next audience to repeat. Credit the published writers on narrative and data communication whose work shaped these ideas so readers can go to the sources." }
+    ]
+  };
+
+  // ============================================================
   // COURSE REGISTRY
   // ============================================================
   var COURSES = [
@@ -3071,6 +3419,16 @@
       icons: ["eye","loop","alert","users","target","flag"],
       skills: ["Systems mapping","Feedback loops","Root-cause analysis","Incentive design","Leverage points"],
       modules: SYS_MODULES, capstone: SYS_CAPSTONE, bonus: SYS_BONUS
+    },
+    {
+      key: "sty",
+      name: "Storytelling for Technical Leaders: Making Ideas Land",
+      tagline: "Why sound analysis gets deferred and how to change that: knowing the audience, one idea in one sentence, narrative structure for proposals and incident reviews, honest stories with data, and testing a draft before it matters.",
+      note: "Original content on the general craft of persuasive communication and data storytelling. Not affiliated with any course provider.",
+      color: "#9d174d", color2: "#f59e0b", art: "story", level: "Intermediate", hours: "13–20 hrs",
+      icons: ["bulb","target","book","chart","mic","flag"],
+      skills: ["Audience analysis","Narrative structure","Data storytelling","Persuasive writing","Presenting"],
+      modules: STY_MODULES, capstone: STY_CAPSTONE, bonus: STY_BONUS
     }
   ];
 
@@ -3325,6 +3683,38 @@
         { t: "If Russ Ackoff had given a TED Talk", by: "Russell Ackoff", note: "A short, memorable talk on why improving parts does not improve the whole." },
         { t: "Introduction to Systems Thinking", by: "Peter Senge", note: "The author of The Fifth Discipline explaining the basics." }
       ]
+    },
+    sty: {
+      books: [
+        { t: "Made to Stick", by: "Chip Heath and Dan Heath", note: "Why some ideas are remembered and others are not, including the expert's blind spot." },
+        { t: "Resonate", by: "Nancy Duarte", note: "Narrative structure and contrast in presentations. Pairs with Module 3." },
+        { t: "Storytelling with Data", by: "Cole Nussbaumer Knaflic", note: "The practical guide to charts that make a point. Pairs with Module 4." },
+        { t: "The Visual Display of Quantitative Information", by: "Edward Tufte", note: "The classic on showing data clearly and honestly." },
+        { t: "On Writing Well", by: "William Zinsser", note: "Plain, clear non-fiction writing. Pairs with Module 5 on tone." },
+        { t: "Presentation Zen", by: "Garr Reynolds", note: "Simplicity and restraint in slide design and delivery." }
+      ],
+      blogs: [
+        { t: "storytelling with data blog", by: "Cole Nussbaumer Knaflic and team", note: "Worked chart makeovers and monthly practice exercises." },
+        { t: "FlowingData", by: "Nathan Yau", note: "Examples and tutorials on visualising data well." },
+        { t: "The Pudding", by: "The Pudding", note: "Visual essays that show what data storytelling can be." },
+        { t: "How to Write Usefully", by: "Paul Graham", note: "A short essay on saying something true and important in plain words." }
+      ],
+      podcasts: [
+        { t: "Think Fast, Talk Smart", by: "Matt Abrahams, Stanford Graduate School of Business", note: "Short, practical episodes on communicating clearly under pressure." },
+        { t: "storytelling with data podcast", by: "Cole Nussbaumer Knaflic", note: "Conversations on presenting data and handling tough audiences." },
+        { t: "The Moth", by: "The Moth", note: "True stories told live. Listen for structure, stakes and tone." }
+      ],
+      courses: [
+        { t: "Storytelling and Influencing: Communicate with Impact", by: "Macquarie University, on Coursera", note: "A structured course on persuasive communication at work." },
+        { t: "Writing in the Sciences", by: "Stanford University, on Coursera", note: "Excellent training in cutting clutter from technical writing." },
+        { t: "Introduction to Public Speaking", by: "University of Washington, on Coursera", note: "The fundamentals of structuring and delivering a talk." }
+      ],
+      videos: [
+        { t: "The Secret Structure of Great Talks", by: "Nancy Duarte, TEDx", note: "The contrast between what is and what could be, shown in famous speeches." },
+        { t: "The Best Stats You've Ever Seen", by: "Hans Rosling, TED", note: "A masterclass in making data vivid and surprising." },
+        { t: "The Clues to a Great Story", by: "Andrew Stanton, TED", note: "A film-maker on what makes an audience care." },
+        { t: "The Magical Science of Storytelling", by: "David JP Phillips, TEDx", note: "An engaging talk on how stories affect attention and memory." }
+      ]
     }
   };
 
@@ -3415,6 +3805,7 @@
     blocks: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
     bot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5M9.5 13h0M14.5 13h0M9.5 16h5"/><circle cx="12" cy="4" r="1"/>',
     card: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+    bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',
     eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
     loop: '<path d="M20 11a8 8 0 0 0-14.5-3.5M4 4v4h4M4 13a8 8 0 0 0 14.5 3.5M20 20v-4h-4"/>',
     alert: '<path d="M12 4l9 16H3l9-16z"/><path d="M12 10v4M12 17h0"/>',
@@ -3507,6 +3898,16 @@
         + '<circle cx="280" cy="100" r="9" fill="#fff"/>'
         + '<circle cx="110" cy="120" r="34" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round" opacity=".7"/><circle cx="110" cy="86" r="8" fill="#fff" opacity=".9"/><circle cx="110" cy="154" r="8" fill="#fff" opacity=".75"/>'
         + '<path d="M144 120 C 170 112, 186 106, 204 102" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".75"/>';
+    },
+    story: function(){
+      return '<circle cx="56" cy="170" r="58" fill="#fff" opacity=".08"/><circle cx="360" cy="30" r="62" fill="#fff" opacity=".08"/>'
+        + '<path d="M176 160 C 220 150, 240 60, 286 46 S 350 110, 384 124" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".9"/>'
+        + '<path d="M176 160 C 220 150, 240 60, 286 46 S 350 110, 384 124 L 384 176 L 176 176 Z" fill="#fff" opacity=".1"/>'
+        + '<circle cx="176" cy="160" r="8" fill="#fff" opacity=".85"/><circle cx="286" cy="46" r="12" fill="#fff"/><circle cx="384" cy="124" r="8" fill="#fff" opacity=".85"/>'
+        + '<circle cx="286" cy="46" r="21" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 5" opacity=".85"/>'
+        + '<g stroke="#fff" stroke-width="2" stroke-dasharray="3 6" opacity=".5"><line x1="230" y1="176" x2="230" y2="112"/><line x1="340" y1="176" x2="340" y2="92"/></g>'
+        + '<path d="M40 44 h96 a14 14 0 0 1 14 14 v44 a14 14 0 0 1 -14 14 h-52 l-22 20 v-20 h-22 a14 14 0 0 1 -14 -14 v-44 a14 14 0 0 1 14 -14 z" fill="#fff" opacity=".9"/>'
+        + '<g fill="#9d174d" opacity=".6"><rect x="46" y="62" width="70" height="7" rx="3.5"/><rect x="46" y="77" width="88" height="7" rx="3.5"/><rect x="46" y="92" width="52" height="7" rx="3.5"/></g>';
     },
     future: function(){
       return '<circle cx="350" cy="24" r="64" fill="#fff" opacity=".08"/><circle cx="40" cy="184" r="56" fill="#fff" opacity=".08"/>'
@@ -3643,7 +4044,7 @@
     h += "<section class='hero'><div class='hero-art'>"+heroArt()+"</div><div class='hero-copy'>";
     h += "<span class='hero-tag'>Self-paced · Quizzes · Certificates</span>";
     h += "<h1>Move from builder to leader.</h1>";
-    h += "<p>Practical courses on finance, leadership, strategy, systems thinking, business models and AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
+    h += "<p>Practical courses on finance, leadership, strategy, systems thinking, storytelling, business models and AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
     h += "<a class='btn ghost' href='#fin-home'>Browse courses</a></div></div></section>";
