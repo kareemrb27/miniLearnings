@@ -2637,6 +2637,359 @@
   };
 
   // ============================================================
+  // COURSE 8: SYSTEMS THINKING
+  // (Original content on the general discipline of systems
+  //  thinking and system dynamics; not affiliated with or
+  //  derived from any specific provider's course materials.)
+  // ============================================================
+  var SYS_MODULES = [
+    {
+      id: "s1", num: "Module 1", title: "Seeing Systems: Beneath the Event",
+      sub: "Events, patterns, structures and beliefs, thinking in loops, and choosing the boundary",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Four Levels: Events, Patterns, Structures, Beliefs",
+          body: "Most of our attention goes to events: the outage, the missed deadline, the resignation. Beneath an event there is usually a pattern, the same kind of thing happening repeatedly. Beneath the pattern is a structure: the processes, rules, incentives and dependencies that produce it. Beneath that are the beliefs that keep the structure in place. Reacting to events is firefighting. Changing structures and beliefs is how a problem stops coming back.",
+          ex: "Event: an outage on Tuesday. Pattern: seven outages in six months, five of them within 48 hours of a release. Structure: releases are batched fortnightly with no staged rollout, and the person on call is also the person releasing. Belief: 'releasing less often is safer.' A post-incident fix for Tuesday changes nothing about the next one. Changing the belief about release frequency changes all of them." },
+        { t: "From Straight Lines to Loops",
+          body: "We are taught to think in straight lines: A causes B. In real organisations effects circle back and become causes. A leads to B, B leads to C, and C makes A worse or better. Once you see a loop, behaviour that looked like bad luck or bad people starts to look like the natural result of how things are connected. The question shifts from 'who did this?' to 'what keeps producing this?'",
+          ex: "More bugs mean more urgent fixes, which leave less time for testing, which means more bugs. Suppose fixing takes 20% of a sprint and each sprint of skipped testing raises the defect load by 10%. The share spent fixing goes 20%, 22%, 24.2%, 26.6% and 29.3% over four sprints. Nobody decided to spend nearly a third of the team's time on rework. The loop decided." },
+        { t: "Drawing the Boundary",
+          body: "Every analysis draws a line around what is included. Draw it too tightly and you will blame whichever part is inside. Draw it too widely and you will be paralysed by everything. A practical boundary includes whoever's behaviour materially affects the problem, and whatever you could plausibly influence. Stating the boundary openly, and trying a wider one, is often where the real cause appears.",
+          ex: "Delivery is slow. With the boundary around the development team, the conclusion is that developers are slow. Widen it to include testing, release approval and environments, and the picture changes: of a 14-day lead time, nine days are spent waiting for a shared test environment. No amount of developer speed touches the nine days." },
+        { t: "Improving a Part Can Worsen the Whole",
+          body: "A system's performance comes from how its parts interact, not from each part doing its best. Making one part faster often just moves the queue, and can make the overall result worse by flooding the next stage. This is why well-meant local targets disappoint. Before improving anything, ask what the whole is trying to achieve and where the flow is actually restricted.",
+          ex: "A development team doubles its output from 10 to 20 stories a sprint. Testing can verify 12. Delivered work rises from 10 to 12, and unverified work piles up at 8 stories a sprint: 40 waiting after five sprints, each one ageing and harder to test. The team doubled its effort for a 20% gain and created a growing stockpile of risk." }
+      ],
+      diagrams: [
+        { title: "Looking beneath an event",
+          code: `flowchart TD
+  E["Event: what just happened?"] --> P["Pattern: what keeps happening?"]
+  P --> S["Structure: what produces the pattern?"]
+  S --> B["Beliefs: what keeps the structure in place?"]
+  B --> L["Higher leverage, slower to change"]
+  E --> R["React"]
+  P --> A["Anticipate"]
+  S --> D["Redesign"]
+  B --> T["Transform"]` }
+      ],
+      caseTitle: "The Outage That Kept Happening",
+      caseText: "A payments team has had nine production incidents in a year. Each has a thorough post-incident review with a root cause and an action: a missing index, an expired certificate, a misconfigured timeout, a bad migration. All the actions were completed. Leadership's view is that the team is careless and needs a stricter change-approval board. Looking across the nine reviews, seven incidents occurred in the week after a quarterly 'big release', all nine were detected by customers before monitoring, and in each case the engineer who made the change was working on three projects at once.",
+      caseTask: "Sort the facts in the case into events, patterns, structures and beliefs. Explain why nine completed root-cause actions did not reduce incidents. State the boundary leadership is using and suggest a wider one. Predict what a stricter approval board would do to release size and frequency, and whether that would help.",
+      everyday: {
+        title: "Patterns in your own week",
+        body: "The four levels work on personal frustrations too. If you are always rushing before the same weekly meeting, that is a pattern, not a series of unlucky weeks. Ask what structure produces it: when the inputs arrive, who you depend on, what else is scheduled that day. Then ask what belief holds it in place, such as 'I work better under pressure' or 'I cannot ask for the data earlier.' Moving the meeting or the deadline for inputs often fixes what months of trying harder did not."
+      },
+      assignment: {
+        deliverable: "Choose a problem in your work that keeps coming back despite being 'fixed', such as recurring incidents, chronic lateness, rework or a tool nobody adopts. You will use it throughout the course. Write one page: describe three or four recent events, the pattern across them with dates or counts, the structures that could be producing it, and the beliefs that keep those structures in place. State the boundary you have drawn and what a wider one would add.",
+        rubric: [
+          "At least three specific events are described, with dates or counts showing a pattern",
+          "Structures are named concretely: processes, rules, incentives or dependencies",
+          "At least one belief that sustains the structure is stated plainly",
+          "The boundary is explicit, and a wider boundary is considered"
+        ]
+      },
+      reflection: [
+        "Which problem have you 'solved' more than twice?",
+        "Where is your team being blamed for something that a wider boundary would explain?",
+        "What belief in your organisation is treated as a fact and keeps a structure in place?"
+      ],
+      quiz: [
+        { q: "In the four-level model, the level with the most leverage for lasting change is:", opts: ["Events","Patterns","Structures and the beliefs behind them","Individual effort"], correct: 2 },
+        { q: "Loop thinking differs from straight-line thinking because it recognises that:", opts: ["Effects can circle back and become causes","Every problem has one root cause","Problems are caused by individuals","Causes always come before effects in time order only"], correct: 0 },
+        { q: "Drawing the boundary too tightly around a problem tends to:", opts: ["Reveal every cause","Lead you to blame whichever part is inside","Make the analysis too large","Remove the need for data"], correct: 1 },
+        { q: "One stage doubles its output from 10 to 20 while the next stage can handle 12. Delivered work becomes:", opts: ["20","16","12","10"], correct: 2 }
+      ]
+    },
+    {
+      id: "s2", num: "Module 2", title: "Mapping a System: Stocks, Flows, Loops and Delays",
+      sub: "The four building blocks that explain most surprising behaviour",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Stocks and Flows",
+          body: "A stock is anything that accumulates: a backlog, a headcount, a bank balance, trust, technical debt. Flows are the rates that fill and drain it. Stocks change only through their flows, and they change gradually, which is why systems have momentum. A common mistake is trying to move a stock by wishing, announcing a target or working on the inflow alone. Until the outflow exceeds the inflow, the stock keeps rising.",
+          ex: "A bug backlog stands at 120. Thirty new bugs arrive each week and 25 are fixed. The backlog grows by 5 a week and reaches 380 after a year. A one-off 'bug bash' that clears 60 buys twelve weeks. To halve the backlog in six months, the net flow must be about minus 2.3 a week: fix 32 a week, or reduce arrivals to 23, or some of both." },
+        { t: "Reinforcing Loops: Growth and Collapse",
+          body: "In a reinforcing loop, a change feeds itself. More leads to more, or less leads to less. These loops produce the fast growth and sudden collapses that surprise people, because early on the change looks small. They are neither good nor bad in themselves: the same structure that drives adoption can drive attrition. Find them early, because they are far easier to steer at the start.",
+          ex: "A platform with good documentation attracts adopters, some adopters contribute improvements, and the improvements attract more adopters. At 5% growth a month, 20 teams become about 36 in a year. The same loop runs backwards: poor documentation, fewer adopters, fewer contributors, worse documentation. Which direction it runs often depends on a small early push." },
+        { t: "Balancing Loops: Why Systems Resist Change",
+          body: "A balancing loop pulls a system towards a target, like a thermostat. When something drifts, a correction brings it back. Balancing loops provide stability, and they are also why improvements fade. If the system has an unspoken target, it will absorb your change and return to where it was. To make a change stick you must find the hidden target and move it, not just push against it.",
+          ex: "A team works hard to cut noisy alerts from 20 a week to 8. Within two months the count is back near 20. Nobody reintroduced the old alerts. The team's implicit target was 'about as many alerts as we can tolerate', so with spare tolerance they added new monitors. The lasting fix was to change the target to 'every alert requires action' and review any alert that does not." },
+        { t: "Delays: The Source of Overreaction",
+          body: "Between an action and its effect there is usually a delay, and people routinely forget it. They act, see nothing, act again, and then both actions land at once. The result is overshoot and oscillation, like fiddling with a shower that takes ten seconds to respond. Where there is a delay, respond to what is already on its way as well as to what you can currently see, and make smaller adjustments.",
+          ex: "A team needs four more engineers. Hiring takes three months and ramp-up another three, a six-month delay. At month three nothing has improved, so four more are approved. By month nine, eight people have arrived, the team is overstaffed, and a hiring freeze follows. The original decision was right. Forgetting the pipeline turned it into a cycle of shortage and surplus." }
+      ],
+      diagrams: [
+        { title: "A reinforcing loop and the balancing loop that limits it",
+          code: `flowchart LR
+  A["Adopting teams"] -->|"more"| B["Contributions and shared examples"]
+  B -->|"more"| C["Quality of the platform"]
+  C -->|"more"| A
+  A -->|"more"| D["Support requests"]
+  D -->|"more"| E["Load on the platform team"]
+  E -->|"less"| C` }
+      ],
+      caseTitle: "The Backlog That Would Not Shrink",
+      caseText: "A support engineering team has a backlog of 400 tickets. Management announces a target of 100 within a quarter and funds two weekends of overtime, which clear 150 tickets. Three months later the backlog is back to about 340 and climbing. About 60 tickets arrive each week and the team closes about 55. A third of arriving tickets are repeats of problems already fixed for another customer, because fixes are applied account by account. After the overtime weekends, two engineers took sick leave and weekly closures fell to 48 for a month.",
+      caseTask: "Identify the stock and its flows, and show with arithmetic why the overtime did not last. Calculate the weekly net flow needed to reach 100 in 13 weeks. Identify the loop set off by the overtime. Propose an intervention on the inflow using the fact about repeat tickets, and estimate its effect.",
+      everyday: {
+        title: "Your own stocks and flows",
+        body: "An inbox, a savings account, a reading list and your energy are all stocks. If your inbox keeps growing, a heroic clear-out is the personal equivalent of the bug bash: it treats the stock and leaves the flows alone. Lasting change comes from the rates, by unsubscribing to cut the inflow or setting a daily habit to raise the outflow. Delays matter here as well. Exercise, saving and learning all pay back slowly, and people abandon them at exactly the point where the effect is on its way but not yet visible."
+      },
+      assignment: {
+        deliverable: "For the recurring problem you chose in Module 1, draw a map. Identify the main stock, its inflows and outflows, and estimate the current rates. Draw at least one reinforcing loop and one balancing loop that affect it, labelling each link as 'more leads to more' or 'more leads to less'. Mark every significant delay with an estimate of its length. Use arithmetic to project the stock three months ahead if nothing changes.",
+        rubric: [
+          "A stock is identified with estimated inflow and outflow rates",
+          "At least one reinforcing and one balancing loop are drawn with the direction of each link labelled",
+          "Delays are marked with estimated durations",
+          "A three-month projection is calculated from the flows"
+        ]
+      },
+      reflection: [
+        "Which backlog or queue in your work is growing because nobody is looking at its flows?",
+        "What improvement did your team make that quietly returned to its old level, and what hidden target pulled it back?",
+        "Where have you acted twice because the effect of the first action had not yet arrived?"
+      ],
+      quiz: [
+        { q: "A stock can only be changed by:", opts: ["Setting a target for it","Its inflows and outflows","Renaming it","Measuring it more often"], correct: 1 },
+        { q: "A backlog of 200 gains 40 items a week and loses 35. After 10 weeks it is:", opts: ["150","200","250","350"], correct: 2 },
+        { q: "An improvement that fades back to the old level usually points to:", opts: ["A reinforcing loop","A balancing loop with an unchanged hidden target","Bad luck","A lack of delays"], correct: 1 },
+        { q: "Forgetting a delay between action and effect typically causes:", opts: ["Stability","Overshoot and oscillation","Faster results","No change at all"], correct: 1 }
+      ]
+    },
+    {
+      id: "s3", num: "Module 3", title: "Recurring Traps: Patterns That Catch Good Teams",
+      sub: "Four common structures that produce disappointing results, and how to get out of each",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "The Fix That Backfires",
+          body: "A quick fix relieves a symptom now and, after a delay, produces a side effect that makes the original problem worse. Because relief is immediate and the cost is delayed, the fix feels successful and is used again. The pattern, well documented in the systems literature, is recognisable by a problem that improves briefly and then returns a little worse each time. The way out is to count the delayed cost alongside the immediate saving.",
+          ex: "Applying a hotfix directly in production skips review and saves two hours. One hotfix in five causes a new incident that costs twelve hours to resolve. The expected cost is 0.2 × 12 = 2.4 hours, more than the two hours saved, and the incidents create pressure for more hotfixes. Each individual shortcut looks sensible. The habit loses time." },
+        { t: "The Workaround That Weakens the Real Fix",
+          body: "When a problem has both a quick workaround and a harder fundamental solution, using the workaround reduces the pressure to solve it properly. Over time the organisation loses the ability to apply the fundamental solution at all and becomes dependent on the workaround. Hero cultures work this way: the more one person rescues the situation, the less anyone else learns to.",
+          ex: "One senior engineer resolves 90% of serious incidents, in about 30 minutes each. Without her the average is three hours. Because she is so effective, nobody else is paged, runbooks are never written and her knowledge stays in her head. When she takes two weeks' leave, four incidents take twelve hours instead of two. Her excellence is the workaround. Shared capability is the fix that never happens." },
+        { t: "Growth That Hits a Limit",
+          body: "A reinforcing loop drives growth until it runs into a constraint, at which point a balancing loop takes over and growth stalls. The instinct is to push harder on whatever caused the growth: more marketing, more features, more pressure. That fails, because the engine is not the problem. The lever is to find the limiting factor and relieve it, ideally before growth reaches it.",
+          ex: "A platform team of five has 200 hours a week. Each adopting team generates about eight hours of support a week. Adoption grows well until 25 teams, where support consumes all 200 hours and nothing else gets done. Promoting the platform harder would make it worse. Self-service tooling that cuts support to three hours per team raises the ceiling from 25 teams to 66." },
+        { t: "Overusing a Shared Resource",
+          body: "When several parties share a limited resource and each gains from using more of it, each makes a sensible choice and together they exhaust it. Nobody is acting badly, and everybody ends up worse off. Appeals to restraint rarely work. What works is changing the structure: making usage visible, setting quotas, charging for use, or giving someone responsibility for the resource.",
+          ex: "Ten teams share a pool of build machines. Each team adds parallel jobs to speed up its own pipeline by 20%. Total demand rises 60%, and waiting time for everyone grows from two minutes to fifteen. Each team's change was rational and all are now slower than before. Per-team quotas with a visible usage dashboard bring the wait back down without anyone needing to be persuaded." }
+      ],
+      diagrams: [
+        { title: "The fix that backfires",
+          code: `flowchart LR
+  P["Problem symptom"] -->|"prompts"| Q["Quick fix"]
+  Q -->|"relieves, quickly"| P
+  Q -->|"after a delay"| S["Side effect"]
+  S -->|"worsens"| P
+  P -.->|"should prompt"| F["Fundamental solution"]
+  F -.->|"resolves, slowly"| P` }
+      ],
+      caseTitle: "The Hero of the On-Call Rota",
+      caseText: "A platform team has one engineer, widely admired, who has been with the system since it was built. When anything serious breaks she is called, whether or not she is on the rota, and usually fixes it within half an hour. Management praises her in every review and has twice raised her pay. The rest of the team rarely handle a major incident from start to finish. Documentation is thin because 'it is quicker to ask her'. She has mentioned being tired, has cancelled leave twice, and last month a recruiter contacted her. Incident counts are stable and resolution times look excellent.",
+      caseTask: "Identify which trap this is and draw its loops in words: the symptom, the workaround, the fundamental solution and the side effect. Explain why the metrics look healthy while risk is rising. Propose three structural changes that build shared capability, and say what will get worse in the short term when you make them and how you would explain that to management.",
+      everyday: {
+        title: "Traps at home and at work",
+        body: "You will recognise these patterns outside work. Coffee to cover for poor sleep is a fix that backfires. Doing a task yourself because it is quicker than teaching someone is a workaround that weakens the real fix. A side project that grows until it consumes every evening has hit a limit. A shared kitchen or a shared budget is a resource everyone has a reason to overuse. Naming the pattern is half the work, because each has a known way out, and none of them is 'try harder'."
+      },
+      assignment: {
+        deliverable: "Examine your recurring problem for each of the four traps and decide which fits best, or whether more than one applies. For the best fit, describe the loop in your own situation: the symptom, the quick response, the delayed side effect or the limit, and the fundamental solution being avoided. Put numbers on the immediate saving and the delayed cost. Describe the way out and what will temporarily get worse when you take it.",
+        rubric: [
+          "The recurring problem is tested against all four traps, with a reasoned choice of the best fit",
+          "The loop is described using the real situation, including the delay",
+          "Immediate benefit and delayed cost are both quantified",
+          "The exit is structural, and the short-term cost of taking it is acknowledged"
+        ]
+      },
+      reflection: [
+        "Which quick fix does your team use repeatedly, and what does it cost later?",
+        "Who is the hero in your organisation, and what would happen if they left?",
+        "What shared resource is everyone on your team quietly overusing?"
+      ],
+      quiz: [
+        { q: "A shortcut saves 3 hours but one time in four causes a problem costing 16 hours. The expected cost of the side effect is:", opts: ["3 hours","4 hours","16 hours","0.75 hours"], correct: 1 },
+        { q: "In the 'workaround that weakens the real fix' trap, the long-term damage is that:", opts: ["The workaround stops working immediately","The organisation loses the ability to apply the fundamental solution","Costs fall to zero","The problem disappears"], correct: 1 },
+        { q: "When growth stalls at a limit, the effective response is to:", opts: ["Push harder on what caused the growth","Find and relieve the limiting factor","Stop measuring","Reduce the team"], correct: 1 },
+        { q: "Overuse of a shared resource is best addressed by:", opts: ["Asking everyone to be considerate","Changing the structure with visibility, quotas or ownership","Blaming the heaviest user","Ignoring it"], correct: 1 }
+      ]
+    },
+    {
+      id: "s4", num: "Module 4", title: "The People in the System",
+      sub: "Stakeholders, incentives, listening, and how team structure shapes what gets built",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Mapping Stakeholders and What Flows Between Them",
+          body: "A system map with no people in it is a diagram of plumbing. Add the people: everyone who affects the problem or is affected by it, including those with no voice in the usual meetings. Then draw what moves between them: information, requests, approvals, money, blame. Problems usually sit in the gaps, where something is expected to flow and does not, or flows too late to be useful.",
+          ex: "For slow releases, the map shows developers, testers, a release manager, security reviewers, product owners and customers. Requests flow from product to developers daily. Feedback from customers reaches developers once a quarter through a summary. Security findings arrive after the release date is set. Two of the main causes of late releases are visible as arrows that are missing or late." },
+        { t: "People Respond to What Is Measured",
+          body: "People are generally doing something sensible given the incentives and information they have. If the result is bad, look at the measures before you look at the motives. A measure that becomes a target tends to be met in ways that defeat its purpose, an observation often credited to Charles Goodhart. Measure outcomes for the whole flow where you can, and watch for the behaviour a target will actually produce.",
+          ex: "A support team is measured on tickets closed per person per day, and reaches 40. It does so by closing tickets quickly and splitting complex ones. A quarter of tickets are reopened, so only 30 are truly resolved and customers contact support 1.33 times per issue. Measured on problems resolved at first contact, the same team closes fewer tickets and has happier customers." },
+        { t: "Listening to the People Inside",
+          body: "Data shows what is happening. People inside the system can tell you why. A handful of conversations, done well, reveals workarounds and reasons that no dashboard holds. Ask about the last specific time something happened, not for opinions in general. Ask what they do when the official process does not work. Talk to people at the edges and at the bottom of the hierarchy, and treat every workaround as a clue about the structure.",
+          ex: "Five 45-minute conversations, under four hours in total, with people involved in release approval. Three mention that the risk form is completed by copying the previous one, because its questions do not apply to most changes. The approval step that leadership believes controls risk is adding two days and no information. No metric would have shown that." },
+        { t: "How Structure Shapes What Gets Built",
+          body: "Organisations tend to produce designs that mirror their own communication structure, an observation made by Melvin Conway in 1968. If three teams build a product, it will have three parts, with the awkward joins exactly where the teams meet. The same applies to behaviour: handovers, queues and blame collect at team boundaries. Changing who works with whom is sometimes the only way to change the software or the outcome.",
+          ex: "Teams are organised by layer: interface, services and database. Every feature crosses all three, and each handover waits about four days in a queue. Three days of actual work take 15 days to deliver, with 12 spent waiting. Reorganised into teams that each own a feature end to end, the same work has no handover queues and is delivered in about four days." }
+      ],
+      diagrams: [
+        { title: "People, flows and gaps",
+          code: `flowchart LR
+  C["Customers"] -->|"feedback, quarterly summary"| PO["Product owners"]
+  PO -->|"requests, daily"| DEV["Developers"]
+  DEV -->|"builds"| QA["Testers"]
+  QA -->|"release candidate"| RM["Release manager"]
+  SEC["Security reviewers"] -.->|"findings, after the date is set"| RM
+  RM -->|"release"| C
+  C -.->|"missing: direct feedback"| DEV` }
+      ],
+      caseTitle: "The Metric Everyone Hit",
+      caseText: "An engineering organisation introduces a target: every team must reach 85% automated test coverage, with the figure reported monthly and counted in performance reviews. Within two quarters all twelve teams report between 85% and 91%. Over the same period, defects found by customers rise by 30% and build times double. A review finds thousands of tests that execute code and check nothing, tests written for trivial code while complex modules remain thin, and several teams that excluded difficult folders from the measurement. Leaders are angry and consider the teams dishonest.",
+      caseTask: "Explain the teams' behaviour without assuming bad intent. Identify what the measure was meant to achieve and what it actually rewarded. Propose a different way to measure the underlying goal, and name one way that measure could itself be gamed. List three people you would talk to before changing anything and one question you would ask each.",
+      everyday: {
+        title: "Asking why sensible people do odd things",
+        body: "When a colleague, a supplier or another team does something that looks unreasonable, assume first that it makes sense from where they stand, and find out why. What are they measured on? What information do they have, and when do they get it? A short conversation that begins 'talk me through the last time this happened' usually turns an annoyance into a design flaw you can both see. It is a better use of twenty minutes than an escalation, and it tends to fix the next ten occurrences as well."
+      },
+      assignment: {
+        deliverable: "Add the people to your system map. List everyone who affects or is affected by your recurring problem, including at least one group that is rarely consulted. Draw what flows between them and mark flows that are missing or late. Identify the measures or incentives acting on the two most influential groups and the behaviour they encourage. Hold at least one conversation with someone inside the system, asking about the last specific occurrence, and record what surprised you.",
+        rubric: [
+          "The stakeholder map includes at least one group that is usually overlooked",
+          "Flows of information, requests and approvals are drawn, with gaps and late flows marked",
+          "Incentives are linked to the behaviour they actually produce",
+          "At least one real conversation is reported, with a specific surprise or workaround"
+        ]
+      },
+      reflection: [
+        "Which measure in your organisation is being met in a way that defeats its purpose?",
+        "Whose view of your recurring problem have you never asked for?",
+        "Where do the awkward joins in your product match the boundaries between teams?"
+      ],
+      quiz: [
+        { q: "When a system produces bad results, the first thing to examine is usually:", opts: ["People's character","The measures and incentives acting on them","The office layout","The newest tool"], correct: 1 },
+        { q: "A team closes 50 tickets a day but 20% are reopened. The number truly resolved is:", opts: ["50","45","40","30"], correct: 2 },
+        { q: "The most useful interview question for understanding a system is:", opts: ["What do you think of the process in general?","Can you walk me through the last time this happened?","Do you agree the process is good?","Who is to blame?"], correct: 1 },
+        { q: "Conway's observation is that an organisation's designs tend to mirror:", opts: ["Its communication structure","Its budget","Its competitors","Its office furniture"], correct: 0 }
+      ]
+    },
+    {
+      id: "s5", num: "Module 5", title: "Intervening: Leverage, Experiments and Learning",
+      sub: "Where a small change does the most, thinking through consequences, and testing safely",
+      time: "2–3 hrs",
+      concepts: [
+        { t: "Leverage Points: Where to Push",
+          body: "Not all interventions are equal. Donella Meadows described a rough order of leverage. The weakest and most popular are numbers: budgets, headcount, targets. Stronger are information flows and delays: who knows what, and how quickly. Stronger still are the rules and the goal of the system. Strongest, and hardest, are the beliefs from which the goals arise. Most organisations argue about numbers and leave the rest alone.",
+          ex: "For recurring outages: a numbers change is adding two people to the on-call rota. An information change is showing each team the weekly cost of its own incidents. A rule change is 'the team that builds a service runs it'. A goal change is measuring teams on customer minutes of availability instead of features shipped. The first is easiest to approve and changes least." },
+        { t: "And Then What? Thinking Through Consequences",
+          body: "Every intervention sets off reactions, and the system will adapt to it. Before acting, trace at least two steps beyond the intended effect by asking 'and then what?' at each one. Look especially for how people will adjust their behaviour and for any balancing loop that will absorb the change. You will not foresee everything, but you can usually foresee the most likely way a good idea goes wrong.",
+          ex: "A rule requires two approvers on every code change. First effect: more scrutiny. And then what? Changes wait about a day and a half for review. And then? Developers bundle more into each change, and the average grows from 150 to 400 lines. And then? Reviewers skim large changes, and defect rates are unchanged. The rule added delay and removed the scrutiny it was meant to create." },
+        { t: "Small, Safe Experiments",
+          body: "You cannot fully predict a complex system, so probe it. A good experiment is small, reversible, time-limited and measured, with a stated expectation written down in advance. It is run with the people affected, not on them. The aim is as much to learn how the system responds as to fix the problem. Several small experiments teach more, at less risk, than one large programme.",
+          ex: "Hypothesis: smaller, more frequent releases reduce incidents. Experiment: one team releases daily for four weeks, with the ability to return to the old schedule at any point. Baseline: one release in six causes an incident. Expectation: fewer than one in fifteen. Measures: incidents per release and lead time. After four weeks the team, and everyone watching, has evidence instead of an argument." },
+        { t: "Learning Loops, and Where AI Helps",
+          body: "An intervention is the start of a loop, not the end of a project. Review what happened against what you expected, update your map and try the next thing. Look for early signs of movement, since the results that matter arrive after a delay. AI tools can speed parts of this: drafting a first map from documents, summarising interview notes, suggesting loops you may have missed. They cannot choose the boundary, weigh competing values or replace talking to the people involved.",
+          ex: "A team gives an AI assistant 30 post-incident reports and asks for recurring factors. In minutes it finds that 22 mention a shared configuration service. That is a useful lead that would have taken a day by hand. It cannot tell them that the service's owners are afraid to change it because of an old outage, which a 20-minute conversation reveals, and which is the real reason nothing has improved." }
+      ],
+      diagrams: [
+        { title: "The intervention loop",
+          code: `flowchart TD
+  M["Map of the system"] --> L["Choose a leverage point"]
+  L --> W["Ask 'and then what?' twice"]
+  W --> X["Design a small, reversible experiment"]
+  X --> E["State what you expect, in advance"]
+  E --> R["Run it with the people affected"]
+  R --> C{"What happened, compared with the expectation?"}
+  C -->|"As expected"| S["Extend carefully"]
+  C -->|"Surprise"| U["Update the map"]
+  S --> M
+  U --> M` }
+      ],
+      caseTitle: "Two Approvers",
+      caseText: "After a costly defect reaches customers, a head of engineering introduces a rule for all 80 engineers: every change needs two approving reviews before it can be merged. No trial is run. Six months later, the number of defects reaching customers is unchanged. The average change has grown from 140 lines to 420. Time from finishing a change to merging it has risen from four hours to two days. A survey shows engineers spend about five hours a week waiting for reviews or chasing reviewers, and several admit to approving large changes after a quick look because they are behind on their own work.",
+      caseTask: "Trace the chain of consequences from the rule to the outcome using 'and then what?'. Say which kind of leverage point the rule was. Propose an intervention at a stronger leverage point aimed at the same goal. Design a four-week experiment to test it with one team, including the baseline, the expectation, the measures and how it could be reversed.",
+      everyday: {
+        title: "Trying things before committing",
+        body: "You do not need authority to intervene in a system. You need a small enough experiment. Change one recurring meeting for a month. Try a different handover with one colleague. Share one number with one team that has never seen it. Write down beforehand what you expect, because that is what turns an attempt into learning. And when something does not work, treat it as information about the system. The most useful result is often the surprise that shows your map was wrong."
+      },
+      assignment: {
+        deliverable: "For your recurring problem, list at least four possible interventions and classify each by leverage: numbers, information and delays, rules and goals, or beliefs. Choose one at a stronger leverage point than you would normally reach for. Trace its consequences at least two steps with 'and then what?'. Design a small experiment: who is involved, how long it runs, the baseline, what you expect, what you will measure and how to reverse it. Note where an AI tool could help and where it could not.",
+        rubric: [
+          "At least four interventions are listed and classified by type of leverage",
+          "The chosen intervention is above the 'numbers' level, with a reason",
+          "Consequences are traced at least two steps beyond the intended effect",
+          "The experiment is small, reversible and time-limited, with a baseline and a stated expectation"
+        ]
+      },
+      reflection: [
+        "When your organisation tries to fix something, which kind of leverage does it reach for first?",
+        "What well-intended rule in your workplace produced the opposite of what was wanted?",
+        "What is the smallest experiment you could start this week on a problem that matters?"
+      ],
+      quiz: [
+        { q: "According to the order of leverage described in this module, the weakest interventions are usually changes to:", opts: ["Goals","Rules","Numbers such as budgets and headcount","Beliefs"], correct: 2 },
+        { q: "Asking 'and then what?' is meant to reveal:", opts: ["Who is at fault","How the system and the people in it will adapt to the change","The cost of a tool","The history of the problem"], correct: 1 },
+        { q: "A good experiment in a complex system is:", opts: ["Large and permanent","Small, reversible and measured against a stated expectation","Kept secret from those affected","Run without a baseline"], correct: 1 },
+        { q: "In systems work, AI tools are least able to:", opts: ["Summarise interview notes","Suggest patterns across many documents","Choose the boundary and weigh competing values","Draft a first map"], correct: 2 }
+      ]
+    }
+  ];
+
+  var SYS_CAPSTONE = {
+    id: "capstone", num: "Capstone", title: "Map It, Find the Leverage, Run One Experiment",
+    sub: "Apply the whole method to a problem that keeps coming back",
+    time: "3–5 hrs",
+    setup: "Take the recurring problem you have worked on through the course and produce a three-page systems brief that someone with authority could act on. It should show the pattern, the structure that produces it, the people and incentives involved, the trap it resembles, and one experiment at a meaningful leverage point. If you do not have a problem of your own, use this one: a 40-person engineering group has missed its last five quarterly delivery commitments, each time by about three weeks, and each time the response has been to add more detailed planning.",
+    diagrams: [
+      { title: "The systems brief",
+        code: `flowchart LR
+  A["Events and pattern"] --> B["Stocks, flows, loops and delays"]
+  B --> C["Which trap does it resemble?"]
+  C --> D["People, flows and incentives"]
+  D --> E["Leverage point"]
+  E --> F["Consequences: and then what?"]
+  F --> G["One small experiment"]
+  G --> H["Review and update the map"]
+  H --> B` }
+    ],
+    dataPoints: [
+      { h: "Part A: See and map (Modules 1–2)", b: "Describe the events and the pattern with dates or counts. State the boundary. Draw the main stock with its flows and rates, at least one reinforcing and one balancing loop, and the significant delays. Project the next three months if nothing changes." },
+      { h: "Part B: Understand (Modules 3–4)", b: "Say which recurring trap fits best and describe its loop in your situation with numbers. Map the people and what flows between them. Identify the incentives producing the behaviour, and report what you learned from at least one conversation." },
+      { h: "Part C: Intervene (Module 5)", b: "List candidate interventions by type of leverage. Choose one above the numbers level, trace its consequences two steps, and design a small reversible experiment with a baseline, an expectation and measures. Say what result would lead you to extend it, change it or stop." }
+    ],
+    deliverablePoints: [
+      "Describe the pattern with evidence and state the boundary (Module 1)",
+      "Map the main stock, its flows, the loops and the delays, with a projection (Module 2)",
+      "Identify the trap it resembles and quantify the delayed cost (Module 3)",
+      "Map the people, the flows between them and the incentives at work (Module 4)",
+      "Report at least one conversation and what it changed in your map (Module 4)",
+      "Choose a leverage point above the numbers level and trace consequences (Module 5)",
+      "Design one small experiment with a baseline, an expectation and a review date (Module 5)"
+    ],
+    rubric: [
+      "The brief visibly uses the four levels, mapping, the traps, the people view and leverage, and each builds on the last",
+      "The explanation is structural: it does not rest on blaming individuals",
+      "Stocks, flows, costs and the experiment's baseline are supported by numbers",
+      "The proposed experiment is small, reversible and specific enough to start within two weeks"
+    ],
+    quiz: [
+      { q: "A systems brief should explain a recurring problem mainly in terms of:", opts: ["Which individuals failed","The structure, loops and incentives that produce it","The most recent event","The tools in use"], correct: 1 },
+      { q: "For a group that repeatedly misses commitments and responds with more detailed planning, a systems view would first ask:", opts: ["Who is the weakest planner?","What structure keeps producing the same three-week slip?","Can the plan be longer?","Should the deadline be hidden?"], correct: 1 },
+      { q: "The capstone ends with a single small experiment because:", opts: ["Complex systems cannot be fully predicted, so you learn by probing safely","Large programmes are forbidden","Experiments never fail","Maps are unnecessary"], correct: 0 }
+    ]
+  };
+
+  var SYS_BONUS = {
+    linkedin: "I have just finished a course on systems thinking, written for technical leaders, and it changed how I look at the problems my team keeps 'fixing'.\n\nThree ideas I am using already:\n\n1. Look beneath the event. An outage is an event. Seven outages within two days of a release is a pattern. The release process is the structure, and 'releasing less often is safer' is the belief holding it in place. Fixing events never ends. Changing the structure does.\n\n2. Watch the flows, not the stock. A backlog only shrinks when more leaves than arrives. A weekend of overtime clears a pile and changes neither rate, so the pile returns. The same goes for technical debt, hiring and my inbox.\n\n3. Be suspicious of the quick fix that works. If a problem improves briefly and comes back slightly worse, the fix is probably feeding it. The same applies to the hero who always saves the day: the more they rescue us, the less anyone else learns to.\n\nThe most useful habit was the simplest: before changing anything, ask 'and then what?' twice.\n\nWhich problem have you solved more than twice?",
+    blogTitle: "Why the Same Problem Keeps Coming Back: Systems Thinking for Engineering Leaders",
+    blog: [
+      { h: "1. The fix that did not hold", b: "Open with a problem your team resolved, with a proper review and completed actions, that returned anyway. Keep it specific. Make the point that everyone did their job and the problem still came back." },
+      { h: "2. Four levels down", b: "Walk through events, patterns, structures and beliefs using your own example. Show what changed when you widened the boundary of the problem to include another team or step." },
+      { h: "3. Stocks, flows and the weekend that changed nothing", b: "Explain stocks and flows with a backlog or debt example and real rates. Add a delay that caused an overreaction, such as hiring or capacity that arrived all at once." },
+      { h: "4. The traps", b: "Describe the fix that backfires and the workaround that weakens the real fix, using the cost arithmetic and a hero-culture example. Be kind to the hero: the structure is the problem, not the person." },
+      { h: "5. People are being sensible", b: "Cover incentives and what you learned from one conversation with someone inside the system. Include a measure that was being met in a way that defeated its purpose." },
+      { h: "6. One small experiment", b: "Close with the leverage point you chose, the consequences you traced with 'and then what?', and the experiment you ran with its baseline and result. End by asking readers which problem they have solved more than twice. Credit the published thinkers behind these ideas, including Donella Meadows, Peter Senge and Melvin Conway, so readers can go to the sources." }
+    ]
+  };
+
+  // ============================================================
   // COURSE REGISTRY
   // ============================================================
   var COURSES = [
@@ -2708,6 +3061,16 @@
       icons: ["blocks","users","coin","megaphone","flask","flag"],
       skills: ["Business model design","Value propositions","Pricing models","Go-to-market","Assumption testing"],
       modules: BIZ_MODULES, capstone: BIZ_CAPSTONE, bonus: BIZ_BONUS
+    },
+    {
+      key: "sys",
+      name: "Systems Thinking for Technical Leaders: Fixing Problems That Keep Coming Back",
+      tagline: "Why the same problems return however often they are fixed, and what to do about it: seeing structure beneath events, mapping stocks, flows and feedback loops, recognising common traps, understanding the people involved, and intervening where a small change does the most.",
+      note: "Original content on the general discipline of systems thinking and system dynamics. Not affiliated with any course provider.",
+      color: "#334155", color2: "#0891b2", art: "system", level: "Intermediate", hours: "13–20 hrs",
+      icons: ["eye","loop","alert","users","target","flag"],
+      skills: ["Systems mapping","Feedback loops","Root-cause analysis","Incentive design","Leverage points"],
+      modules: SYS_MODULES, capstone: SYS_CAPSTONE, bonus: SYS_BONUS
     }
   ];
 
@@ -2930,6 +3293,38 @@
         { t: "Understanding the Job", by: "Clayton Christensen", note: "The well-known milkshake story that explains jobs-to-be-done." },
         { t: "Startup Pricing 101", by: "Kevin Hale, Y Combinator", note: "A clear talk on value-based pricing and common mistakes." }
       ]
+    },
+    sys: {
+      books: [
+        { t: "Thinking in Systems", by: "Donella Meadows", note: "The clearest introduction to stocks, flows, loops and leverage. Start here." },
+        { t: "The Fifth Discipline", by: "Peter Senge", note: "Systems thinking in organisations, including the recurring traps in Module 3." },
+        { t: "An Introduction to General Systems Thinking", by: "Gerald Weinberg", note: "A classic on how to think about complex systems, written by a software pioneer." },
+        { t: "Accelerate", by: "Nicole Forsgren, Jez Humble and Gene Kim", note: "Research on what drives software delivery performance as a whole system." },
+        { t: "The Phoenix Project", by: "Gene Kim, Kevin Behr and George Spafford", note: "A novel about flow, constraints and firefighting in an IT organisation." },
+        { t: "Drift into Failure", by: "Sidney Dekker", note: "Why complex systems fail without anyone doing anything obviously wrong." }
+      ],
+      blogs: [
+        { t: "Leverage Points: Places to Intervene in a System", by: "Donella Meadows", note: "The essay behind Module 5, freely available online." },
+        { t: "How Complex Systems Fail", by: "Richard Cook", note: "A short, widely cited paper on failure in complex systems." },
+        { t: "How Do Committees Invent?", by: "Melvin Conway", note: "The 1968 paper behind the observation that designs mirror organisations." },
+        { t: "The Systems Thinker", by: "The Systems Thinker", note: "A large free archive of practitioner articles on loops, archetypes and mapping." }
+      ],
+      podcasts: [
+        { t: "Troubleshooting Agile", by: "Jeffrey Fredrick and Douglas Squirrel", note: "Conversations about fixing how teams work together." },
+        { t: "Engineering Enablement", by: "Abi Noda", note: "Interviews on developer productivity, measurement and its side effects." },
+        { t: "Hidden Brain", by: "Shankar Vedantam", note: "Accessible episodes on incentives and why people behave as they do." }
+      ],
+      courses: [
+        { t: "Introduction to System Dynamics", by: "MIT OpenCourseWare", note: "Free university material on modelling stocks, flows and feedback." },
+        { t: "Systems Thinking in Public Health", by: "Johns Hopkins University, on Coursera", note: "A clear introduction to the tools, with examples from a different field." },
+        { t: "Systems thinking and practice", by: "The Open University, on OpenLearn", note: "A free short course on the habits of thinking in systems." }
+      ],
+      videos: [
+        { t: "In a World of Systems", by: "Donella Meadows Project", note: "A short illustrated film introducing the core ideas." },
+        { t: "A Systems Story", by: "BEE Environmental Communication", note: "A brief animation showing loops and unintended consequences." },
+        { t: "If Russ Ackoff had given a TED Talk", by: "Russell Ackoff", note: "A short, memorable talk on why improving parts does not improve the whole." },
+        { t: "Introduction to Systems Thinking", by: "Peter Senge", note: "The author of The Fifth Discipline explaining the basics." }
+      ]
     }
   };
 
@@ -3020,6 +3415,8 @@
     blocks: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
     bot: '<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5M9.5 13h0M14.5 13h0M9.5 16h5"/><circle cx="12" cy="4" r="1"/>',
     card: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>',
+    eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    loop: '<path d="M20 11a8 8 0 0 0-14.5-3.5M4 4v4h4M4 13a8 8 0 0 0 14.5 3.5M20 20v-4h-4"/>',
     alert: '<path d="M12 4l9 16H3l9-16z"/><path d="M12 10v4M12 17h0"/>',
     gauge: '<path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="1"/>',
     mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/>',
@@ -3101,6 +3498,15 @@
         + '<circle cx="84" cy="74" r="20" fill="#fff" opacity=".9"/><path d="M48 136 a36 30 0 0 1 72 0 z" fill="#fff" opacity=".9"/>'
         + '<g stroke="#fff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".75" fill="none"><path d="M118 82 C 150 70, 160 64, 188 62"/><path d="M122 118 C 150 126, 164 130, 188 132"/></g>'
         + '<circle cx="283" cy="64" r="44" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="4 6" opacity=".7"/>';
+    },
+    system: function(){
+      return '<circle cx="60" cy="36" r="58" fill="#fff" opacity=".08"/><circle cx="372" cy="176" r="60" fill="#fff" opacity=".08"/>'
+        + '<circle cx="280" cy="100" r="66" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round" opacity=".85"/><circle cx="280" cy="100" r="40" fill="#fff" opacity=".1"/>'
+        + '<circle cx="280" cy="34" r="13" fill="#fff"/><circle cx="346" cy="100" r="10" fill="#fff" opacity=".8"/><circle cx="280" cy="166" r="13" fill="#fff" opacity=".9"/><circle cx="214" cy="100" r="10" fill="#fff" opacity=".8"/>'
+        + '<polygon points="322,46 338,52 326,64" fill="#fff"/><polygon points="238,154 222,148 234,136" fill="#fff"/>'
+        + '<circle cx="280" cy="100" r="9" fill="#fff"/>'
+        + '<circle cx="110" cy="120" r="34" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round" opacity=".7"/><circle cx="110" cy="86" r="8" fill="#fff" opacity=".9"/><circle cx="110" cy="154" r="8" fill="#fff" opacity=".75"/>'
+        + '<path d="M144 120 C 170 112, 186 106, 204 102" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" opacity=".75"/>';
     },
     future: function(){
       return '<circle cx="350" cy="24" r="64" fill="#fff" opacity=".08"/><circle cx="40" cy="184" r="56" fill="#fff" opacity=".08"/>'
@@ -3237,7 +3643,7 @@
     h += "<section class='hero'><div class='hero-art'>"+heroArt()+"</div><div class='hero-copy'>";
     h += "<span class='hero-tag'>Self-paced · Quizzes · Certificates</span>";
     h += "<h1>Move from builder to leader.</h1>";
-    h += "<p>Practical courses on finance, leadership, strategy, business models and AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
+    h += "<p>Practical courses on finance, leadership, strategy, systems thinking, business models and AI, written for technical and data professionals. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
     h += "<a class='btn ghost' href='#fin-home'>Browse courses</a></div></div></section>";
