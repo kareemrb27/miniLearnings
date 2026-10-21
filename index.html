@@ -115,7 +115,8 @@
   .stat b { font-size: 22px; display: block; line-height: 1.1; }
   .stat span { font-size: 12.5px; color: var(--ink3); font-weight: 600; }
 
-  .section-title { font-size: 22px; font-weight: 800; letter-spacing: -.015em; margin: 6px 0 14px; }
+  .section-title { font-size: 22px; font-weight: 800; letter-spacing: -.015em; margin: 6px 0 14px; scroll-margin-top: calc(var(--topbar-h) + 16px); }
+  #profile { scroll-margin-top: calc(var(--topbar-h) + 16px); }
   .continue-card { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--cc); border-radius: 14px; padding: 16px 18px; margin-bottom: 26px; box-shadow: var(--shadow-sm); }
   .continue-card:hover { box-shadow: var(--shadow); }
   .continue-card .cc-text { flex: 1; min-width: 0; }
@@ -4103,9 +4104,9 @@
     document.getElementById("topbar").innerHTML =
       "<button class='menu-btn' id='menu-btn' aria-label='Toggle syllabus'>"+icon("menu",22)+"</button>"
       + "<a class='logo' href='#home'><span class='logo-mark'>"+logoMark()+"</span><span>Learning Hub</span></a>"
-      + "<nav class='top-links'><a href='#home'>Explore courses</a></nav><span class='spacer'></span>"
+      + "<nav class='top-links'><a href='#courses'>Explore courses</a></nav><span class='spacer'></span>"
       + "<span class='top-chip'>"+icon("award",15)+" "+done+"/"+total+" units complete</span>"
-      + "<a class='avatar' href='#home' title='Your profile'>"+escapeHtml(initial)+"</a>";
+      + "<a class='avatar' href='#profile' title='Your name for certificates'>"+escapeHtml(initial)+"</a>";
     var mb = document.getElementById("menu-btn");
     if (mb) mb.onclick = function(){ document.body.classList.toggle("side-open"); };
   }
@@ -4383,7 +4384,7 @@
     h += "<p>Short, practical courses for technical and data professionals becoming leaders: people who live with purpose and create impact in their teams and the world. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
-    h += "<a class='btn ghost' href='#fin-home'>Browse courses</a></div></div></section>";
+    h += "<a class='btn ghost' href='#courses'>Browse courses</a></div></div></section>";
 
     h += orbitHtml();
 
@@ -4399,7 +4400,7 @@
         + "<div class='cc-text'><div class='eyebrow'>"+(next.label==="Continue" ? "Pick up where you left off" : "Start your first unit")+"</div><div class='cc-title'>"+entry.def.title+"</div><div class='cc-sub'>"+next.course.name+"</div></div><span class='go'>"+icon("arrow-right",18)+"</span></a>";
     }
 
-    h += "<h2 class='section-title'>Your courses</h2><div class='course-grid'>";
+    h += "<h2 class='section-title' id='courses'>Your courses</h2><div class='course-grid'>";
     COURSES.forEach(function(course){
       var prog = courseProgress(course);
       var cta = prog.pct===100 ? "Review course" : (prog.pct>0 ? "Continue course" : "Start course");
@@ -4414,7 +4415,7 @@
     h += "</div>";
 
     var initial = ((state.learnerName||"").trim().charAt(0) || "L").toUpperCase();
-    h += "<div class='profile-card'><span class='avatar' id='pc-avatar'>"+escapeHtml(initial)+"</span><div class='pc-text'><h3>Your name for certificates</h3><p>Used on every course certificate. Stored only in this browser.</p></div>";
+    h += "<div class='profile-card' id='profile'><span class='avatar' id='pc-avatar'>"+escapeHtml(initial)+"</span><div class='pc-text'><h3>Your name for certificates</h3><p>Used on every course certificate. Stored only in this browser.</p></div>";
     h += "<input class='name-input' id='learner-name' type='text' placeholder='e.g. Kareem Shaik' value='"+escapeAttr(state.learnerName||"")+"'/></div>";
     h += "<div class='foot-actions'><button class='link-btn' id='reset-btn'>Reset all progress</button></div>";
     main.innerHTML = h;
@@ -4771,9 +4772,21 @@
     } else {
       renderHome();
     }
-    window.scrollTo(0,0);
+    // Home-page sections reachable from the top bar scroll to themselves; every other page starts at the top.
+    var target = (!course && (route === "courses" || route === "profile")) ? document.getElementById(route) : null;
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.scrollTo(0,0);
   }
   window.addEventListener("hashchange", render);
+  // Clicking a link to the page you are already on does not fire hashchange, so re-render
+  // (and scroll) explicitly. Without this, Home, Explore courses and the logo look broken.
+  document.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest("a[href^='#']") : null;
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var href = a.getAttribute("href");
+    var here = location.hash || "#home";
+    if (href === here){ e.preventDefault(); render(); }
+  });
   render();
 })();
 </script>
