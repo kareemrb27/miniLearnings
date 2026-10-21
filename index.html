@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Learning Hub for Technical Leaders</title>
+<title>Learning Hub: Small Courses for Purposeful Leaders</title>
 <style>
   :root {
     color-scheme: light;
@@ -491,23 +491,23 @@
       time: "2–3 hrs",
       concepts: [
         { t: "Leading vs. Lagging Indicators",
-          body: "A lagging indicator tells you what already happened (revenue, churn last quarter). A leading indicator predicts what's about to happen (trial-to-paid conversion, pipeline velocity, usage-days per seat). Executives need both, but they act on leading indicators and report on lagging ones.",
-          ex: "A SaaS company's Q3 revenue (lagging) was $2.4M, flat vs Q2. But trial-to-paid conversion (leading) dropped from 18% to 11% starting in July — flat revenue looks fine, but the leading indicator says Q4 revenue is about to fall." },
+          body: "A lagging indicator tells you what already happened (revenue, churn last quarter). A leading indicator predicts what's about to happen (enquiries this week, trial members converting, bookings for next month). Executives need both, but they act on leading indicators and report on lagging ones.",
+          ex: "A chain of fitness studios had Q3 revenue (lagging) of $2.4M, flat vs Q2. But the share of free-trial visitors who became paying members (leading) dropped from 18% to 11% starting in July. Flat revenue looks fine; the leading indicator says Q4 revenue is about to fall." },
         { t: "Signal vs. Noise — One Dashboard, One Decision",
-          body: "A dashboard with 40 metrics is harder to act on than one with 6. Every dashboard should map to a specific decision a specific person needs to make — the same discipline as an alerting layer that only pages on the 3–5 signals that predict an outage, not every log line.",
-          ex: "A VP of Sales 'will we hit target' dashboard needs exactly: pipeline coverage ratio, win rate trend, avg deal cycle time, and days left in quarter. Everything else is noise for that decision." },
+          body: "A dashboard with 40 metrics is harder to act on than one with 6. Every dashboard should map to a specific decision a specific person needs to make. Think of a car dashboard: a few gauges that tell you when to act, not every reading the engine produces.",
+          ex: "A VP of Sales 'will we hit target' dashboard needs exactly: value of deals in progress compared with the target, win rate trend, average time to close a deal, and days left in the quarter. Everything else is noise for that decision." },
         { t: "The Metric Pyramid (North Star → Drivers → Inputs)",
-          body: "Executive dashboards cascade: one North Star metric, 3–5 driver metrics, and the operational inputs teams control day to day. Like a medallion architecture: raw data (bronze) rolls into curated driver metrics (silver), which roll into the one gold-layer number leadership watches.",
-          ex: "North Star = Net Revenue Retention (108%). Driver = churn rate (6%). Input = support first-response time — accounts with >24hr response churn at 11% vs 4% for <4hr response." },
+          body: "Executive dashboards cascade: one North Star metric, 3–5 driver metrics, and the operational inputs teams control day to day. It works like goals in a sports team: the score is the North Star, possession and shots on target are drivers, and fitness and passing drills are the inputs players control.",
+          ex: "For a subscription business: North Star = revenue kept and grown from existing customers (108% of last year). Driver = the share of customers who leave each year (6%). Input = how fast customer emails are answered. Customers who wait more than 24 hours leave at 11% a year, against 4% for those answered within 4 hours." },
         { t: "Common Executive KPI Vocabulary",
-          body: "CAC, LTV, LTV:CAC ratio (3:1+ is healthy), Gross Margin, Burn Multiple (net burn ÷ net new ARR — lower is more efficient), Rule of 40 (growth % + profit margin % should exceed 40).",
+          body: "CAC (cost to acquire a customer), LTV (the profit a customer brings over their lifetime), LTV:CAC ratio (3:1 or better is healthy), gross margin (what is left from each sale after direct costs), burn multiple (cash burned ÷ new recurring revenue added, lower is better), and the Rule of 40 for growing companies (growth % + profit margin % should exceed 40).",
           ex: "35% YoY growth with -10% operating margin → Rule of 40 score = 35 + (-10) = 25, below the 40 threshold: growth isn't yet capital-efficient." }
       ],
-      caseTitle: "SaaS — The Dashboard That Missed the Warning",
-      caseText: "A mid-market SaaS company's board dashboard shows ARR growing steadily at 22% YoY for three quarters — green across the board. But NPS among accounts due for renewal has quietly dropped from 42 to 19, and usage-days per seat is down 15% among enterprise accounts. None of this is on the dashboard, which is built entirely on lagging revenue and logo-count metrics.",
+      caseTitle: "Subscription Business — The Dashboard That Missed the Warning",
+      caseText: "A meal-kit subscription company's board dashboard shows revenue growing steadily at 22% a year for three quarters, green across the board. But satisfaction scores among subscribers due to renew have quietly dropped from 42 to 19, and the number of meals each subscriber actually cooks is down 15%. None of this is on the dashboard, which is built entirely on lagging revenue and customer-count figures.",
       caseTask: "Identify which leading indicators should have been on this dashboard, propose a redesigned 'renewal health' panel, and explain what decision it would have enabled the CEO to make three months earlier.",
       assignment: {
-        deliverable: "Build a one-page executive KPI dashboard (spreadsheet, sheet, or BI tool) for a hypothetical company using 12 months of MRR, new customers, churned customers, support tickets, and average deal size. Include one North Star metric, 3–4 driver metrics with trend arrows, and one leading indicator not derived directly from revenue.",
+        deliverable: "Build a one-page dashboard (a spreadsheet or a single slide is fine) for a real or imagined business using 12 months of monthly revenue, new customers, lost customers, complaints, and average sale value. Include one North Star metric, 3–4 driver metrics with trend arrows, and one leading indicator not derived directly from revenue.",
         rubric: [
           "North Star clarity — a stranger could state the one metric that matters in one sentence",
           "Signal-to-noise — 6 metrics or fewer on the primary view",
@@ -522,7 +522,7 @@
           opts: ["Include as many metrics as possible for completeness","Map to a specific decision with a small number of metrics","Only show revenue metrics","Be updated once a year"], correct: 1 },
         { q: "In the Metric Pyramid, what sits at the top?",
           opts: ["Operational inputs","Driver metrics","One North Star metric","Raw data logs"], correct: 2 },
-        { q: "A company grows ARR 35% YoY with -10% operating margin. What is its Rule of 40 score?",
+        { q: "A company grows revenue 35% a year with a −10% operating margin. What is its Rule of 40 score?",
           opts: ["45, healthy","25, below threshold","35, healthy","-10, unhealthy"], correct: 1 }
       ]
     },
@@ -532,8 +532,8 @@
       time: "2–3 hrs",
       concepts: [
         { t: "Fixed vs. Variable Costs",
-          body: "Fixed costs don't change with volume (a reserved-capacity commitment, a platform license, salaried staff). Variable costs scale with usage (on-demand compute, per-call fees, commissions). The mix determines operating leverage.",
-          ex: "A platform team pays $40K/mo fixed licensing plus $0.02/GB variable compute. At 2M GB/mo, cost per GB = $0.04. At 10M GB/mo, cost per GB drops to $0.024 — the same reserved-vs-on-demand tradeoff you navigate in cloud architecture." },
+          body: "Fixed costs don't change with volume (rent, insurance, salaried staff). Variable costs rise with every unit sold (ingredients, packaging, delivery fees, sales commissions). The mix determines operating leverage: how quickly profit grows once fixed costs are covered.",
+          ex: "A bakery pays $40K a month in rent and salaries, plus $0.80 of ingredients per loaf. At 20,000 loaves a month, each loaf costs ($40K + $16K) ÷ 20,000 = $2.80. At 50,000 loaves, it costs ($40K + $40K) ÷ 50,000 = $1.60. The fixed costs are spread over more loaves, which is why volume matters so much to businesses with high fixed costs." },
         { t: "Contribution Margin",
           body: "Contribution margin = Revenue per unit − Variable cost per unit. It's the number that should drive 'sell more of X or Y' decisions, not gross revenue.",
           ex: "Product A: $50 price, $30 variable cost → $20 margin (40%). Product B: $80 price, $65 variable cost → $15 margin (19%). B has higher revenue per sale, but A contributes more profit per unit." },
@@ -542,10 +542,10 @@
           ex: "CAC = $6,000. Customer pays $500/mo at 70% margin → $350/mo profit. Payback ≈ 17 months. If customers churn before month 17, you're acquiring at a loss." },
         { t: "Budgeting: Zero-Based vs. Incremental",
           body: "Incremental budgeting adjusts last year's number by a percentage — fast but perpetuates inefficiency. Zero-based budgeting requires every line item justified from zero — slower, but surfaces 'why are we still paying for this'.",
-          ex: "An incremental 'data tooling' budget rises from $200K to $210K automatically. A zero-based review reveals $35K/yr still spent on a legacy ETL tool PySpark jobs replaced 18 months ago." }
+          ex: "An incremental 'software subscriptions' budget rises from $200K to $210K automatically. A zero-based review reveals $35K a year still being paid for two tools the team stopped using 18 months ago." }
       ],
       caseTitle: "Beauty/CPG — The SKU That Looks Profitable But Isn't",
-      caseText: "A DTC skincare brand sells a $45 serum (COGS $12, $8 CAC, $3 fulfillment) and a $22 cleanser (COGS $5, $4 CAC, $3 fulfillment). On revenue alone the serum looks like the star product, and leadership is deciding which to feature in the next paid campaign.",
+      caseText: "A direct-to-consumer skincare brand sells a $45 serum (COGS $12, $8 CAC, $3 fulfillment) and a $22 cleanser (COGS $5, $4 CAC, $3 fulfillment). On revenue alone the serum looks like the star product, and leadership is deciding which to feature in the next paid campaign.",
       caseTask: "Calculate contribution margin ($ and %) for both. Which should get the marketing budget — and does the answer change if the cleanser has 65% repeat-purchase within 90 days vs 20% for the serum?",
       assignment: {
         deliverable: "Build a unit economics spreadsheet comparing two products or service lines from your own work. Calculate variable cost per unit, contribution margin ($ and %), CAC payback period, and a simple 12-month LTV estimate. Recommend which deserves more investment and state the one assumption your recommendation is most sensitive to.",
@@ -569,19 +569,20 @@
       time: "2–4 hrs",
       concepts: [
         { t: "Top-Down vs. Bottom-Up Forecasting",
-          body: "Top-down starts from a market-size number and works down. Bottom-up starts from operational drivers and works up. Bottom-up is more defensible — it's built on inputs you can monitor and influence, like building from validated source-system data rather than a spreadsheet guess.",
-          ex: "Top-down: '$4B market, we'll get 1% = $40M.' Bottom-up: '6 new reps, ramping to 2 deals/mo at $15K ACV → ~$8-9M new ARR.' The bottom-up number is grounded in capacity you can actually staff." },
+          body: "Top-down starts from a market-size number and works down. Bottom-up starts from operational drivers and works up. Bottom-up is more defensible: it's built on inputs you can monitor and influence, like planning a road trip from your car's real fuel use rather than the figure in the brochure.",
+          ex: "Top-down: '$4B market, we'll get 1% = $40M.' Bottom-up: '6 new salespeople, each ramping up to 2 deals a month at $15K a year per deal → about $8–9M of new annual revenue.' The bottom-up number is grounded in capacity you can actually staff." },
         { t: "Scenario Planning (Best / Base / Worst)",
-          body: "A single-point forecast pretends the future is certain. Scenario planning models 3+ plausible futures so decisions can be stress-tested against downside cases — the financial equivalent of load-testing against peak, not average, traffic.",
-          ex: "Base: 20% growth, hire 10 engineers. Worst: 5% growth (a renewal falls through) — that hiring plan pushes runway from 34 to 22 months. Best: 35% growth — the hiring plan should flex up." },
+          body: "A single-point forecast pretends the future is certain. Scenario planning models 3+ plausible futures so decisions can be stress-tested against downside cases, the financial equivalent of packing for the weather you might get, not just the forecast.",
+          ex: "Base: 20% growth, hire 10 people. Worst: 5% growth (a major client does not renew), and that hiring plan cuts the months of cash left from 34 to 22. Best: 35% growth, and the hiring plan should flex up." },
         { t: "Rolling Forecasts vs. Static Annual Budgets",
-          body: "A static annual budget set in December is often stale by March. A rolling forecast is refreshed monthly or quarterly — like a streaming pipeline recomputing state incrementally versus a nightly batch job that's already a day behind." },
+          body: "A static annual budget set in December is often stale by March. A rolling forecast is refreshed monthly or quarterly, like a satnav that recalculates the route as traffic changes, versus a printed map from last week.",
+          ex: "A consultancy's December budget assumed 40 new clients in the year. By April it had signed 6, well behind pace. With a rolling forecast, hiring is re-planned in April. With a static budget, the gap is discovered in December, after the hires have been made." },
         { t: "Capital Allocation Frameworks",
           body: "When capital is limited, it should flow to the highest risk-adjusted return, not the loudest advocate: rank by (expected return × probability of success) ÷ resources required.",
           ex: "Initiative A: $2M return, 70% success, $500K cost → 2.8x risk-adjusted return. Initiative B: $5M return, 30% success, $1M cost → 1.5x. Despite B's bigger headline, A is the better allocation." }
       ],
       caseTitle: "Retail — Stores or E-Commerce?",
-      caseText: "A regional retail chain has $8M for either (1) 4 new stores — $3.5M revenue/store, 12% margin, $1.8M capex each, 85% confidence, or (2) an e-commerce/data platform rebuild — $6M incremental online revenue by year two, 22% margin, $8M cost, but only 55% confidence given the team's inexperience at this scale.",
+      caseText: "A regional retail chain has $8M for either (1) 4 new stores — $3.5M revenue/store, 12% margin, $1.8M capex each, 85% confidence, or (2) building an online store with home delivery — $6M incremental online revenue by year two, 22% margin, $8M cost, but only 55% confidence given the team has never run online sales.",
       caseTask: "Build best/base/worst scenarios for both options, compute risk-adjusted return, and make a capital allocation recommendation. State what would need to be true for the other option to become correct.",
       assignment: {
         deliverable: "Build a simple 3-scenario (best/base/worst) 12-month revenue or cost forecast for a project you're close to. For each scenario, state the 2–3 key assumptions driving the difference, and calculate the resulting change in a downstream metric (runway, margin, or headcount capacity).",
@@ -606,19 +607,19 @@
       concepts: [
         { t: "Statistical vs. Practical Significance",
           body: "A result can be statistically significant (unlikely due to chance) without being practically significant (large enough to matter). Statistical significance answers 'is this real?'; practical significance answers 'is this worth doing?'",
-          ex: "Variant B converts at 4.3% vs A's 4.1%, p=0.03 over 500K visitors — statistically real, but a 0.2pt lift may not justify the engineering cost of shipping and maintaining it." },
+          ex: "A new shop-window design brings in 4.3% of passers-by against 4.1% for the old one, p=0.03 over 500K passers-by. The difference is statistically real, but a 0.2-point lift may not justify the cost of refitting all 200 stores." },
         { t: "Correlation vs. Causation, and Confounders",
           body: "Two metrics moving together doesn't mean one causes the other — a third factor may drive both (the classic 'ice cream and drownings' trap).",
           ex: "Webinar attendees retain at 92% vs 78% for non-attendees. Before concluding webinars cause retention, check if attendees are systematically higher-intent buyers to begin with." },
         { t: "Expected Value and Decision Trees",
           body: "Expected value = Σ(probability × outcome), letting you compare a certain small payoff against an uncertain large one on the same basis.",
-          ex: "A guaranteed $200K saving vs a feature with 40% chance of $800K (EV=$320K) and 60% chance of $0. EV favors the feature, but a cash-constrained business might rationally still take the guaranteed $200K." },
+          ex: "A guaranteed $200K saving vs a new product line with a 40% chance of $800K (EV = $320K) and a 60% chance of $0. EV favours the product line, but a cash-constrained business might rationally still take the guaranteed $200K." },
         { t: "Common Cognitive Biases in Data Interpretation",
           body: "Survivorship bias (only analyzing what 'survived'), confirmation bias (seeking data that supports a decision already made), base rate neglect (overreacting to one anecdote or spike).",
-          ex: "'Our top 10 customers all use Feature Y' ignores the 200 churned customers who also used it — the correct comparison is adoption among retained vs churned customers." }
+          ex: "'Our top 10 customers all joined the loyalty programme' ignores the 200 lost customers who also joined it. The correct comparison is membership among customers who stayed vs customers who left." }
       ],
-      caseTitle: "SaaS — The Pricing Test That Almost Shipped",
-      caseText: "A pricing A/B test shows a new higher-priced tier increases average revenue per account by 15%, p=0.01 over 3,000 accounts across 6 weeks. The team is ready to roll it out — but the test only ran among accounts active over 12 months; newer, more price-sensitive accounts were never included.",
+      caseTitle: "Subscription Box — The Price Test That Almost Rolled Out",
+      caseText: "A price test shows a new premium box increases average revenue per subscriber by 15%, p=0.01 over 3,000 subscribers across 6 weeks. The team is ready to roll it out, but the test only included subscribers of more than 12 months; newer, more price-sensitive subscribers were never offered it.",
       caseTask: "Explain why this filtering issue threatens the '15% lift' conclusion, what population the result can legitimately be generalized to, and what you'd require before approving a full rollout.",
       assignment: {
         deliverable: "Take or construct a simple two-group dataset (e.g. conversion rates for two variants). Calculate the difference, estimate whether it's statistically significant, and separately assess practical significance. Write a 1-paragraph recommendation memo distinguishing 'is this real' from 'does this matter.'",
@@ -648,17 +649,17 @@
           body: "ROI ignores timing. IRR can favor small, fast projects with high percentage returns over larger ones that create more absolute value. Payback ignores everything after the payback point.",
           ex: "Project A: $100K cost, pays back in 6 months, then nothing — high IRR, small absolute value. Project B: $2M cost, pays back in 30 months, then $4M/yr for 5 years — worse headline metrics, vastly more NPV." },
         { t: "Opportunity Cost",
-          body: "The true cost of a choice includes the value of the next-best alternative given up — not just cash spent. The financial version of 'using this cluster for Job A means Job B waits.'",
-          ex: "3 senior engineers spend 4 months on an internal tool instead of ~$480K of billable client work. Even at '$0 cash cost,' the true cost is the foregone billable revenue." },
+          body: "The true cost of a choice includes the value of the next-best alternative given up, not just cash spent. An hour spent in one meeting is an hour you cannot spend on anything else.",
+          ex: "3 senior consultants spend 4 months building an internal training programme instead of ~$480K of billable client work. Even at '$0 cash cost,' the true cost is the foregone billable revenue." },
         { t: "Portfolio-Level Tradeoff Analysis",
-          body: "Individual projects shouldn't be evaluated only in isolation — consider risk correlation, resource contention, and sequencing, like capacity planning across a shared compute cluster.",
-          ex: "Three projects each have positive NPV alone, but all need the same 2 senior engineers and must run sequentially — the real choice is sequencing and count, not 'are they worth doing.'" }
+          body: "Individual projects shouldn't be evaluated only in isolation. Consider shared risks, competition for the same people and money, and sequencing, like a household weighing a kitchen renovation, a new car and a holiday that all draw on the same savings.",
+          ex: "Three projects each have positive NPV alone, but all need the same 2 senior people and must run one after another. The real choice is order and number, not 'are they worth doing.'" }
       ],
-      caseTitle: "IT Delivery Consulting — Build the Accelerator, or Staff the Bench?",
-      caseText: "A consulting practice can deploy $600K and 4 senior engineers for two quarters on (1) a reusable AI-strategy delivery accelerator — est. $1.8M NPV over 3 years, 60% probability of hitting adoption targets, or (2) direct billable client work — near-certain (95%) $1.4M NPV, no build risk.",
-      caseTask: "Calculate risk-adjusted NPV for both, factor in opportunity cost of the path not taken, and weigh the accelerator's strategic value (sales differentiation, reusable IP) against its lower risk-adjusted NPV. Make a recommendation and state the qualitative factor most likely to change your answer.",
+      caseTitle: "Accounting Firm — Build a Client Toolkit, or Keep Billing?",
+      caseText: "An accounting firm can deploy $600K and 4 senior staff for two quarters on (1) a reusable online tax-planning toolkit sold to clients — est. $1.8M NPV over 3 years, 60% probability of hitting adoption targets, or (2) direct billable client work — near-certain (95%) $1.4M NPV, no build risk.",
+      caseTask: "Calculate risk-adjusted NPV for both, factor in opportunity cost of the path not taken, and weigh the toolkit's strategic value (standing out from competitors, a reusable product) against its lower risk-adjusted NPV. Make a recommendation and state the qualitative factor most likely to change your answer.",
       assignment: {
-        deliverable: "Calculate NPV for two competing projects relevant to your own work (e.g. legacy-to-Databricks/PySpark migration vs a new Kafka streaming pipeline) using a consistent discount rate (10% default). Include initial cost, 3-year projected cash flows/savings, discounted present value per year, total NPV, and a clear recommendation.",
+        deliverable: "Calculate NPV for two competing projects from your own work or life (e.g. opening a second location vs upgrading equipment, or two improvement projects your team is choosing between) using a consistent discount rate (10% default). Include initial cost, 3-year projected cash flows/savings, discounted present value per year, total NPV, and a clear recommendation.",
         rubric: [
           "Each year's cash flow is properly discounted, not just summed",
           "The same discount rate is applied to both projects for fair comparison",
@@ -670,53 +671,53 @@
         { q: "NPV accounts for something simple ROI ignores:", opts: ["Total cost","Time value of money","Number of years","Currency"], correct: 1 },
         { q: "If a project's NPV is negative, it means:", opts: ["The project has no costs","It destroys value relative to the discount rate / cost of capital","It's definitely a bad idea regardless of strategic value","IRR is infinite"], correct: 1 },
         { q: "Opportunity cost refers to:", opts: ["The cash spent on a project","The value of the next-best alternative given up","The tax paid on profits","The depreciation of an asset"], correct: 1 },
-        { q: "A portfolio-level view of investments considers:", opts: ["Only the single project with highest NPV","Resource contention and risk correlation across multiple projects","Only cash cost, ignoring engineering time","The marketing budget only"], correct: 1 }
+        { q: "A portfolio-level view of investments considers:", opts: ["Only the single project with highest NPV","Resource contention and risk correlation across multiple projects","Only cash cost, ignoring people's time","The marketing budget only"], correct: 1 }
       ]
     }
   ];
 
   var FIN_CAPSTONE = {
-    id: "capstone", num: "Capstone", title: "Should We Invest in a New Data Platform?",
+    id: "capstone", num: "Capstone", title: "Should We Build a Central Kitchen?",
     sub: "An integrated case combining all five modules",
     time: "3–5 hrs",
-    setup: "You are technical advisor to leadership at 'Meridian Analytics,' a composite mid-market data/analytics consulting firm. They're deciding whether to invest $2.4M over 18 months migrating from a legacy on-prem Hadoop/batch-ETL stack to a modern Databricks + Kafka + PySpark streaming architecture.",
+    setup: "You are adviser to the leadership of 'Meridian Kitchens,' a composite group of 12 neighbourhood restaurants. Today every restaurant preps its own food from scratch. Leadership is deciding whether to invest $2.4M over 18 months in a central kitchen that would prepare ingredients and sauces for all 12 restaurants and open a new catering business.",
     dataPoints: [
-      { h: "Dashboard signals (Module 1)", b: "Client-facing SLA breaches (a leading indicator of churn) rose from 2% to 7% of engagements over two quarters, driven by batch-processing delays. NRR among analytics-practice clients slipped from 112% to 103%." },
-      { h: "Cost structure (Module 2)", b: "Current platform: $180K/mo, mostly fixed (legacy licensing + 6-person infra team). New platform: ~$95K/mo at current volume but scales with usage. Contribution margin on analytics engagements: 38% today, projected 47% post-migration." },
-      { h: "Forecast (Module 3)", b: "Base case: 20% analytics-practice revenue growth if SLA issues resolve. Worst case: flat revenue if migration slips. Best case: 35% growth if the modernized platform becomes a stated sales differentiator." },
-      { h: "Decision science (Module 4)", b: "A pilot migration on one client's workload showed a 60% reduction in processing time, consistent across 3 runs — but the pilot client was already a technically sophisticated 'friendly' account." },
-      { h: "Investment case (Module 5)", b: "$2.4M cost, projected to save $85K/mo in run-rate cost within 12 months and enable ~$1.1M/yr in new revenue, with 85% confidence in the cost savings but only 65% confidence in the full revenue upside." }
+      { h: "Dashboard signals (Module 1)", b: "Complaints about long waits for food (a leading indicator of lost customers) rose from 2% to 7% of orders over two quarters, mostly at busy times when kitchens fall behind. Revenue from returning customers slipped from 112% to 103% of the previous year." },
+      { h: "Cost structure (Module 2)", b: "Current prep costs: $180K a month, mostly fixed (prep staff and equipment leases in every restaurant). With a central kitchen: about $95K a month at current volume, rising and falling with demand. Contribution margin per meal: 38% today, projected 47% with central prep." },
+      { h: "Forecast (Module 3)", b: "Base case: 20% revenue growth if waiting times improve. Worst case: flat revenue if the switch-over slips and quality suffers. Best case: 35% growth if the new catering business takes off." },
+      { h: "Decision science (Module 4)", b: "A three-week trial supplying one restaurant from a temporary central kitchen cut kitchen prep time by 60%, consistently across the three weeks. But the trial restaurant was the flagship, run by the group's most experienced manager." },
+      { h: "Investment case (Module 5)", b: "$2.4M cost, projected to save $85K a month in running costs within 12 months and enable about $1.1M a year of new catering revenue, with 85% confidence in the cost savings but only 65% confidence in the full catering upside." }
     ],
     deliverablePoints: [
       "State the dashboard-level 'why now' in one paragraph (Module 1)",
-      "Quantify the unit-economics case — the contribution margin shift (Module 2)",
+      "Quantify the unit-economics case: the contribution margin shift (Module 2)",
       "Present a best/base/worst 18-month view of the decision (Module 3)",
-      "Name the key threat to validity in the pilot result and what you'd want to see before trusting the 60% figure (Module 4)",
-      "Calculate risk-adjusted NPV of the migration (10% discount rate) vs the opportunity cost of the status quo (Module 5)",
+      "Name the key threat to validity in the trial result and what you'd want to see before trusting the 60% figure (Module 4)",
+      "Calculate risk-adjusted NPV of the central kitchen (10% discount rate) vs the opportunity cost of staying as you are (Module 5)",
       "End with a clear go / no-go / phased recommendation and the single assumption that most threatens it"
     ],
     rubric: [
-      "The memo visibly draws on dashboards, cost accounting, forecasting, decision science, and investment analysis — not NPV alone",
+      "The memo visibly draws on dashboards, cost accounting, forecasting, decision science, and investment analysis, not NPV alone",
       "Contribution margin, forecast growth, and NPV inputs don't contradict each other",
-      "The 'friendly customer' generalizability risk in the pilot data is explicitly flagged",
-      "A named leadership team could act on this memo without needing to ask 'so what should we do?'"
+      "The risk that the flagship trial does not represent the other 11 restaurants is explicitly flagged",
+      "Leadership could act on this memo without needing to ask 'so what should we do?'"
     ],
     quiz: [
-      { q: "In the Meridian case, which signal first indicated a problem before revenue metrics showed it?", opts: ["Client-facing SLA breaches rising (a leading indicator)","The final NPV calculation","The engineering team's morale survey","The marketing budget"], correct: 0 },
-      { q: "Why should the 60% pilot processing-time improvement be treated cautiously?", opts: ["It was measured incorrectly","The pilot client was an atypical, technically sophisticated 'friendly' account","It didn't use PySpark","It only ran for one day"], correct: 1 },
-      { q: "A sound capstone recommendation should combine:", opts: ["Only the NPV calculation","Dashboard signals, unit economics, forecast scenarios, decision-science caveats, and investment analysis together","Only qualitative opinions","Only the pilot result"], correct: 1 }
+      { q: "In the Meridian case, which signal first indicated a problem before revenue showed it?", opts: ["Complaints about waiting times rising (a leading indicator)","The final NPV calculation","The staff satisfaction survey","The marketing budget"], correct: 0 },
+      { q: "Why should the 60% trial improvement in prep time be treated cautiously?", opts: ["It was measured incorrectly","The trial ran at the flagship restaurant with the most experienced manager, which may not represent the others","It used a different menu","It only ran for one day"], correct: 1 },
+      { q: "A sound capstone recommendation should combine:", opts: ["Only the NPV calculation","Dashboard signals, unit economics, forecast scenarios, decision-science caveats, and investment analysis together","Only qualitative opinions","Only the trial result"], correct: 1 }
     ]
   };
 
   var FIN_BONUS = {
-    linkedin: "Just wrapped a self-paced course connecting finance fundamentals to the way I already think about systems — and three things changed how I show up in strategy conversations.\n\nFirst: dashboards are alerting systems, not reporting systems. The same discipline that keeps an on-call engineer from drowning in noisy pages should govern what leadership sees — one North Star metric, a few real drivers, and at least one leading indicator that predicts trouble before revenue shows it.\n\nSecond: contribution margin, not revenue, is the number that should drive “where do we invest” decisions. I've sat in enough roadmap conversations where the loudest revenue number won the budget — while the actual profit driver sat one column over, ignored.\n\nThird: NPV and opportunity cost force a discipline I already apply to compute allocation — every dollar and every engineer-hour has a next-best use, and “it costs nothing, we already have the team” is almost never true once you price the alternative.\n\nTechnical leadership increasingly means being fluent in both languages. This course closed a real gap for me — happy to share the case studies if useful to others making a similar shift.",
+    linkedin: "Just finished a self-paced course on finance fundamentals, and three ideas have already changed how I show up in planning and budget conversations.\n\nFirst: a dashboard should work like a car's, not a cockpit's. One number that matters most, a few real drivers, and at least one leading indicator that warns you before revenue does. Forty metrics on a page usually means nobody knows which one to act on.\n\nSecond: contribution margin, not revenue, should drive 'where do we invest' decisions. I have seen the biggest revenue number win the budget while the real profit driver sat one column over, ignored.\n\nThird: nothing is free once you count opportunity cost. 'It costs nothing, we already have the team' is almost never true. Every hour and every dollar has a next-best use, and NPV is simply the discipline of pricing that honestly, including when the money arrives.\n\nFinancial fluency used to feel like someone else's job. It isn't. It is how good ideas get funded. Happy to share the case studies if they would help anyone else closing the same gap.",
     blog: [
-      { h: "1. The Gap Nobody Warns You About", b: "Open with the moment technical expertise stopped being enough — a budget conversation, a roadmap prioritization fight, or a client asking “what's the ROI” and realizing the honest answer required financial fluency you didn't have yet." },
-      { h: "2. Dashboards Are Alerting Systems in a Suit", b: "Draw the direct parallel between designing observability/alerting for a data pipeline and designing an executive KPI dashboard — signal-to-noise, leading vs lagging indicators, and why more metrics usually means less clarity." },
-      { h: "3. The Number That Actually Drives Decisions Isn't Revenue", b: "Walk through the contribution-margin lesson — a real or composite example of a “big revenue” initiative that was actually a weaker bet than a smaller one once true unit economics were on the table." },
-      { h: "4. Forecasting Like You'd Design for Failure", b: "Connect scenario planning (best/base/worst) to designing systems for peak load and failure modes rather than the happy path — and why a single-point forecast is as risky as a system with no failover plan." },
-      { h: "5. Every Resource Has an Opportunity Cost, Even the “Free” Ones", b: "Use the engineering-time-vs-billable-work example to argue that “internal, unbilled work” still has a real cost — the value of what those hours could have produced elsewhere." },
-      { h: "6. What This Changes About How I Show Up in the Room", b: "Close with the practical shift: what you now ask in a roadmap or investment conversation that you didn't ask before, and an invitation for other technical leaders to name their own version of this gap." }
+      { h: "1. The Gap Nobody Warns You About", b: "Open with the moment your expertise stopped being enough: a budget meeting, a debate about priorities, or someone asking 'what's the return?' and realising the honest answer needed financial fluency you didn't yet have." },
+      { h: "2. A Dashboard Should Work Like a Car's", b: "Explain signal versus noise, leading versus lagging indicators, and why more metrics usually means less clarity. Use one dashboard you know well and say what you would remove from it." },
+      { h: "3. The Number That Actually Drives Decisions Isn't Revenue", b: "Walk through the contribution-margin lesson with a real or composite example of a 'big revenue' option that was a weaker bet than a smaller one once true unit economics were on the table." },
+      { h: "4. Plan for the Weather You Might Get", b: "Connect best/base/worst scenarios to everyday preparation: why a single-number forecast is as risky as packing only for the forecast, and how a worst case changed a decision you made." },
+      { h: "5. Every Resource Has an Opportunity Cost, Even the 'Free' Ones", b: "Use the example of internal, unbilled work to show that people's time always has a real cost: the value of what those hours could have produced elsewhere." },
+      { h: "6. What This Changes About How I Show Up in the Room", b: "Close with the practical shift: the questions you now ask in budget and investment conversations that you didn't ask before, and an invitation for readers to name their own version of this gap." }
     ]
   };
 
@@ -1650,7 +1651,7 @@
 
   var FUT_BONUS = {
     linkedin: "I have just finished a course on strategic foresight, and it changed how I think about planning.\n\nI used to treat the future as a number to forecast. Three ideas replaced that habit:\n\n1. A forecast is one future. Our capacity plans, roadmaps and hiring plans usually rest on a single line drawn forward from the past. The real question is which of our assumptions are important and shaky, and what we would do if they broke.\n\n2. Scenarios are not best, base and worst. Those three turn one dial up and down. Useful scenarios describe worlds that differ in kind: different buyers, different pricing, different team shapes. Then you test your options against all of them and look for the moves that hold up everywhere.\n\n3. Decide your triggers in advance. For each plausible future, pick an indicator, set a threshold and agree what you will do when it is crossed. It removes the argument at the moment when everyone is tempted to explain the evidence away.\n\nNone of this is prediction. It is preparation, and it costs a few hours a quarter.\n\nWhat assumption in your current plan would you least like to be wrong about?",
-    blogTitle: "Stop Forecasting, Start Preparing: Foresight for Technical Leaders",
+    blogTitle: "Stop Forecasting, Start Preparing: Foresight for Leaders",
     blog: [
       { h: "1. The plan that was right until it wasn't", b: "Open with a real plan from your own work that rested on one forecast, and the moment the assumption underneath it moved. Keep it specific and first-person. Make the point that the plan was not careless, it was simply built for one future." },
       { h: "2. Write down what you are assuming", b: "Walk through the assumptions audit: list them, score importance and confidence, and find the fragile ones. Show two or three from your own roadmap and say which one surprised you when you scored it." },
@@ -2011,7 +2012,7 @@
 
   var AGT_BONUS = {
     linkedin: "I have just finished a course on the agent economy: what changes when software can pay, buy and trade on our behalf.\n\nThree things I am taking back to work:\n\n1. Put the limit in code, not in the prompt. An agent that can spend needs a mandate: who it acts for, what it may buy, how much per transaction and in total, and when the permission expires. A model cannot be trusted to enforce its own budget, and it does not need to be.\n\n2. Small payments break old rails. A typical card fee on a five-cent request is about six times the payment. That is why everything is a subscription, and why per-request settlement matters for software that buys from providers it has never met.\n\n3. Price AI per task. Once you know what one task costs in tokens and compute, you can route easy work to cheaper models and decide what is worth automating. In the examples I worked through, routing alone cut the bill by more than half.\n\nThe area is early and the forecasts are uncertain. The controls are not new, though. They are the same delegation, limits and audit trails finance teams have always used, applied to a new kind of actor.\n\nWhat is the first limit you would set on an agent with a budget?",
-    blogTitle: "When Software Gets a Budget: A Technical Leader's Guide to Agent Payments",
+    blogTitle: "When Software Gets a Budget: A Leader's Guide to Agent Payments",
     blog: [
       { h: "1. The day an automation spent real money", b: "Open with a concrete moment from your own work when a script, integration or agent spent more than intended, or could have. Keep it specific. Use it to make the point that spending power changes what an automation is." },
       { h: "2. Two kinds of tokens", b: "Explain the parallel between language tokens and asset tokens in plain terms, and be clear about where it breaks: one is probabilistic information, the other is an exact and often irreversible claim. Credit the BlackRock paper 'The Machine-Native Economy' for the framing." },
@@ -2369,7 +2370,7 @@
 
   var DAT_BONUS = {
     linkedin: "I have just finished a course on data foundations for AI agents, and it changed where I think the effort belongs.\n\nThree things I am taking back to my team:\n\n1. Pilots are not progress. A demo runs on hand-picked data with an engineer nearby. Production has every record, including the broken ones. I now ask who chose the test data before I believe a result.\n\n2. Pick the workflow by feasibility as well as value. The highest-value idea is often the one with the worst data. Scoring both, and starting where the data is ready, gets something into daily use while the harder foundations are built.\n\n3. Quality is a detection-time problem. Agents act continuously, so an error lives as long as the gap between checks. Moving checks into the pipeline matters more than the next model upgrade. The same goes for documents: a quarter of a knowledge base being out of date means most answers lean on stale material.\n\nNone of this is glamorous. It is definitions, owners, access rules and monitoring. But it is what separates an agent people rely on from a demo people remember.\n\nWhich dataset would improve the most workflows in your organisation if it were fixed once?",
-    blogTitle: "Your Agents Are Only as Good as Your Data: A Field Guide for Technical Leaders",
+    blogTitle: "Your Agents Are Only as Good as Your Data: A Field Guide for Leaders",
     blog: [
       { h: "1. The demo that did not survive Monday", b: "Open with a pilot you have seen succeed in a meeting and stall in production. Describe what was different about the data it met. Keep it specific and first-person, and avoid blaming the model." },
       { h: "2. Stop counting pilots", b: "Make the case for measuring agents in dependable daily use and cost per scaled agent. Cite the McKinsey article 'Building the foundations for agentic AI at scale' for the finding that most organisations experiment and few scale, and that data is the common obstacle." },
@@ -2728,8 +2729,8 @@
   };
 
   var BIZ_BONUS = {
-    linkedin: "I have just finished a course on business model design, written for technical people, and it reframed how I look at what my team builds.\n\nThree ideas I am taking back:\n\n1. An internal platform is a business. It has customers, an offer, a way of reaching them and funding that works like revenue. When I counted the teams that actually use ours, the cost per adopting team was far higher than the number on the budget slide.\n\n2. The unit you charge for matters as much as the price. If your product makes customers need fewer seats, per-seat pricing punishes you for succeeding. With AI features, flat pricing can also mean losing money on your most enthusiastic users.\n\n3. A model is a set of guesses. Rank the assumptions by how critical and how unproven they are, test the riskiest one cheaply, and decide the pass mark before you look at the result. What people commit to is worth far more than what they say.\n\nNone of it needs an MBA. It is four questions, some arithmetic and the discipline to check that the answers fit together.\n\nWho is the real customer of your team's work, and is it the same person who funds it?",
-    blogTitle: "Your Platform Is a Product: Business Model Thinking for Technical Leaders",
+    linkedin: "I have just finished a course on business model design, written for leaders, and it reframed how I look at what my team builds.\n\nThree ideas I am taking back:\n\n1. An internal platform is a business. It has customers, an offer, a way of reaching them and funding that works like revenue. When I counted the teams that actually use ours, the cost per adopting team was far higher than the number on the budget slide.\n\n2. The unit you charge for matters as much as the price. If your product makes customers need fewer seats, per-seat pricing punishes you for succeeding. With AI features, flat pricing can also mean losing money on your most enthusiastic users.\n\n3. A model is a set of guesses. Rank the assumptions by how critical and how unproven they are, test the riskiest one cheaply, and decide the pass mark before you look at the result. What people commit to is worth far more than what they say.\n\nNone of it needs an MBA. It is four questions, some arithmetic and the discipline to check that the answers fit together.\n\nWho is the real customer of your team's work, and is it the same person who funds it?",
+    blogTitle: "Your Platform Is a Product: Business Model Thinking for Leaders",
     blog: [
       { h: "1. The question I could not answer", b: "Open with a moment when someone asked how your product, service or platform creates value and who pays for it, and you realised you had a feature list and not an answer. Keep it specific and first-person." },
       { h: "2. Four questions", b: "Introduce who, what, how and money. Use the example of two organisations selling the same thing as different businesses. Show your own answers and the point where two of them conflicted." },
@@ -3081,7 +3082,7 @@
   };
 
   var SYS_BONUS = {
-    linkedin: "I have just finished a course on systems thinking, written for technical leaders, and it changed how I look at the problems my team keeps 'fixing'.\n\nThree ideas I am using already:\n\n1. Look beneath the event. An outage is an event. Seven outages within two days of a release is a pattern. The release process is the structure, and 'releasing less often is safer' is the belief holding it in place. Fixing events never ends. Changing the structure does.\n\n2. Watch the flows, not the stock. A backlog only shrinks when more leaves than arrives. A weekend of overtime clears a pile and changes neither rate, so the pile returns. The same goes for technical debt, hiring and my inbox.\n\n3. Be suspicious of the quick fix that works. If a problem improves briefly and comes back slightly worse, the fix is probably feeding it. The same applies to the hero who always saves the day: the more they rescue us, the less anyone else learns to.\n\nThe most useful habit was the simplest: before changing anything, ask 'and then what?' twice.\n\nWhich problem have you solved more than twice?",
+    linkedin: "I have just finished a course on systems thinking, written for leaders, and it changed how I look at the problems my team keeps 'fixing'.\n\nThree ideas I am using already:\n\n1. Look beneath the event. An outage is an event. Seven outages within two days of a release is a pattern. The release process is the structure, and 'releasing less often is safer' is the belief holding it in place. Fixing events never ends. Changing the structure does.\n\n2. Watch the flows, not the stock. A backlog only shrinks when more leaves than arrives. A weekend of overtime clears a pile and changes neither rate, so the pile returns. The same goes for technical debt, hiring and my inbox.\n\n3. Be suspicious of the quick fix that works. If a problem improves briefly and comes back slightly worse, the fix is probably feeding it. The same applies to the hero who always saves the day: the more they rescue us, the less anyone else learns to.\n\nThe most useful habit was the simplest: before changing anything, ask 'and then what?' twice.\n\nWhich problem have you solved more than twice?",
     blogTitle: "Why the Same Problem Keeps Coming Back: Systems Thinking for Engineering Leaders",
     blog: [
       { h: "1. The fix that did not hold", b: "Open with a problem your team resolved, with a proper review and completed actions, that returned anyway. Keep it specific. Make the point that everyone did their job and the problem still came back." },
@@ -3214,7 +3215,7 @@
       ]
     },
     {
-      id: "t3", num: "Module 3", title: "Narrative Structure for Technical Work",
+      id: "t3", num: "Module 3", title: "Narrative Structure for Everyday Work",
       sub: "Situation, tension and resolution, and how to use them in proposals, incident reviews and roadmaps",
       time: "2–3 hrs",
       concepts: [
@@ -3429,7 +3430,7 @@
   };
 
   var STY_BONUS = {
-    linkedin: "I have just finished a course on storytelling for technical leaders. I expected presentation tips. What I got was an explanation of why my best analysis keeps getting deferred.\n\nThree things I am doing differently:\n\n1. One idea, in one sentence. If I cannot say what I want the room to think and do in a single sentence, they will not be able to either. I now write that sentence before I open a slide tool, and cut everything that does not serve it.\n\n2. Do not skip the tension. Engineers go from background straight to solution. The missing middle is what is wrong, who it happens to, and what it costs to do nothing. I priced the cost of inaction on one proposal and it was the only number anyone quoted afterwards.\n\n3. Test by playback. I used to ask 'what do you think?' and get politeness. Now I ask 'what was my main point, and what would you do next?' The first time, three people gave three different answers, and none of them was mine.\n\nThe part I value most was on honesty: state the base, show the uncertainty, choose a typical example. Persuasion that needs a cut-off axis is not worth having.\n\nWhat is the one sentence you want your next audience to repeat?",
+    linkedin: "I have just finished a course on storytelling for leaders. I expected presentation tips. What I got was an explanation of why my best analysis keeps getting deferred.\n\nThree things I am doing differently:\n\n1. One idea, in one sentence. If I cannot say what I want the room to think and do in a single sentence, they will not be able to either. I now write that sentence before I open a slide tool, and cut everything that does not serve it.\n\n2. Do not skip the tension. Engineers go from background straight to solution. The missing middle is what is wrong, who it happens to, and what it costs to do nothing. I priced the cost of inaction on one proposal and it was the only number anyone quoted afterwards.\n\n3. Test by playback. I used to ask 'what do you think?' and get politeness. Now I ask 'what was my main point, and what would you do next?' The first time, three people gave three different answers, and none of them was mine.\n\nThe part I value most was on honesty: state the base, show the uncertainty, choose a typical example. Persuasion that needs a cut-off axis is not worth having.\n\nWhat is the one sentence you want your next audience to repeat?",
     blogTitle: "The Right Answer Is Not Enough: Storytelling for Engineers Who Need a Decision",
     blog: [
       { h: "1. The meeting where I was right and lost", b: "Open with a specific time you presented solid analysis and the decision was deferred. Describe what you showed and what someone said afterwards. Keep it honest and unflattering." },
@@ -3447,8 +3448,8 @@
   var COURSES = [
     {
       key: "fin", orbitIcon: "chart", short: "Finance", desc: "Read the numbers behind decisions",
-      name: "Finance & Data Intelligence for Technical Leaders",
-      tagline: "Financial fluency for technical and data professionals moving into strategic and investment decision-making: dashboards, unit economics, forecasting, decision science and NPV.",
+      name: "Finance & Data Intelligence for Leaders",
+      tagline: "Financial fluency for professionals moving into strategic and investment decision-making: dashboards, unit economics, forecasting, decision science and NPV.",
       color: "#4338ca", color2: "#0ea5a3", art: "finance", level: "Intermediate", hours: "13–22 hrs",
       icons: ["chart","calc","calendar","flask","scale","flag"],
       skills: ["KPI dashboards","Unit economics","Forecasting","Decision science","NPV & ROI"],
@@ -3456,8 +3457,8 @@
     },
     {
       key: "lead", orbitIcon: "users", short: "Leadership", desc: "Solve problems, lead change",
-      name: "Adaptive Leadership & Professional Impact for Technical Leaders",
-      tagline: "Adaptability, structured problem solving, executive communication, relationship building and AI judgment, for technical leaders moving from builder to leader.",
+      name: "Adaptive Leadership & Professional Impact",
+      tagline: "Adaptability, structured problem solving, executive communication, relationship building and AI judgment, for professionals moving from doing the work to leading it.",
       note: "Inspired by common industry professional-skills programs. Original content; not affiliated with or copied from any specific vendor.",
       color: "#c2410c", color2: "#e11d48", art: "lead", level: "Intermediate", hours: "13–20 hrs",
       icons: ["wind","tree","megaphone","users","chip","flag"],
@@ -3487,7 +3488,7 @@
     {
       key: "agt", orbitIcon: "bot", short: "Agent economy", desc: "When software can pay",
       name: "The Agent Economy: How Software Learns to Pay, Buy and Trade",
-      tagline: "What changes when AI agents can spend money: tokens, delegated authority, payment rails, trust and controls, and the cost of compute. Practical design skills for technical leaders, with a balanced view of an early and uncertain field.",
+      tagline: "What changes when AI agents can spend money: tokens, delegated authority, payment rails, trust and controls, and the cost of compute. Practical design skills for leaders, with a balanced view of an early and uncertain field.",
       note: "Original content that draws on and cites the BlackRock paper 'The Machine-Native Economy' (September 2026) for its thesis and selected figures. Independent and not affiliated with or endorsed by BlackRock. Educational only; nothing here is investment advice. Protocol names and statistics are dated examples and will change.",
       color: "#92400e", color2: "#d97706", art: "agent", level: "Intermediate", hours: "13–20 hrs",
       icons: ["blocks","bot","card","shield","chip","flag"],
@@ -3497,7 +3498,7 @@
     {
       key: "dat", orbitIcon: "database", short: "Data for AI", desc: "Foundations agents need",
       name: "Data Foundations for AI Agents: From Pilot to Scale",
-      tagline: "Why agent pilots stall and what gets them into daily use: choosing the right workflow, an agent-ready data architecture, quality that is monitored continuously, and an operating model with clear ownership. Written for data and platform leaders.",
+      tagline: "Why agent pilots stall and what gets them into daily use: choosing the right workflow, an agent-ready data architecture, quality that is monitored continuously, and an operating model with clear ownership. Written for leaders who own data, technology or AI decisions.",
       note: "Original content that draws on and cites the McKinsey article 'Building the foundations for agentic AI at scale' (April 2026) for its argument and selected survey figures. Independent and not affiliated with or endorsed by McKinsey. Survey figures are dated and will change.",
       color: "#a21caf", color2: "#db2777", art: "data", level: "Intermediate", hours: "13–20 hrs",
       icons: ["alert","route","layers","gauge","users","flag"],
@@ -3506,7 +3507,7 @@
     },
     {
       key: "biz", orbitIcon: "blocks", short: "Business models", desc: "How value gets paid for",
-      name: "Business Model Design for Technical Leaders",
+      name: "Business Model Design for Leaders",
       tagline: "How a product, service or internal platform creates value and gets paid for it: customers and the job they need done, revenue and pricing models, go-to-market, and testing the riskiest assumption first. Includes how AI changes pricing.",
       note: "Original content on the general discipline of business model design. Not affiliated with any course or template provider.",
       color: "#3f6212", color2: "#65a30d", art: "model", level: "Intermediate", hours: "13–20 hrs",
@@ -3516,7 +3517,7 @@
     },
     {
       key: "sys", orbitIcon: "loop", short: "Systems thinking", desc: "Fix what keeps coming back",
-      name: "Systems Thinking for Technical Leaders: Fixing Problems That Keep Coming Back",
+      name: "Systems Thinking for Leaders: Fixing Problems That Keep Coming Back",
       tagline: "Why the same problems return however often they are fixed, and what to do about it: seeing structure beneath events, mapping stocks, flows and feedback loops, recognising common traps, understanding the people involved, and intervening where a small change does the most.",
       note: "Original content on the general discipline of systems thinking and system dynamics. Not affiliated with any course provider.",
       color: "#334155", color2: "#0891b2", art: "system", level: "Intermediate", hours: "13–20 hrs",
@@ -3526,7 +3527,7 @@
     },
     {
       key: "sty", orbitIcon: "bulb", short: "Storytelling", desc: "Make your ideas land",
-      name: "Storytelling for Technical Leaders: Making Ideas Land",
+      name: "Storytelling for Leaders: Making Ideas Land",
       tagline: "Why sound analysis gets deferred and how to change that: knowing the audience, one idea in one sentence, narrative structure for proposals and incident reviews, honest stories with data, and testing a draft before it matters.",
       note: "Original content on the general craft of persuasive communication and data storytelling. Not affiliated with any course provider.",
       color: "#9d174d", color2: "#f59e0b", art: "story", level: "Intermediate", hours: "13–20 hrs",
@@ -4382,7 +4383,7 @@
     h += "<section class='hero'><div class='hero-art'>"+heroArt()+"</div><div class='hero-copy'>";
     h += "<span class='hero-tag'>Small courses · Purposeful leadership · Real impact</span>";
     h += "<h1>Move from builder to leader.</h1>";
-    h += "<p>Short, practical courses for technical and data professionals becoming leaders: people who live with purpose and create impact in their teams and the world. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
+    h += "<p>Short, practical courses for professionals becoming leaders: people who live with purpose and create impact in their teams and the world. Every unit has worked examples, an exercise on your real work, and a quiz.</p>";
     h += "<div class='hero-cta'>";
     if (next) h += "<a class='btn light' href='#"+next.id+"'>"+(next.label==="Continue" ? "Continue learning" : "Start learning")+" "+icon("arrow-right",16)+"</a>";
     h += "<a class='btn ghost' href='#courses'>Browse courses</a></div></div></section>";
