@@ -4090,6 +4090,11 @@
   function currentRoute(){ return (location.hash || "#home").replace("#",""); }
   function setMain(cls){ var m = document.getElementById("main"); m.className = cls || ""; return m; }
 
+  // Site mark: a path rising to a point, the learner's journey toward purpose.
+  function logoMark(){
+    return '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5 C 9 19, 9.5 12.5, 13 11 S 16.5 7.5, 17.6 6.4" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="4.5" cy="19.5" r="1.7" fill="#fff" opacity=".75"/><circle cx="18.2" cy="5.8" r="3" fill="#fff"/></svg>';
+  }
+
   // ---------- TOP BAR ----------
   function renderTopbar(){
     var total = 0, done = 0;
@@ -4097,7 +4102,7 @@
     var initial = ((state.learnerName||"").trim().charAt(0) || "L").toUpperCase();
     document.getElementById("topbar").innerHTML =
       "<button class='menu-btn' id='menu-btn' aria-label='Toggle syllabus'>"+icon("menu",22)+"</button>"
-      + "<a class='logo' href='#home'><span class='logo-mark'>"+icon("layers",18)+"</span><span>Learning Hub</span></a>"
+      + "<a class='logo' href='#home'><span class='logo-mark'>"+logoMark()+"</span><span>Learning Hub</span></a>"
       + "<nav class='top-links'><a href='#home'>Explore courses</a></nav><span class='spacer'></span>"
       + "<span class='top-chip'>"+icon("award",15)+" "+done+"/"+total+" units complete</span>"
       + "<a class='avatar' href='#home' title='Your profile'>"+escapeHtml(initial)+"</a>";
