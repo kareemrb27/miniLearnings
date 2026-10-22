@@ -735,22 +735,22 @@
       concepts: [
         { t: "Notice → Name → Navigate",
           body: "A simple 3-step response to disruptive change: Notice the physical/emotional reaction as it happens (tight chest, racing thoughts), Name what's actually triggering it in one plain sentence, then Navigate by choosing one small next action instead of spiraling into every possible bad outcome at once.",
-          ex: "A platform re-org is announced. Notice: you feel a knot in your stomach reading the email. Name: 'I'm afraid my Databricks expertise becomes irrelevant.' Navigate: book one conversation this week with the new platform lead to learn what skills they'll actually need." },
+          ex: "A department reorganisation is announced. Notice: you feel a knot in your stomach reading the email. Name: 'I'm afraid the expertise I've built over years will matter less in the new structure.' Navigate: book one conversation this week with the new head of department to learn what skills they'll actually need." },
         { t: "Growth Mindset vs. Fixed Mindset",
-          body: "A fixed mindset treats ability as static ('I'm not a people person'). A growth mindset treats ability as trainable through effort and feedback. This isn't about forced positivity — it's a testable claim: skills you assume are fixed (public speaking, executive presence) respond to deliberate practice the same way technical skills do.",
-          ex: "An engineer who says 'I'm just not good with stakeholders' versus one who says 'I haven't practiced translating technical tradeoffs for non-technical audiences yet' — same starting skill level, very different trajectory over 6 months." },
+          body: "A fixed mindset treats ability as static ('I'm not a people person'). A growth mindset treats ability as trainable through effort and feedback. This isn't about forced positivity — it's a testable claim: skills you assume are fixed (public speaking, executive presence) respond to deliberate practice the same way any other skill does.",
+          ex: "A specialist who says 'I'm just not good with senior stakeholders' versus one who says 'I haven't yet practised explaining my work to people outside my field' — same starting skill level, very different trajectory over 6 months." },
         { t: "The Change Curve",
           body: "Most people move through predictable stages when facing disruptive change: shock/denial, resistance/frustration, exploration, and eventually commitment. Knowing the curve exists helps you recognize you're in the frustration stage rather than concluding the change itself is wrong.",
-          ex: "Week 1 of a mandated cloud migration: the team is skeptical and finds reasons it won't work (resistance). By week 6, after seeing one workload migrate successfully, the same engineers start proposing which workload to migrate next (exploration) — the tooling didn't change, their position on the curve did." },
+          ex: "Week 1 of a mandated switch to a new company-wide customer system: the team is sceptical and finds reasons it won't work (resistance). By week 6, after seeing one department switch over successfully, the same people start proposing which process to move next (exploration). The system didn't change; their position on the curve did." },
         { t: "Psychological Flexibility (Reframing)",
           body: "The same fact can be framed as a threat or a variable to solve for. Reframing isn't denial of a real problem — it's choosing the framing that leaves you able to act, versus the one that leaves you frozen.",
-          ex: "'They're replacing our on-prem Hadoop stack, my specialized skills are dead' reframes to: 'The skills that made me valuable on Hadoop — data modeling, pipeline reliability, cost tradeoffs — transfer directly to Databricks; the syntax is the only new part.'" }
+          ex: "'They're replacing the process I know inside out, so my expertise is dead' reframes to: 'The skills that made me valuable — knowing our customers, spotting errors early, judging trade-offs — transfer directly to the new process; only the tool is new.'" }
       ],
-      caseTitle: "Data Engineering — The Platform Sunset",
-      caseText: "A senior data engineer has spent 6 years becoming the team's go-to expert on an on-prem Hadoop/MapReduce stack. Leadership announces a 12-month migration to a cloud-native Databricks/Kafka architecture, driven by cost and scaling pressure. The engineer's specialized expertise suddenly looks less central to the roadmap, and they're spending more time in meetings feeling defensive than contributing.",
-      caseTask: "Apply Notice → Name → Navigate to this situation from the engineer's perspective. What's the reframe available here, and what's one concrete action for week one that moves them from resistance toward exploration?",
+      caseTitle: "Operations — The System Sunset",
+      caseText: "A senior operations specialist has spent 6 years becoming the go-to expert on the company's old order-management system and all its workarounds. Leadership announces a 12-month move to a new company-wide system, driven by cost and growth. The specialist's hard-won expertise suddenly looks less central to the plan, and they're spending more time in meetings feeling defensive than contributing.",
+      caseTask: "Apply Notice → Name → Navigate to this situation from the specialist's perspective. What's the reframe available here, and what's one concrete action for week one that moves them from resistance toward exploration?",
       assignment: {
-        deliverable: "Pick a real professional change you're currently navigating (a re-org, a tech stack shift, a role change, a new manager). Write a short journal entry applying Notice → Name → Navigate to it, identify which stage of the change curve you're in, and write one reframe of the situation that leaves you more able to act.",
+        deliverable: "Pick a real professional change you're currently navigating (a reorganisation, a new system or way of working, a role change, a new manager). Write a short journal entry applying Notice → Name → Navigate to it, identify which stage of the change curve you're in, and write one reframe of the situation that leaves you more able to act.",
         rubric: [
           "The 'Notice' step names a specific physical or emotional reaction, not just a general complaint",
           "The 'Name' step states the actual underlying fear or trigger in one plain sentence",
@@ -760,34 +760,34 @@
       },
       quiz: [
         { q: "In the Notice → Name → Navigate method, 'Name' refers to:", opts: ["Naming who caused the problem","Stating the actual underlying trigger in one plain sentence","Naming the company policy involved","Naming a colleague to blame"], correct: 1 },
-        { q: "A growth mindset treats ability as:", opts: ["Fixed and unchangeable","Irrelevant to outcomes","Trainable through effort and feedback","Only relevant to technical skills"], correct: 2 },
+        { q: "A growth mindset treats ability as:", opts: ["Fixed and unchangeable","Irrelevant to outcomes","Trainable through effort and feedback","Only relevant to academic subjects"], correct: 2 },
         { q: "Recognizing you're in the 'resistance' stage of the change curve is useful because:", opts: ["It proves the change is a bad idea","It helps you see this is a predictable, temporary stage rather than a permanent verdict","It means you should stop participating","It guarantees the change will fail"], correct: 1 },
         { q: "Reframing a situation means:", opts: ["Denying that a real problem exists","Choosing a framing that leaves you able to act, without denying the facts","Convincing others the problem doesn't matter","Avoiding the topic entirely"], correct: 1 }
       ]
     },
     {
       id: "l2", num: "Module 2", title: "Structured Problem Solving",
-      sub: "Breaking down ambiguous problems the way you'd decompose a complex system",
+      sub: "Breaking down messy, ambiguous problems into parts you can actually solve",
       time: "2–3 hrs",
       concepts: [
         { t: "Issue Trees (MECE Decomposition)",
-          body: "Break a broad, ambiguous problem into a tree of sub-questions that are Mutually Exclusive and Collectively Exhaustive (MECE) — no overlap, no gaps. This is the same discipline as decomposing a monolith into services: each branch owns a distinct piece of the problem, and together they cover the whole thing.",
-          ex: "Problem: 'Client data pipeline costs doubled.' Branches: (1) Volume — did data volume actually grow? (2) Efficiency — did processing get less efficient per GB? (3) Pricing — did the cloud vendor's rates change? (4) Architecture — did a config change increase redundant processing? Each is checkable independently." },
+          body: "Break a broad, ambiguous problem into a tree of sub-questions that are Mutually Exclusive and Collectively Exhaustive (MECE) — no overlap, no gaps. It is like planning a house move room by room: each room is its own job, and together they cover the whole house.",
+          ex: "Problem: 'Our delivery costs doubled.' Branches: (1) Volume — are we sending more parcels? (2) Efficiency — are we paying more per parcel, for example through more express or failed deliveries? (3) Pricing — did the courier change its rates? (4) Process — did a change in how orders are packed create extra parcels? Each is checkable independently." },
         { t: "Prioritization: Impact vs. Effort",
-          body: "Once you have a list of possible causes or fixes, plot each on impact (how much it would move the outcome) versus effort (how hard it is to test or fix). Attack high-impact/low-effort first — the same logic as fixing the query causing 80% of database load before micro-optimizing everything else.",
-          ex: "Of the 4 branches above, 'check if a config change caused redundant processing' is high impact, low effort (one query away from an answer) — test that before commissioning a multi-week volume-growth analysis." },
+          body: "Once you have a list of possible causes or fixes, plot each on impact (how much it would move the outcome) versus effort (how hard it is to test or fix). Attack high-impact/low-effort first, the same logic as fixing the one leaking pipe soaking the floor before repainting the whole room.",
+          ex: "Of the 4 branches above, 'check whether a packing change is splitting orders into extra parcels' is high impact, low effort (one report away from an answer). Test that before commissioning a multi-week analysis of order growth." },
         { t: "Hypothesis-Driven Problem Solving",
-          body: "Instead of gathering all possible data before forming a view, state your best-guess answer first, then run the minimum test that would prove or disprove it. This mirrors writing a unit test before implementation — you define what 'true' looks like before you start digging.",
-          ex: "Hypothesis: 'The cost doubling is entirely explained by a duplicate Kafka consumer group introduced last sprint.' One targeted query on consumer group counts either confirms or kills this in an hour, versus a week-long unstructured cost audit." },
+          body: "Instead of gathering all possible data before forming a view, state your best-guess answer first, then run the minimum test that would prove or disprove it. It is how a good doctor works: form the most likely diagnosis, then order the one test that confirms or rules it out.",
+          ex: "Hypothesis: 'The cost doubling is explained by a new packing rule introduced last month that sends multi-item orders as separate parcels.' One report on parcels per order confirms or kills this in an hour, versus a week-long unstructured cost audit." },
         { t: "The 'So What' Test",
           body: "After every finding, ask 'so what does this mean for the decision at hand?' A finding that doesn't change what someone should do next is interesting trivia, not an insight worth including in a recommendation.",
-          ex: "'Data volume grew 12%' is a fact. 'Data volume grew 12% but costs grew 100%, so volume explains only a fraction of the increase and we should keep investigating the other branches' is an insight that changes what to do next." }
+          ex: "'Order volume grew 12%' is a fact. 'Order volume grew 12% but costs grew 100%, so volume explains only a fraction of the increase and we should keep investigating the other branches' is an insight that changes what to do next." }
       ],
-      caseTitle: "IT Delivery — The Mystery Cost Spike",
-      caseText: "A client's monthly cloud data-processing bill doubled from $40K to $80K over two months with no obvious change in business activity. The client is anxious and wants an explanation by Friday. Multiple team members have theories — more data, a bad query, a pricing change — but no one has structured the investigation.",
+      caseTitle: "Online Retail — The Mystery Cost Spike",
+      caseText: "An online retailer's monthly delivery bill doubled from $40K to $80K over two months with no obvious change in sales. The CEO is anxious and wants an explanation by Friday. Several team members have theories — more orders, a courier price rise, a warehouse mistake — but no one has structured the investigation.",
       caseTask: "Build a MECE issue tree for this problem with at least 3 top-level branches, propose one testable hypothesis under each, and rank the branches by an impact/effort assessment to decide what to investigate first.",
       assignment: {
-        deliverable: "Take a real ambiguous problem from your current work (a performance issue, a recurring client complaint, an unexplained metric change). Build a MECE issue tree with at least 3 branches, write one specific testable hypothesis per branch, and rank them on an impact/effort grid to decide investigation order.",
+        deliverable: "Take a real ambiguous problem from your current work (a process that keeps running late, a recurring customer complaint, an unexplained change in a number you track). Build a MECE issue tree with at least 3 branches, write one specific testable hypothesis per branch, and rank them on an impact/effort grid to decide investigation order.",
         rubric: [
           "The top-level branches don't meaningfully overlap (mutually exclusive)",
           "Together, the branches cover the plausible causes reasonably completely (collectively exhaustive)",
@@ -804,39 +804,39 @@
     },
     {
       id: "l3", num: "Module 3", title: "Communicating for Impact",
-      sub: "Structuring technical communication so leadership actually acts on it",
+      sub: "Structuring your communication so decision-makers actually act on it",
       time: "2–3 hrs",
       concepts: [
         { t: "Lead With the Answer (Bottom-Line-Up-Front)",
-          body: "Executives and clients want the conclusion first, then supporting evidence — the opposite of how most technical write-ups are structured (background, then methodology, then finally the finding). This structured, top-down approach to written communication is often credited to Barbara Minto's 'Pyramid Principle': state the recommendation, then the 2-3 reasons, then the supporting detail beneath each.",
-          ex: "Weak: 'We looked at the Kafka consumer lag metrics over the past two weeks, and after reviewing partition assignment and broker load, we believe...' Strong: 'Recommendation: add 2 more Kafka partitions this week. Two reasons: consumer lag has tripled, and broker CPU is at 85% during peak. Detail below.'" },
+          body: "Executives and clients want the conclusion first, then supporting evidence — the opposite of how most reports are structured (background, then method, then finally the finding). This structured, top-down approach to written communication is often credited to Barbara Minto's 'Pyramid Principle': state the recommendation, then the 2-3 reasons, then the supporting detail beneath each.",
+          ex: "Weak: 'We reviewed customer complaints over the past two weeks, and after looking at staffing levels and call volumes, we believe...' Strong: 'Recommendation: add two people to the Saturday customer-service shift from next week. Two reasons: Saturday waiting times have tripled, and complaints about waiting are up 85%. Detail below.'" },
         { t: "Audience-Tailored Framing",
-          body: "The same technical fact needs different framing for an engineer, a delivery manager, and a client executive. Engineers want mechanism; managers want risk and timeline; executives want business impact and a decision to make.",
-          ex: "Engineer: 'Consumer lag hit 40K messages due to partition skew.' Manager: 'The pipeline delay risks missing tomorrow's SLA unless we rebalance today.' Executive: 'A one-day fix avoids a client-visible reporting delay; no budget impact.'" },
+          body: "The same fact needs different framing for a specialist, a manager, and an executive. Specialists want the mechanism; managers want risk and timeline; executives want business impact and a decision to make.",
+          ex: "Specialist: 'Saturday calls run 40% above what the shift can handle between 10am and 2pm.' Manager: 'Without one more person on Saturdays, we'll miss our two-minute answer target again this weekend.' Executive: 'A small staffing change protects customer satisfaction; it costs under $2K a month.'" },
         { t: "'So What, Now What' Status Updates",
           body: "A good status update has three parts: what happened, so what it means for the goal, and now what happens next. Skipping the 'so what' leaves the reader to do the interpretation work themselves — exactly the job the update was supposed to do for them.",
-          ex: "Weak: 'Migration is 60% complete.' Strong: '60% of workloads migrated (what) — on pace for the March deadline (so what) — next milestone is the finance data mart, targeted for next Friday (now what).'" },
-        { t: "Simplifying Technical Complexity",
-          body: "Translating something technically accurate into something a non-technical stakeholder can act on usually means trading precision for clarity — deliberately, and while flagging the simplification rather than hiding it.",
-          ex: "Instead of explaining exactly-once vs at-least-once semantics in a Kafka pipeline, tell a business stakeholder: 'In rare failure cases, a transaction could be processed twice; we've built a safeguard that catches and removes duplicates before they reach the report.'" }
+          ex: "Weak: 'The office move is 60% complete.' Strong: '60% of teams have moved (what) — on pace for the March deadline (so what) — next milestone is moving the finance team, next Friday (now what).'" },
+        { t: "Simplifying Complexity",
+          body: "Translating something accurate and complex into something a non-specialist can act on usually means trading precision for clarity — deliberately, and while flagging the simplification rather than hiding it.",
+          ex: "Instead of explaining the statistics of a test's false-positive rate, a doctor tells a patient: 'This test occasionally flags a problem that isn't there, so if it's positive we'll do one more check before deciding anything.'" }
       ],
-      caseTitle: "Client Delivery — The Incident Nobody Wants to Explain",
-      caseText: "A Kafka consumer group failure caused a 6-hour delay in a client's overnight reporting pipeline. The engineering team has a detailed, accurate, highly technical incident writeup ready — partition rebalancing, consumer group coordinator timeout, offset commit failures. The client's VP of Operations, who has 15 minutes before a board meeting, needs to understand what happened and whether it will happen again.",
-      caseTask: "Rewrite the incident explanation as a 4-6 sentence executive summary using bottom-line-up-front structure and the 'so what, now what' pattern, appropriately simplified for a non-technical executive audience.",
+      caseTitle: "Customer Service — The Delay Nobody Wants to Explain",
+      caseText: "A breakdown at the company's main warehouse delayed 2,000 customer orders by two days. The operations team has a detailed, accurate write-up ready — scanner faults, a stock-count mismatch, a backlog at the packing stations, overtime rotas. The Chief Customer Officer, who has 15 minutes before a board meeting, needs to understand what happened and whether it will happen again.",
+      caseTask: "Rewrite the incident explanation as a 4-6 sentence executive summary using bottom-line-up-front structure and the 'so what, now what' pattern, appropriately simplified for a senior executive outside operations.",
       assignment: {
-        deliverable: "Take a real technical write-up, incident report, or status update from your own work and rewrite it as a bottom-line-up-front executive summary (5-8 sentences max) appropriate for a non-technical stakeholder, using the 'so what, now what' structure.",
+        deliverable: "Take a real report, incident write-up, or status update from your own work and rewrite it as a bottom-line-up-front executive summary (5-8 sentences max) for a senior reader outside your field, using the 'so what, now what' structure.",
         rubric: [
           "The very first sentence states the conclusion or recommendation, not background",
-          "Technical jargon is either removed or briefly translated into business-relevant terms",
+          "Jargon is either removed or briefly translated into terms that matter to the reader",
           "The update explicitly states what it means for the reader's goal (so what)",
           "The update ends with a clear next step or ask (now what)"
         ]
       },
       quiz: [
-        { q: "The 'bottom-line-up-front' structure means you should:", opts: ["End with your conclusion after all the evidence","Lead with the conclusion, then support it with reasons and detail","Never state a conclusion explicitly","Only use this structure with other engineers"], correct: 1 },
-        { q: "A 'so what, now what' update should include:", opts: ["Only what happened, nothing else","What happened, what it means for the goal, and what happens next","Only technical details for accuracy","A list of everyone involved in the incident"], correct: 1 },
-        { q: "When simplifying a technical explanation for a non-technical audience, you should:", opts: ["Include every technical detail for completeness","Deliberately trade some precision for clarity, while being honest about the simplification","Avoid explaining the issue at all","Use more jargon to sound credible"], correct: 1 },
-        { q: "Audience-tailored framing means the same fact should be:", opts: ["Always communicated identically regardless of audience","Framed differently depending on what the audience needs to know or decide","Hidden from non-technical audiences","Only shared with senior leadership"], correct: 1 }
+        { q: "The 'bottom-line-up-front' structure means you should:", opts: ["End with your conclusion after all the evidence","Lead with the conclusion, then support it with reasons and detail","Never state a conclusion explicitly","Only use this structure with your own team"], correct: 1 },
+        { q: "A 'so what, now what' update should include:", opts: ["Only what happened, nothing else","What happened, what it means for the goal, and what happens next","Only detailed specifics for accuracy","A list of everyone involved in the incident"], correct: 1 },
+        { q: "When simplifying a complex explanation for a non-specialist audience, you should:", opts: ["Include every detail for completeness","Deliberately trade some precision for clarity, while being honest about the simplification","Avoid explaining the issue at all","Use more jargon to sound credible"], correct: 1 },
+        { q: "Audience-tailored framing means the same fact should be:", opts: ["Always communicated identically regardless of audience","Framed differently depending on what the audience needs to know or decide","Hidden from non-specialists","Only shared with senior leadership"], correct: 1 }
       ]
     },
     {
@@ -846,19 +846,19 @@
       concepts: [
         { t: "Stakeholder Mapping (Influence vs. Interest)",
           body: "Plot the people affected by your project on two axes: how much influence they have over its success, and how much interest they currently have in it. This tells you where to invest relationship-building time — high-influence, low-interest stakeholders are often the ones quietly capable of blocking a project no one thought to keep informed.",
-          ex: "On an AI-platform rollout: the CFO has high influence, low current interest (hasn't been briefed) — a priority for a short business-case conversation. A junior analyst has high interest, low influence — valuable for feedback, but not who you escalate risks to." },
+          ex: "On the launch of a new customer loyalty programme: the CFO has high influence, low current interest (hasn't been briefed) — a priority for a short business-case conversation. A junior analyst has high interest, low influence — valuable for feedback, but not who you escalate risks to." },
         { t: "The Strength of Weak Ties",
           body: "Research on professional networks (Granovetter's 'strength of weak ties') consistently finds that opportunities and new information often come through loose, occasional connections rather than your closest daily collaborators, who tend to already know what you know. Deliberately maintaining a wide, light-touch network matters as much as deepening a few close ones.",
-          ex: "A former colleague you talk to twice a year mentions a client need that matches your team's new Databricks accelerator — information your daily team, already immersed in the same context as you, was never going to surface." },
+          ex: "A former colleague you talk to twice a year mentions a client need that matches a service your team has just launched — information your daily team, already immersed in the same context as you, was never going to surface." },
         { t: "Trust Through the Say-Do Ratio",
           body: "Trust is built less by grand gestures and more by a track record of doing what you said you'd do, consistently, at a small scale. A high 'say-do ratio' (things done ÷ things promised) compounds into being the person whose word is reliable — which is what actually earns influence over time.",
           ex: "Committing to 'I'll have the cost analysis to you by Thursday noon' and delivering it Thursday at 11am, every time, builds more durable trust than one impressive but unpredictable delivery." },
         { t: "Sustainable Workload Boundaries",
-          body: "Consistently high performance requires protecting recovery time the same way a system needs headroom below max capacity to handle spikes without failing. Treating 100% utilization as the target, with no slack, produces the same brittleness in people that it does in infrastructure.",
+          body: "Consistently high performance requires protecting recovery time, the same way a road needs spare capacity to absorb rush hour without gridlock. Treating 100% utilisation as the target, with no slack, makes people as brittle as a road with no room to spare.",
           ex: "A consultant who blocks two hours a week with no meetings for deep work and recovery sustains higher-quality output over a year than one who accepts every meeting request and burns out by month six." }
       ],
       caseTitle: "Consulting — The Stakeholder Nobody Briefed",
-      caseText: "A consulting team has spent three months building strong alignment with a client's Head of Data Engineering and their team on a new AI platform rollout. The project is technically on track. Two weeks before go-live, the client's CFO — who was never briefed because the team assumed Engineering would handle 'internal communication' — raises budget concerns in an executive meeting and puts the project on hold pending review.",
+      caseText: "A consulting team has spent three months building strong alignment with a client's Head of Operations and their team on a new customer loyalty programme. The project is on track. Two weeks before launch, the client's CFO — who was never briefed because the team assumed Operations would handle 'internal communication' — raises budget concerns in an executive meeting and puts the project on hold pending review.",
       caseTask: "Build a simple influence/interest stakeholder map for this project as it should have looked on day one. Identify where the CFO belonged on that map, and propose what a minimal, non-intrusive touchpoint with them over the prior three months could have looked like.",
       assignment: {
         deliverable: "Build an influence/interest stakeholder map for a current or recent project. Plot at least 5 stakeholders, identify any high-influence/low-interest gaps similar to the case study, and propose one concrete relationship-building action for the stakeholder you're most under-invested in.",
@@ -873,7 +873,7 @@
         { q: "On an influence/interest stakeholder map, the highest-priority blind spot is usually someone with:", opts: ["Low influence, low interest","High influence, low interest","Low influence, high interest","High influence, high interest (already engaged)"], correct: 1 },
         { q: "The 'strength of weak ties' idea suggests that:", opts: ["Only your closest colleagues matter for opportunities","Loose, occasional connections often surface information your close network can't","Weak relationships should be avoided entirely","Networking has no measurable value"], correct: 1 },
         { q: "A high 'say-do ratio' means:", opts: ["You promise very little","What you deliver closely matches what you committed to","You say yes to every request","You avoid making any commitments"], correct: 1 },
-        { q: "Sustainable workload boundaries are compared in this module to:", opts: ["A system with no headroom below max capacity being brittle under spikes","A database index","A load balancer's default configuration","A CI/CD pipeline's build time"], correct: 0 }
+        { q: "Sustainable workload boundaries are compared in this module to:", opts: ["A road with no spare capacity seizing up at rush hour","A filing cabinet","A thermostat's default setting","A printed train timetable"], correct: 0 }
       ]
     },
     {
@@ -916,22 +916,22 @@
   ];
 
   var LEAD_CAPSTONE = {
-    id: "capstone", num: "Capstone", title: "Leading Your Team Through an AI-Driven Platform Change",
+    id: "capstone", num: "Capstone", title: "Leading Your Team Through an AI-Driven Change",
     sub: "An integrated case combining all five modules",
     time: "3–5 hrs",
-    setup: "You lead a 12-person data engineering team at a mid-size logistics company. Leadership has approved a 9-month initiative to modernize the legacy batch-reporting stack and introduce a GenAI-powered operations assistant for dispatchers. Your team is a mix of engineers excited about the AI work and others anxious about their specialized legacy-system skills becoming obsolete. You're the bridge between engineering, a skeptical CFO, and an executive sponsor who wants visible AI wins fast.",
+    setup: "You lead a 12-person dispatch and customer-operations team at a mid-size logistics company. Leadership has approved a 9-month initiative to replace the old reporting process and introduce an AI assistant that helps dispatchers plan routes. Your team is a mix of people excited about the AI work and others anxious that their hard-won expertise in the old way of working will become obsolete. You're the bridge between your team, a sceptical CFO, and an executive sponsor who wants visible AI wins fast.",
     dataPoints: [
-      { h: "Adaptability signals (Module 1)", b: "Two senior engineers with deep legacy-system expertise have gone quiet in planning meetings and started updating their resumes, per informal feedback from their peers. Team sentiment surveys show rising anxiety scores tied to 'unclear future role.'" },
-      { h: "Problem-solving context (Module 2)", b: "The executive sponsor wants the GenAI dispatcher assistant live in 8 weeks, but nobody has decomposed what's actually needed: clean historical dispatch data, a defined scope for the assistant, integration with the existing (soon-to-be-replaced) reporting stack, and a fallback plan if the assistant gives a bad recommendation." },
-      { h: "Communication challenge (Module 3)", b: "The CFO has seen only a highly technical architecture diagram so far and remains unconvinced of the business case; the executive sponsor wants weekly updates that are 'exciting' rather than accurate about real risk." },
-      { h: "Relationship/well-being factors (Module 4)", b: "The CFO (high influence) has had zero direct touchpoints with the project team. The two anxious senior engineers (high influence over team morale, currently low interest/engagement) haven't been individually re-engaged. The team has been at high utilization for 2 straight quarters with no slack built into the 9-month plan." },
+      { h: "Adaptability signals (Module 1)", b: "Two senior dispatch coordinators with deep knowledge of the old process have gone quiet in planning meetings and started updating their resumes, per informal feedback from their peers. Team sentiment surveys show rising anxiety scores tied to 'unclear future role.'" },
+      { h: "Problem-solving context (Module 2)", b: "The executive sponsor wants the GenAI dispatcher assistant live in 8 weeks, but nobody has decomposed what's actually needed: clean historical dispatch data, a defined scope for the assistant, a link to the old reporting process that is being replaced, and a fallback plan if the assistant gives a bad recommendation." },
+      { h: "Communication challenge (Module 3)", b: "The CFO has seen only a detailed technical diagram from the vendor so far and remains unconvinced of the business case; the executive sponsor wants weekly updates that are 'exciting' rather than accurate about real risk." },
+      { h: "Relationship/well-being factors (Module 4)", b: "The CFO (high influence) has had zero direct touchpoints with the project team. The two anxious senior coordinators (high influence over team morale, currently low interest/engagement) haven't been individually re-engaged. The team has been at high utilization for 2 straight quarters with no slack built into the 9-month plan." },
       { h: "AI/digital considerations (Module 5)", b: "Historical dispatch data is inconsistently logged (a data-readiness problem), which threatens the feasibility of an ambitious 'autonomous re-routing' version of the assistant the executive sponsor keeps mentioning, versus a more feasible 'draft a recommended route for dispatcher review' version." }
     ],
     deliverablePoints: [
-      "Apply Notice → Name → Navigate to the two anxious senior engineers and propose one concrete re-engagement action for each (Module 1)",
+      "Apply Notice → Name → Navigate to the two anxious senior coordinators and propose one concrete re-engagement action for each (Module 1)",
       "Build a MECE issue tree of what's actually required to hit a realistic launch date, and identify the highest-impact/lowest-effort next step (Module 2)",
       "Draft a bottom-line-up-front, 'so what, now what' weekly update for the CFO that is honest about risk without losing executive confidence (Module 3)",
-      "Build an influence/interest stakeholder map covering the CFO, the executive sponsor, and the two senior engineers, with one action per stakeholder (Module 4)",
+      "Build an influence/interest stakeholder map covering the CFO, the executive sponsor, and the two senior coordinators, with one action per stakeholder (Module 4)",
       "Recommend which version of the AI assistant to pilot first (autonomous re-routing vs. draft-for-review) using the impact/feasibility framework, and justify the sequencing (Module 5)",
       "End with a realistic revised timeline recommendation and the single biggest risk to it"
     ],
@@ -939,22 +939,22 @@
       "The memo visibly draws on adaptability, problem-solving, communication, relationship-building, and AI-prioritization lenses — not just a project plan",
       "The CFO update and the internal issue-tree don't contradict each other (same real risk profile, different framing for different audiences)",
       "The AI pilot recommendation explicitly favors the more feasible option over the more impressive-sounding one, with a stated reason",
-      "A real engineering leader could act on this memo directly — it names people, actions, and a timeline, not just abstract principles"
+      "A real team leader could act on this memo directly — it names people, actions, and a timeline, not just abstract principles"
     ],
     quiz: [
-      { q: "Given the case details, the two anxious senior engineers are best addressed by:", opts: ["Ignoring their concerns until the project ships", "Applying Notice → Name → Navigate and giving them a concrete, small next step tied to the new platform", "Immediately reassigning them off the project", "Telling them their concerns are unfounded without discussion"], correct: 1 },
+      { q: "Given the case details, the two anxious senior coordinators are best addressed by:", opts: ["Ignoring their concerns until the project ships", "Applying Notice → Name → Navigate and giving them a concrete, small next step tied to the new way of working", "Immediately reassigning them off the project", "Telling them their concerns are unfounded without discussion"], correct: 1 },
       { q: "The executive sponsor wanting 'exciting' rather than fully accurate weekly updates is best handled by:", opts: ["Giving them only good news to keep morale high", "Using bottom-line-up-front structure to lead with real progress while still surfacing real risk clearly", "Refusing to send any updates until the project is done", "Escalating a complaint about the sponsor to HR"], correct: 1 },
       { q: "Given the data-readiness problem, the recommended AI pilot sequencing should:", opts: ["Start with the autonomous re-routing version since it's the most impressive", "Start with the draft-for-review version, which tolerates messier data and keeps a human in the loop", "Skip AI entirely until data is perfect", "Launch both versions simultaneously regardless of data readiness"], correct: 1 }
     ]
   };
 
   var LEAD_BONUS = {
-    linkedin: "Just completed a course on adaptability, problem-solving, communication, relationship-building, and AI judgment — built for people like me who came up through hands-on technical work and are now expected to lead through ambiguity, not just solve for it.\n\nThree things stuck with me.\n\nFirst: resistance to change isn't irrational, it's a predictable stage — naming it (for myself and my team) turned frustration into something I could actually navigate instead of just enduring.\n\nSecond: an issue tree works exactly like decomposing a system — mutually exclusive, collectively exhaustive branches turn 'something is wrong and everyone is anxious' into 'here are three testable hypotheses, ranked by effort.'\n\nThird: the most sophisticated AI use case isn't always the right first pilot. The feasibility axis — data readiness, process maturity, organizational appetite — matters as much as the impressiveness of the idea, and ignoring it is how ambitious AI pilots quietly fail.\n\nHappy to compare notes with anyone else navigating the shift from builder to leader.",
+    linkedin: "Just completed a course on adaptability, problem-solving, communication, relationship-building, and AI judgment — built for people like me who were promoted for being good at the work and are now expected to lead through ambiguity, not just solve for it.\n\nThree things stuck with me.\n\nFirst: resistance to change isn't irrational, it's a predictable stage — naming it (for myself and my team) turned frustration into something I could actually navigate instead of just enduring.\n\nSecond: an issue tree works like planning a house move room by room — mutually exclusive, collectively exhaustive branches turn 'something is wrong and everyone is anxious' into 'here are three testable hypotheses, ranked by effort.'\n\nThird: the most sophisticated AI use case isn't always the right first pilot. The feasibility axis — data readiness, process maturity, organizational appetite — matters as much as the impressiveness of the idea, and ignoring it is how ambitious AI pilots quietly fail.\n\nHappy to compare notes with anyone else navigating the shift from doing the work to leading it.",
     blog: [
-      { h: "1. The Skills Nobody Taught Us on the Way Up", b: "Open with the realization that deep technical skill doesn't automatically translate into leading people through change, ambiguity, or executive conversations — and why that gap becomes visible exactly when you're promoted for your technical strength." },
+      { h: "1. The Skills Nobody Taught Us on the Way Up", b: "Open with the realisation that deep expertise in your field doesn't automatically translate into leading people through change, ambiguity, or executive conversations — and why that gap becomes visible exactly when you're promoted for that expertise." },
       { h: "2. Resistance to Change Is a Stage, Not a Verdict", b: "Walk through the change curve and the Notice → Name → Navigate method, using a real or composite example of a team (or yourself) moving from resistance to exploration once the stage was named rather than fought." },
-      { h: "3. Debugging Problems and Debugging Organizations Use the Same Muscle", b: "Draw the parallel between MECE issue trees / hypothesis-driven investigation and how you already approach a gnarly production bug — and why most 'people problems' respond to the same structured decomposition." },
-      { h: "4. Nobody Acts on Your Best Insight If It's Buried on Page 3", b: "Use the bottom-line-up-front and 'so what, now what' concepts to explain why technically excellent communication often fails to drive action, and what changed once you restructured how you communicated up." },
+      { h: "3. Business Problems and People Problems Use the Same Muscle", b: "Draw the parallel between MECE issue trees and hypothesis-driven investigation and how a good doctor or mechanic diagnoses a fault — and why most 'people problems' respond to the same structured breakdown." },
+      { h: "4. Nobody Acts on Your Best Insight If It's Buried on Page 3", b: "Use the bottom-line-up-front and 'so what, now what' concepts to explain why accurate, detailed communication often fails to drive action, and what changed once you restructured how you communicated up." },
       { h: "5. The Stakeholder You Didn't Brief Is the One Who Stops Your Project", b: "Tell the story (real or composite) of a high-influence, low-interest stakeholder who was overlooked, and how a simple stakeholder map would have prevented it." },
       { h: "6. Not Every AI Idea Deserves to Go First", b: "Close with the impact/feasibility lens for AI prioritization and what it changed about how you evaluate the flood of AI pilot ideas coming from leadership and clients alike." }
     ]
