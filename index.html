@@ -503,17 +503,85 @@
       time: "2–3 hrs",
       concepts: [
         { t: "Leading vs. Lagging Indicators",
-          body: "A lagging indicator tells you what already happened (revenue, churn last quarter). A leading indicator predicts what's about to happen (enquiries this week, trial members converting, bookings for next month). Executives need both, but they act on leading indicators and report on lagging ones.",
-          ex: "A chain of fitness studios had Q3 revenue (lagging) of $2.4M, flat vs Q2. But the share of free-trial visitors who became paying members (leading) dropped from 18% to 11% starting in July. Flat revenue looks fine; the leading indicator says Q4 revenue is about to fall." },
-        { t: "Signal vs. Noise — One Dashboard, One Decision",
-          body: "A dashboard with 40 metrics is harder to act on than one with 6. Every dashboard should map to a specific decision a specific person needs to make. Think of a car dashboard: a few gauges that tell you when to act, not every reading the engine produces.",
-          ex: "A VP of Sales 'will we hit target' dashboard needs exactly: value of deals in progress compared with the target, win rate trend, average time to close a deal, and days left in the quarter. Everything else is noise for that decision." },
-        { t: "The Metric Pyramid (North Star → Drivers → Inputs)",
-          body: "Executive dashboards cascade: one North Star metric, 3–5 driver metrics, and the operational inputs teams control day to day. It works like goals in a sports team: the score is the North Star, possession and shots on target are drivers, and fitness and passing drills are the inputs players control.",
-          ex: "For a subscription business: North Star = revenue kept and grown from existing customers (108% of last year). Driver = the share of customers who leave each year (6%). Input = how fast customer emails are answered. Customers who wait more than 24 hours leave at 11% a year, against 4% for those answered within 4 hours." },
+          body: "Some numbers tell you what has already happened; others warn you about what is coming. Leaders need both, but they report on lagging indicators and act on leading ones, because by the time a lagging number moves, it is usually too late to change it.",
+          points: [
+            ["Lagging indicator:", "a result that confirms the past, such as last quarter's revenue, profit or customers lost."],
+            ["Leading indicator:", "an early signal that predicts future results, such as enquiries this week, trial visitors becoming paying members, or bookings for next month."],
+            ["Why both matter:", "lagging indicators tell you whether you hit the goal; leading indicators give you time to do something about it."]
+          ],
+          formula: [
+            "Conversion rate = Trial visitors who became members ÷ All trial visitors",
+            "New members per month = Trial visitors per month × Conversion rate"
+          ],
+          steps: [
+            ["The lagging view.", "A chain of fitness studios had Q3 revenue of $2.4M, flat compared with Q2. On revenue alone, all looks fine."],
+            ["The leading view.", "About 1,000 people take a free trial each month. The share who join as paying members dropped from 18% to 11% in July."],
+            ["New members.", "Before: 1,000 × 0.18 = 180 a month. After: 1,000 × 0.11 = 110 a month. That is 70 fewer new members every month."],
+            ["What it will cost.", "At $60 a month per member, each month's shortfall is 70 × $60 = $4,200 of monthly revenue. After three months, monthly revenue is $12,600 lower than it would have been, about $151K a year."]
+          ],
+          takeaway: "Flat revenue hid a problem that the conversion rate showed months earlier. Put at least one leading indicator on every dashboard." },
+        { t: "Signal vs. Noise: One Dashboard, One Decision",
+          body: "A dashboard with 40 numbers is harder to act on than one with six. The test of a good dashboard is simple: which decision does it help which person make? Anything that does not inform that decision is noise, however interesting it is. Think of a car dashboard: a few gauges that tell you when to act, not every reading the engine produces.",
+          points: [
+            ["Decision first:", "name the person and the decision, then choose only the numbers that change it."],
+            ["Fewer is better:", "six or fewer numbers on the main view; detail can sit one click away."],
+            ["Each number needs an action:", "if a number moved sharply, someone should know what to do about it."]
+          ],
+          formula: [
+            "Coverage = Value of deals in progress ÷ Sales target still to reach",
+            "Expected sales = Value of deals in progress × Win rate",
+            "Coverage needed = 1 ÷ Win rate"
+          ],
+          steps: [
+            ["The decision.", "A head of sales must decide whether the team will hit this quarter's target, or needs to act now."],
+            ["The four numbers.", "Target still to reach: $1.2M. Value of deals in progress: $3.0M. Usual win rate: 30%. Days left: 40."],
+            ["Coverage.", "$3.0M ÷ $1.2M = 2.5 times the remaining target."],
+            ["Is it enough?", "Expected sales = $3.0M × 0.30 = $0.9M, which is $0.3M short. With a 30% win rate you need 1 ÷ 0.30 ≈ 3.3 times coverage, not 2.5."],
+            ["The action.", "With 40 days left, the team needs about $1M more in new deals, or a higher win rate on the deals it has. Everything else on the old 40-number report was noise for this decision."]
+          ],
+          takeaway: "Start from the decision, keep only the numbers that change it, and make sure each one points to an action." },
+        { t: "The Metric Pyramid: North Star, Drivers, Inputs",
+          body: "Good dashboards cascade. At the top is one number that best captures success. Beneath it sit the few drivers that move that number, and beneath those, the everyday inputs teams can control. It works like a sports team: the score is the North Star, possession and shots on target are drivers, and fitness and passing drills are the inputs players control.",
+          points: [
+            ["North Star:", "the single measure that best reflects the value you create, such as revenue kept and grown from existing customers."],
+            ["Drivers:", "three to five measures that directly move the North Star, such as how many customers leave each year."],
+            ["Inputs:", "things teams control day to day, such as how quickly customer emails are answered."],
+            ["The point:", "every person can see how their daily work connects to the number leadership watches."]
+          ],
+          formula: [
+            "Revenue retention = This year's revenue from last year's customers ÷ Their revenue last year",
+            "Blended loss rate = (Share of customers in group A × Group A's loss rate) + (Share in group B × Group B's loss rate)"
+          ],
+          steps: [
+            ["The North Star.", "Last year's customers paid $10M. This year the same customers paid $10.8M, because most stayed and some spent more. Revenue retention = $10.8M ÷ $10M = 108%."],
+            ["A driver.", "Each year 6% of customers leave."],
+            ["An input.", "Customers who wait more than 24 hours for a reply leave at 11% a year; those answered within 4 hours leave at 4%. Today 30% of customers wait more than 24 hours."],
+            ["Connect them.", "Blended loss = 0.30 × 11% + 0.70 × 4% = 3.3% + 2.8% = 6.1%, which explains the 6% driver."],
+            ["The payoff.", "If every customer were answered within 4 hours, losses would fall to 4%. On a $10M base, keeping an extra 2% of revenue is worth about $200K a year."]
+          ],
+          takeaway: "Link everyday inputs to the North Star with numbers, and teams can see exactly how their work moves the result." },
         { t: "Common Executive KPI Vocabulary",
-          body: "CAC (cost to acquire a customer), LTV (the profit a customer brings over their lifetime), LTV:CAC ratio (3:1 or better is healthy), gross margin (what is left from each sale after direct costs), burn multiple (cash burned ÷ new recurring revenue added, lower is better), and the Rule of 40 for growing companies (growth % + profit margin % should exceed 40).",
-          ex: "35% YoY growth with -10% operating margin → Rule of 40 score = 35 + (-10) = 25, below the 40 threshold: growth isn't yet capital-efficient." }
+          body: "Leaders and investors use a handful of measures again and again to judge whether a business is healthy and growing efficiently. Knowing what each one means, and how to calculate it, lets you follow the conversation and ask better questions.",
+          points: [
+            ["CAC (customer acquisition cost):", "what it costs, in sales and marketing, to win one new customer."],
+            ["LTV (lifetime value):", "the gross profit a customer brings over the whole time they stay."],
+            ["LTV to CAC ratio:", "how many times over a customer repays what it cost to win them. Three or more is generally seen as healthy."],
+            ["Gross margin:", "the share of each sale left after the direct costs of making or delivering it."],
+            ["Burn multiple:", "for a growing company that is losing money, cash burned divided by new recurring revenue added. Lower is better."],
+            ["Rule of 40:", "for growing companies, growth rate plus profit margin should be at least 40."]
+          ],
+          formula: [
+            "CAC = Sales and marketing spend ÷ New customers won",
+            "LTV ≈ Monthly revenue per customer × Gross margin × Average months a customer stays",
+            "Rule of 40 score = Revenue growth % + Profit margin %"
+          ],
+          steps: [
+            ["CAC.", "A business spends $300K on sales and marketing and wins 100 customers. CAC = $300K ÷ 100 = $3,000."],
+            ["LTV.", "Each customer pays $200 a month at a 70% gross margin and stays 36 months on average. LTV = $200 × 0.70 × 36 = $5,040."],
+            ["The ratio.", "$5,040 ÷ $3,000 = 1.7. Each customer repays its cost less than twice, well below the healthy level of 3."],
+            ["Rule of 40.", "Revenue grows 35% a year with an operating margin of −10%. Score = 35 + (−10) = 25, below 40: the growth is not yet efficient."]
+          ],
+          takeaway: "These measures are simple ratios. Learn the formula behind each one, and you can test any claim about a business's health." }
       ],
       caseTitle: "Subscription Business — The Dashboard That Missed the Warning",
       caseText: "A meal-kit subscription company's board dashboard shows revenue growing steadily at 22% a year for three quarters, green across the board. But satisfaction scores among subscribers due to renew have quietly dropped from 42 to 19, and the number of meals each subscriber actually cooks is down 15%. None of this is on the dashboard, which is built entirely on lagging revenue and customer-count figures.",
@@ -544,17 +612,81 @@
       time: "2–3 hrs",
       concepts: [
         { t: "Fixed vs. Variable Costs",
-          body: "Fixed costs don't change with volume (rent, insurance, salaried staff). Variable costs rise with every unit sold (ingredients, packaging, delivery fees, sales commissions). The mix determines operating leverage: how quickly profit grows once fixed costs are covered.",
-          ex: "A bakery pays $40K a month in rent and salaries, plus $0.80 of ingredients per loaf. At 20,000 loaves a month, each loaf costs ($40K + $16K) ÷ 20,000 = $2.80. At 50,000 loaves, it costs ($40K + $40K) ÷ 50,000 = $1.60. The fixed costs are spread over more loaves, which is why volume matters so much to businesses with high fixed costs." },
+          body: "Every cost behaves in one of two ways as you sell more. Knowing which is which tells you how profit will change with volume, how many units you must sell to break even, and why growing businesses with high fixed costs can become very profitable.",
+          points: [
+            ["Fixed costs:", "stay the same whether you sell a little or a lot, such as rent, insurance and salaried staff."],
+            ["Variable costs:", "rise with every unit sold, such as ingredients, packaging, delivery fees and sales commissions."],
+            ["Operating leverage:", "when fixed costs are a large share of total costs, each extra sale adds a lot of profit once those fixed costs are covered."],
+            ["Break-even point:", "the number of units you must sell for income to cover all costs."]
+          ],
+          formula: [
+            "Total cost = Fixed costs + (Variable cost per unit × Units)",
+            "Cost per unit = Total cost ÷ Units",
+            "Break-even units = Fixed costs ÷ (Price − Variable cost per unit)"
+          ],
+          steps: [
+            ["The bakery.", "Rent and salaries cost $40K a month. Ingredients cost $0.80 per loaf. Each loaf sells for $3.00."],
+            ["At 20,000 loaves a month.", "Total cost = $40K + ($0.80 × 20,000) = $56K. Cost per loaf = $56K ÷ 20,000 = $2.80."],
+            ["At 50,000 loaves a month.", "Total cost = $40K + ($0.80 × 50,000) = $80K. Cost per loaf = $80K ÷ 50,000 = $1.60."],
+            ["Break-even.", "Each loaf contributes $3.00 − $0.80 = $2.20 towards fixed costs. Break-even = $40K ÷ $2.20 ≈ 18,200 loaves a month."]
+          ],
+          takeaway: "Spreading fixed costs over more units makes each one cheaper. Know your break-even point before you commit to fixed costs." },
         { t: "Contribution Margin",
-          body: "Contribution margin = Revenue per unit − Variable cost per unit. It's the number that should drive 'sell more of X or Y' decisions, not gross revenue.",
-          ex: "Product A: $50 price, $30 variable cost → $20 margin (40%). Product B: $80 price, $65 variable cost → $15 margin (19%). B has higher revenue per sale, but A contributes more profit per unit." },
-        { t: "Unit Economics: CAC Payback and LTV",
-          body: "CAC Payback = CAC ÷ (monthly revenue per customer × gross margin %). It tells you how long it takes to earn back what you spent to acquire a customer.",
-          ex: "CAC = $6,000. Customer pays $500/mo at 70% margin → $350/mo profit. Payback ≈ 17 months. If customers churn before month 17, you're acquiring at a loss." },
+          body: "Revenue tells you how much comes in. Contribution margin tells you how much of each sale is left, after the costs that come with that sale, to pay for fixed costs and profit. It is the number that should guide 'sell more of A or B?' decisions.",
+          points: [
+            ["Contribution margin per unit:", "the price minus the variable cost of one unit."],
+            ["Contribution margin percentage:", "that amount as a share of the price."],
+            ["Why it matters:", "a product with a high price can still contribute less than a cheaper one if its variable costs are high."]
+          ],
+          formula: [
+            "Contribution margin per unit = Price − Variable cost per unit",
+            "Contribution margin % = Contribution margin per unit ÷ Price"
+          ],
+          steps: [
+            ["Product A.", "Price $50, variable cost $30. Contribution = $50 − $30 = $20 per unit, which is $20 ÷ $50 = 40%."],
+            ["Product B.", "Price $80, variable cost $65. Contribution = $80 − $65 = $15 per unit, which is $15 ÷ $80 ≈ 19%."],
+            ["Sell 1,000 of each.", "A contributes 1,000 × $20 = $20K. B contributes 1,000 × $15 = $15K, even though B brings in $30K more revenue."]
+          ],
+          takeaway: "When choosing what to sell or promote, compare contribution margin, not revenue." },
+        { t: "Unit Economics: CAC Payback and Lifetime Value",
+          body: "Unit economics asks a simple question: does one typical customer make money? You compare what it cost to win them with the profit they bring each month and how long they stay. If one customer loses money, more customers only lose more.",
+          points: [
+            ["CAC:", "the cost of winning one customer, mostly sales and marketing."],
+            ["Monthly gross profit per customer:", "what the customer pays each month, minus the direct cost of serving them."],
+            ["CAC payback:", "the number of months of that profit needed to recover the cost of winning the customer."],
+            ["Lifetime value (LTV):", "the total gross profit a customer brings over the time they stay."]
+          ],
+          formula: [
+            "Monthly gross profit per customer = Monthly price × Gross margin",
+            "CAC payback (months) = CAC ÷ Monthly gross profit per customer",
+            "LTV ≈ Monthly gross profit per customer × Average months a customer stays"
+          ],
+          steps: [
+            ["The customer.", "Winning a customer costs $6,000. They pay $500 a month at a 70% gross margin."],
+            ["Monthly profit.", "$500 × 0.70 = $350."],
+            ["Payback.", "$6,000 ÷ $350 ≈ 17 months."],
+            ["If customers stay 24 months.", "LTV = $350 × 24 = $8,400, so each customer earns $8,400 − $6,000 = $2,400 more than they cost."],
+            ["If customers stay 12 months.", "LTV = $350 × 12 = $4,200, so each customer loses $6,000 − $4,200 = $1,800. Growth would make losses bigger."]
+          ],
+          takeaway: "Compare payback with how long customers really stay. If they leave before payback, you are buying customers at a loss." },
         { t: "Budgeting: Zero-Based vs. Incremental",
-          body: "Incremental budgeting adjusts last year's number by a percentage — fast but perpetuates inefficiency. Zero-based budgeting requires every line item justified from zero — slower, but surfaces 'why are we still paying for this'.",
-          ex: "An incremental 'software subscriptions' budget rises from $200K to $210K automatically. A zero-based review reveals $35K a year still being paid for two tools the team stopped using 18 months ago." }
+          body: "Most budgets start from last year's figure and add a percentage. That is quick, but it quietly carries forward every past cost, needed or not. Zero-based budgeting starts from nothing and asks each line to justify itself, which is slower but finds money that has been wasted for years.",
+          points: [
+            ["Incremental budgeting:", "next year's budget is last year's plus or minus a percentage."],
+            ["Zero-based budgeting:", "every line item starts at zero and must be justified by what it delivers."],
+            ["When to use which:", "incremental for stable, low-risk areas; zero-based every few years, or when costs have grown without a clear reason."]
+          ],
+          formula: [
+            "Incremental budget = Last year's budget × (1 + increase %)",
+            "Zero-based budget = Sum of each line item that is justified today"
+          ],
+          steps: [
+            ["Incremental.", "Last year's software subscriptions budget was $200K. With a 5% increase: $200K × 1.05 = $210K."],
+            ["Zero-based.", "The team lists every subscription and asks what each one is used for."],
+            ["What it finds.", "Two tools costing $35K a year have not been used for 18 months."],
+            ["The result.", "Justified budget = $210K − $35K = $175K, a saving of about 17%, which then repeats every year."]
+          ],
+          takeaway: "Run a zero-based review now and then. Costs that nobody questions tend to outlive their purpose." }
       ],
       caseTitle: "Beauty/CPG — The SKU That Looks Profitable But Isn't",
       caseText: "A direct-to-consumer skincare brand sells a $45 serum (COGS $12, $8 CAC, $3 fulfillment) and a $22 cleanser (COGS $5, $4 CAC, $3 fulfillment). On revenue alone the serum looks like the star product, and leadership is deciding which to feature in the next paid campaign.",
@@ -581,17 +713,76 @@
       time: "2–4 hrs",
       concepts: [
         { t: "Top-Down vs. Bottom-Up Forecasting",
-          body: "Top-down starts from a market-size number and works down. Bottom-up starts from operational drivers and works up. Bottom-up is more defensible: it's built on inputs you can monitor and influence, like planning a road trip from your car's real fuel use rather than the figure in the brochure.",
-          ex: "Top-down: '$4B market, we'll get 1% = $40M.' Bottom-up: '6 new salespeople, each ramping up to 2 deals a month at $15K a year per deal → about $8–9M of new annual revenue.' The bottom-up number is grounded in capacity you can actually staff." },
-        { t: "Scenario Planning (Best / Base / Worst)",
-          body: "A single-point forecast pretends the future is certain. Scenario planning models 3+ plausible futures so decisions can be stress-tested against downside cases, the financial equivalent of packing for the weather you might get, not just the forecast.",
-          ex: "Base: 20% growth, hire 10 people. Worst: 5% growth (a major client does not renew), and that hiring plan cuts the months of cash left from 34 to 22. Best: 35% growth, and the hiring plan should flex up." },
+          body: "There are two ways to forecast revenue. Top-down starts from the size of the whole market and assumes a share of it. Bottom-up starts from the things you control, such as people, activity and prices, and builds upwards. Bottom-up is harder to do and much easier to defend.",
+          points: [
+            ["Top-down:", "market size × the share you expect to win. Quick, but the share is usually a guess."],
+            ["Bottom-up:", "built from operational drivers you can see and influence, such as the number of salespeople, the deals each closes and the value of each deal. It is like planning a road trip from your car's real fuel use rather than the figure in the brochure."],
+            ["Ramp-up time:", "new people rarely produce at full speed from day one. Good bottom-up forecasts allow for it."]
+          ],
+          formula: [
+            "Top-down revenue = Market size × Expected market share",
+            "Bottom-up revenue = Salespeople × Deals per person per month × Months selling × Value per deal"
+          ],
+          steps: [
+            ["Top-down.", "'The market is $4B and we will win 1%': $4B × 0.01 = $40M."],
+            ["Bottom-up, fully productive.", "6 new salespeople, each closing 2 deals a month, each deal worth $60K a year: 6 × 2 × 12 × $60K ≈ $8.6M of new annual revenue."],
+            ["Allow for ramp-up.", "If each salesperson takes three months to start closing, they sell for 9 months in year one: 6 × 2 × 9 × $60K ≈ $6.5M."],
+            ["Compare.", "The top-down $40M has nothing behind it. The bottom-up $6.5M is tied to people you can hire and activity you can track."]
+          ],
+          takeaway: "Build forecasts from drivers you can staff and measure, and allow for the time it takes people to reach full speed." },
+        { t: "Scenario Planning: Best, Base and Worst",
+          body: "A single forecast pretends the future is certain. Scenario planning builds three or more plausible versions so you can see how a decision holds up if things go badly, not just if they go as hoped. It is the financial equivalent of packing for the weather you might get, not just the forecast.",
+          points: [
+            ["Base case:", "your most likely view."],
+            ["Worst case:", "a realistic bad outcome tied to a named risk, not just 'base minus 5%'."],
+            ["Best case:", "a realistic good outcome, and what you would do differently if it happened."],
+            ["Runway:", "how many months the business can keep going on the cash it has, at its current rate of spending."]
+          ],
+          formula: [
+            "Runway (months) = Cash in the bank ÷ Net cash spent per month"
+          ],
+          steps: [
+            ["The plan.", "The company has $6.8M in the bank and plans to grow 20% and hire 10 people."],
+            ["Base case.", "Net cash spent is $200K a month. Runway = $6.8M ÷ $0.2M = 34 months."],
+            ["Worst case.", "A major client does not renew and growth falls to 5%. With the same 10 hires, net spending rises to about $310K a month. Runway = $6.8M ÷ $0.31M ≈ 22 months."],
+            ["Best case.", "Growth reaches 35% and net spending falls to $150K a month. Runway ≈ 45 months, so hiring could speed up."],
+            ["The decision.", "Hire in stages: confirm the first five hires, and release the next five when the client renews."]
+          ],
+          takeaway: "Test every big commitment against a named worst case, and design the plan so it can flex as the future unfolds." },
         { t: "Rolling Forecasts vs. Static Annual Budgets",
-          body: "A static annual budget set in December is often stale by March. A rolling forecast is refreshed monthly or quarterly, like a satnav that recalculates the route as traffic changes, versus a printed map from last week.",
-          ex: "A consultancy's December budget assumed 40 new clients in the year. By April it had signed 6, well behind pace. With a rolling forecast, hiring is re-planned in April. With a static budget, the gap is discovered in December, after the hires have been made." },
+          body: "A budget set in December is often out of date by March. A rolling forecast is refreshed every month or quarter using actual results, so decisions are based on where things are heading now, not on what was assumed a year ago. It is like a satnav that recalculates the route as traffic changes, versus a printed map from last week.",
+          points: [
+            ["Static budget:", "set once a year and used as the yardstick all year, however much things change."],
+            ["Rolling forecast:", "updated regularly with actual results, always looking a set number of months ahead."],
+            ["Run rate:", "a simple projection of the full year from results so far."]
+          ],
+          formula: [
+            "Full-year run rate = Results so far ÷ Months elapsed × 12"
+          ],
+          steps: [
+            ["The budget.", "A consultancy's December budget assumed 40 new clients in the year, and planned to hire 8 consultants, one for every 5 clients."],
+            ["By April.", "After four months it has signed 6 clients. Run rate = 6 ÷ 4 × 12 = 18 clients a year, less than half the plan."],
+            ["Re-plan.", "18 clients need about 4 new consultants, not 8."],
+            ["The difference.", "With a rolling forecast, hiring is cut back in April. With a static budget, the gap is noticed in December, after all 8 have been hired."]
+          ],
+          takeaway: "Re-forecast regularly from actual results, and tie big commitments such as hiring to the latest forecast, not last year's budget." },
         { t: "Capital Allocation Frameworks",
-          body: "When capital is limited, it should flow to the highest risk-adjusted return, not the loudest advocate: rank by (expected return × probability of success) ÷ resources required.",
-          ex: "Initiative A: $2M return, 70% success, $500K cost → 2.8x risk-adjusted return. Initiative B: $5M return, 30% success, $1M cost → 1.5x. Despite B's bigger headline, A is the better allocation." }
+          body: "Money and people are always limited. Capital allocation means sending them to the options with the best return for the risk taken, rather than to the loudest advocate or the biggest headline. A simple scoring rule makes the comparison fair.",
+          points: [
+            ["Expected return:", "what the option would earn if it succeeds."],
+            ["Probability of success:", "your honest estimate of the chance it works."],
+            ["Resources required:", "the money, or time, it needs."],
+            ["Risk-adjusted return multiple:", "how many times the investment you expect back once the chance of failure is allowed for."]
+          ],
+          formula: [
+            "Risk-adjusted return multiple = (Expected return × Probability of success) ÷ Cost"
+          ],
+          steps: [
+            ["Option A.", "Could return $2M, has a 70% chance of success and costs $500K. Multiple = ($2M × 0.70) ÷ $0.5M = $1.4M ÷ $0.5M = 2.8 times."],
+            ["Option B.", "Could return $5M, has a 30% chance of success and costs $1M. Multiple = ($5M × 0.30) ÷ $1M = $1.5M ÷ $1M = 1.5 times."],
+            ["Compare.", "B has the bigger headline, but each dollar put into A is expected to return almost twice as much."]
+          ],
+          takeaway: "Rank options by risk-adjusted return per dollar, not by the size of the prize." }
       ],
       caseTitle: "Retail — Stores or E-Commerce?",
       caseText: "A regional retail chain has $8M for either (1) 4 new stores — $3.5M revenue/store, 12% margin, $1.8M capex each, 85% confidence, or (2) building an online store with home delivery — $6M incremental online revenue by year two, 22% margin, $8M cost, but only 55% confidence given the team has never run online sales.",
@@ -618,17 +809,76 @@
       time: "2–3 hrs",
       concepts: [
         { t: "Statistical vs. Practical Significance",
-          body: "A result can be statistically significant (unlikely due to chance) without being practically significant (large enough to matter). Statistical significance answers 'is this real?'; practical significance answers 'is this worth doing?'",
-          ex: "A new shop-window design brings in 4.3% of passers-by against 4.1% for the old one, p=0.03 over 500K passers-by. The difference is statistically real, but a 0.2-point lift may not justify the cost of refitting all 200 stores." },
+          body: "When a test shows a difference, two separate questions follow. Is the difference real, or could it be luck? And if it is real, is it big enough to be worth acting on? Statistics answers the first. Only money, time and judgement answer the second.",
+          points: [
+            ["Statistically significant:", "unlikely to be a fluke. A p-value of 0.03 means that if there were really no difference, a result this large would turn up by chance only about 3% of the time."],
+            ["Practically significant:", "big enough to matter for the decision, once costs are counted."],
+            ["Large samples:", "with enough data, even a tiny difference becomes statistically significant, so always check its size."]
+          ],
+          formula: [
+            "Lift = New rate − Old rate",
+            "Extra customers = Lift × Number of people exposed",
+            "Value of the change = Extra customers × Profit per customer − Cost of the change"
+          ],
+          steps: [
+            ["The test.", "A new shop-window design brings in 4.3% of passers-by against 4.1% for the old one, measured over 500,000 passers-by, with p = 0.03. The difference is real."],
+            ["Its size per store.", "Lift = 4.3% − 4.1% = 0.2 points. A store sees about 50,000 passers-by a year, so the new window brings in 0.002 × 50,000 = 100 extra visitors a year."],
+            ["Its value.", "If 20% of visitors buy and each sale makes $15 profit: 100 × 0.20 × $15 = $300 a year per store."],
+            ["The cost.", "Refitting a store costs $5,000, so payback takes $5,000 ÷ $300 ≈ 17 years."]
+          ],
+          takeaway: "'Is it real?' and 'Is it worth it?' are different questions. Answer both before you act." },
         { t: "Correlation vs. Causation, and Confounders",
-          body: "Two metrics moving together doesn't mean one causes the other — a third factor may drive both (the classic 'ice cream and drownings' trap).",
-          ex: "Webinar attendees retain at 92% vs 78% for non-attendees. Before concluding webinars cause retention, check if attendees are systematically higher-intent buyers to begin with." },
+          body: "Two things moving together does not mean one causes the other. Often a third factor, called a confounder, drives both. Ice-cream sales and drownings both rise in summer, but ice cream does not cause drowning; hot weather drives both. Before acting on a pattern, compare like with like.",
+          points: [
+            ["Correlation:", "two measures tend to move together."],
+            ["Causation:", "one actually makes the other happen."],
+            ["Confounder:", "a hidden third factor that affects both."],
+            ["The fix:", "compare groups that are similar in every important way except the one you are testing."]
+          ],
+          formula: [
+            "Fair comparison = Result among those who did X ÷ Result among similar people who did not"
+          ],
+          steps: [
+            ["The pattern.", "Customers who attend webinars stay at 92% a year; those who don't stay at 78%. It looks as if webinars keep customers."],
+            ["Look for a confounder.", "Most attendees are large, established customers, who tend to stay anyway."],
+            ["Compare like with like.", "Among large customers only: attendees stay at 93%, non-attendees at 91%. The difference shrinks from 14 points to 2."],
+            ["The conclusion.", "Webinars may help a little, but customer size explains most of the gap. Investing heavily in webinars to cut customer losses would disappoint."]
+          ],
+          takeaway: "Before concluding that X causes Y, ask what else differs between the groups." },
         { t: "Expected Value and Decision Trees",
-          body: "Expected value = Σ(probability × outcome), letting you compare a certain small payoff against an uncertain large one on the same basis.",
-          ex: "A guaranteed $200K saving vs a new product line with a 40% chance of $800K (EV = $320K) and a 60% chance of $0. EV favours the product line, but a cash-constrained business might rationally still take the guaranteed $200K." },
+          body: "Expected value lets you compare a certain, smaller payoff with an uncertain, larger one on the same basis. A decision tree is a simple drawing of the choices, the possible outcomes, their probabilities and their payoffs.",
+          points: [
+            ["Expected value (EV):", "the average payoff you would get if you could make the same choice many times."],
+            ["Decision tree:", "each choice branches into outcomes; each outcome has a probability and a payoff."],
+            ["Beyond EV:", "a business short of cash may rationally prefer a smaller certain gain to a bigger uncertain one."]
+          ],
+          formula: [
+            "Expected value = (Probability of outcome 1 × Payoff 1) + (Probability of outcome 2 × Payoff 2) + …"
+          ],
+          steps: [
+            ["Choice 1.", "A guaranteed $200K saving. EV = $200K."],
+            ["Choice 2.", "A new product line: 40% chance of $800K, 60% chance of nothing. EV = 0.40 × $800K + 0.60 × $0 = $320K."],
+            ["Compare.", "Choice 2 has the higher expected value, by $120K."],
+            ["Consider survival.", "But in 60% of cases it produces nothing. If the business needs $150K this year to stay safe, the guaranteed $200K may be the wiser choice."]
+          ],
+          takeaway: "Use expected value to compare options fairly, then ask whether you can afford the bad outcome." },
         { t: "Common Cognitive Biases in Data Interpretation",
-          body: "Survivorship bias (only analyzing what 'survived'), confirmation bias (seeking data that supports a decision already made), base rate neglect (overreacting to one anecdote or spike).",
-          ex: "'Our top 10 customers all joined the loyalty programme' ignores the 200 lost customers who also joined it. The correct comparison is membership among customers who stayed vs customers who left." }
+          body: "Data does not interpret itself, and our minds take shortcuts. Three biases cause most bad conclusions from good data. The remedy is to ask what the right comparison is before looking at the numbers.",
+          points: [
+            ["Survivorship bias:", "studying only the winners, or those still here, and missing the ones who failed or left."],
+            ["Confirmation bias:", "seeking data that supports a decision already made."],
+            ["Base-rate neglect:", "overreacting to one striking story or one unusual week while ignoring the normal rate."]
+          ],
+          formula: [
+            "Fair comparison = Rate among customers who stayed vs. rate among customers who left"
+          ],
+          steps: [
+            ["The claim.", "'Our top 10 customers all joined the loyalty programme, so the programme keeps customers.'"],
+            ["The missing group.", "Look at the 200 customers who left last year: 180 of them, 90%, were also members."],
+            ["The full comparison.", "Of the 1,000 customers who stayed, 880, or 88%, are members. Membership is almost identical among those who stayed and those who left."],
+            ["The conclusion.", "The programme is not what keeps customers. Looking only at the winners hid that."]
+          ],
+          takeaway: "Before trusting a pattern, look at the people or cases it leaves out." }
       ],
       caseTitle: "Subscription Box — The Price Test That Almost Rolled Out",
       caseText: "A price test shows a new premium box increases average revenue per subscriber by 15%, p=0.01 over 3,000 subscribers across 6 weeks. The team is ready to roll it out, but the test only included subscribers of more than 12 months; newer, more price-sensitive subscribers were never offered it.",
@@ -655,17 +905,80 @@
       time: "2–4 hrs",
       concepts: [
         { t: "Net Present Value (NPV)",
-          body: "A dollar today is worth more than a dollar next year. NPV discounts future cash flows back to today's value using a discount rate, then sums them. NPV > 0 means the investment creates value beyond the cost of capital.",
-          ex: "$500K cost today, $200K/yr for 3 years at 10% discount → present values of $182K + $165K + $150K = $497K. NPV = −$3K — despite $600K in nominal returns, this barely destroys value once time is priced in." },
-        { t: "ROI, IRR, and Payback — Where Each Misleads",
-          body: "ROI ignores timing. IRR can favor small, fast projects with high percentage returns over larger ones that create more absolute value. Payback ignores everything after the payback point.",
-          ex: "Project A: $100K cost, pays back in 6 months, then nothing — high IRR, small absolute value. Project B: $2M cost, pays back in 30 months, then $4M/yr for 5 years — worse headline metrics, vastly more NPV." },
+          body: "A dollar today is worth more than a dollar next year, because today's dollar can be invested and because future money is less certain. NPV converts every future cash flow into today's money, adds them up, and subtracts what you pay today. If the result is above zero, the investment creates value.",
+          points: [
+            ["Discount rate:", "the yearly return you could earn elsewhere at similar risk, often called the cost of capital. It is written as a decimal (10% = 0.10)."],
+            ["Present value:", "what a future amount is worth today, after discounting."],
+            ["NPV:", "the sum of the present values of all future cash flows, minus the cost today."],
+            ["Reading the result:", "NPV above zero creates value; below zero destroys it, compared with the alternative return."]
+          ],
+          formula: [
+            "Present value = Future amount ÷ (1 + discount rate)<sup>year</sup>",
+            "NPV = (Sum of present values of future cash flows) − Cost today"
+          ],
+          formulaNote: "The raised number is the year in which the money arrives: year 1 divides by 1.10, year 2 by 1.10 × 1.10 = 1.21, year 3 by 1.10 × 1.10 × 1.10 = 1.331.",
+          steps: [
+            ["The investment.", "Pay $500K today to receive $200K a year for three years. Discount rate: 10%."],
+            ["Year 1.", "$200K ÷ 1.10 ≈ $182K."],
+            ["Year 2.", "$200K ÷ 1.21 ≈ $165K."],
+            ["Year 3.", "$200K ÷ 1.331 ≈ $150K."],
+            ["NPV.", "$182K + $165K + $150K = $497K of present value, minus the $500K cost, gives an NPV of about −$3K."]
+          ],
+          takeaway: "Despite $600K of cash coming back, the investment slightly destroys value once timing is counted. Always discount before you compare." },
+        { t: "ROI, IRR and Payback: Where Each Misleads",
+          body: "Three quick measures are common in investment discussions, and each can point you the wrong way if used alone. Use them as screens, then confirm the decision with NPV.",
+          points: [
+            ["ROI:", "total gain divided by cost. It ignores when the money arrives."],
+            ["IRR (internal rate of return):", "the yearly return a project earns, technically the discount rate at which its NPV would be zero. It can favour small, quick projects with high percentage returns over large ones that create far more value."],
+            ["Payback:", "how long until the cost is recovered. It ignores everything after that point."]
+          ],
+          formula: [
+            "ROI = (Total cash returned − Cost) ÷ Cost",
+            "Yearly rate from a short gain = (1 + gain over the period)<sup>periods per year</sup> − 1"
+          ],
+          steps: [
+            ["Project A.", "Costs $100K and returns $120K after six months, then nothing more."],
+            ["A's measures.", "ROI = 20%. As a yearly rate: (1.20)<sup>2</sup> − 1 = 44%, an impressive IRR. Fast payback. But its NPV at 10% is only about $14K."],
+            ["Project B.", "Costs $2M, takes 30 months to pay back, then earns $4M a year for five years."],
+            ["B's measures.", "Slower payback and a lower percentage return in the early years, but its NPV runs into many millions."],
+            ["Compare.", "On payback and IRR, A looks better. On value created, B is hundreds of times larger."]
+          ],
+          takeaway: "Use payback and IRR as quick screens, but decide on NPV, the value actually created." },
         { t: "Opportunity Cost",
-          body: "The true cost of a choice includes the value of the next-best alternative given up, not just cash spent. An hour spent in one meeting is an hour you cannot spend on anything else.",
-          ex: "3 senior consultants spend 4 months building an internal training programme instead of ~$480K of billable client work. Even at '$0 cash cost,' the true cost is the foregone billable revenue." },
+          body: "The true cost of a choice includes what you give up by not choosing the next-best alternative, not just the cash you spend. An hour in one meeting is an hour you cannot spend on anything else. 'It costs nothing, we already have the team' is almost never true.",
+          points: [
+            ["Cash cost:", "the money you actually pay out."],
+            ["Opportunity cost:", "the value of the best alternative you give up."],
+            ["True cost:", "both added together. Use it when comparing options."]
+          ],
+          formula: [
+            "True cost = Cash cost + Value of the best alternative given up"
+          ],
+          steps: [
+            ["The proposal.", "Three senior consultants spend four months building an internal training programme. Cash cost: $20K for materials."],
+            ["The alternative given up.", "They could have billed clients instead: 3 people × 4 months × 160 hours × $250 an hour = $480K."],
+            ["The true cost.", "$20K + $480K = $500K."],
+            ["The decision.", "The programme is worth doing only if its benefits clearly exceed $500K, not $20K."]
+          ],
+          takeaway: "Always price people's time at its next-best use. Free resources rarely are." },
         { t: "Portfolio-Level Tradeoff Analysis",
-          body: "Individual projects shouldn't be evaluated only in isolation. Consider shared risks, competition for the same people and money, and sequencing, like a household weighing a kitchen renovation, a new car and a holiday that all draw on the same savings.",
-          ex: "Three projects each have positive NPV alone, but all need the same 2 senior people and must run one after another. The real choice is order and number, not 'are they worth doing.'" }
+          body: "Projects are rarely independent. They compete for the same people and money, they can share the same risks, and some must happen in order. A household weighing a kitchen renovation, a new car and a holiday faces the same problem: each is worth it alone, but they draw on the same savings.",
+          points: [
+            ["Shared resources:", "projects that need the same scarce people or budget cannot all run at once."],
+            ["Shared risks:", "projects that all fail under the same conditions concentrate your risk."],
+            ["Sequencing:", "the order matters. Starting with the project that pays off soonest can fund or de-risk the next."]
+          ],
+          formula: [
+            "Projects that fit = Months the scarce people are available ÷ Months each project needs",
+            "Value per month of scarce time = Project NPV ÷ Months it needs"
+          ],
+          steps: [
+            ["The options.", "Three projects each need the same 2 senior people for 6 months. Their NPVs are $400K, $300K and $250K."],
+            ["The constraint.", "The two people are available for 12 months, so only 12 ÷ 6 = 2 projects fit this year."],
+            ["Value per month.", "$400K ÷ 6 ≈ $67K a month; $300K ÷ 6 = $50K; $250K ÷ 6 ≈ $42K."],
+            ["The decision.", "Run the $400K project first and the $300K project second, for $700K in total. The third waits, or the organisation finds or develops more senior people."]
+          ],
+          takeaway: "The real question is often not 'is this worth doing?' but 'which ones, in what order, with the people we have?'" }
       ],
       caseTitle: "Accounting Firm — Build a Client Toolkit, or Keep Billing?",
       caseText: "An accounting firm can deploy $600K and 4 senior staff for two quarters on (1) a reusable online tax-planning toolkit sold to clients — est. $1.8M NPV over 3 years, 60% probability of hitting adoption targets, or (2) direct billable client work — near-certain (95%) $1.4M NPV, no build risk.",
