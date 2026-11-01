@@ -399,6 +399,29 @@
   .formula { background: #fff; border: 1px solid color-mix(in srgb, var(--cc) 30%, white); border-radius: 10px; padding: 12px 15px; margin: 4px 0 12px; }
   .formula .tag { display: block; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--cc); margin-bottom: 6px; }
   .f-line { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6; color: var(--ink); background: color-mix(in srgb, var(--cc) 6%, white); border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; overflow-wrap: anywhere; }
+  .f-line.math { font-family: KaTeX_Main, "STIX Two Text", Cambria, Georgia, "Times New Roman", serif; font-size: 16.5px; line-height: 1.35; display: flex; flex-wrap: wrap; align-items: center; row-gap: 6px; padding: 10px 14px; overflow-x: auto; overflow-wrap: normal; }
+  .f-line.tex { display: block; font-size: 16px; line-height: 2.2; padding: 8px 14px; }
+  .f-line.tex .katex { font-size: 1.12em; }
+  .tex-p { display: inline-block; white-space: nowrap; }
+  @media (max-width: 760px) {
+    .formula { margin-left: -50px; padding: 10px 8px; }
+    .f-line.tex { font-size: 13.5px; line-height: 2; padding: 6px 9px; }
+  }
+  .m-pre { font-family: inherit; font-style: italic; color: var(--ink2); margin-right: .5em; }
+  .m-lhs { font-weight: 700; }
+  .m-rel, .m-op { padding: 0 .42em; white-space: nowrap; }
+  .m-frac { display: inline-flex; flex-direction: column; align-items: stretch; text-align: center; margin: 0 .15em; }
+  .m-num, .m-den { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 1px .35em; }
+  .m-num { border-bottom: 1.5px solid currentColor; padding-bottom: 3px; }
+  .m-den { padding-top: 3px; }
+  .m-frac .m-frac { font-size: .92em; }
+  .m-term { display: inline-flex; flex-wrap: wrap; align-items: center; row-gap: 6px; }
+  .m-grp { display: inline-flex; flex-wrap: wrap; align-items: center; row-gap: 6px; }
+  .m-grp:has(.m-frac) { flex-wrap: nowrap; }
+  @media (max-width: 760px) { .f-line.math { font-size: 15px; padding: 9px 11px; } }
+  .m-p { font-weight: 300; }
+  .m-p.big { font-size: 2.1em; line-height: .8; transform: translateY(-.04em); }
+  .m-sup { font-size: .68em; align-self: flex-start; margin-left: .1em; }
   .f-note { font-size: 13px !important; line-height: 1.55 !important; color: var(--ink2) !important; margin: 6px 0 0 !important; }
   .steps { margin: 4px 0 0; padding-left: 20px; }
   .steps li { margin-bottom: 7px; }
@@ -447,6 +470,13 @@
   .certificate .kicker { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink3); font-weight: 800; }
   .certificate h2 { font-size: 15px; color: var(--ink3); font-weight: 600; margin: 20px 0 4px; }
   .certificate .learner-name { font-size: 40px; font-weight: 800; margin: 6px 0 18px; color: var(--cc); font-family: Georgia, 'Times New Roman', serif; letter-spacing: -.01em; }
+  .cert-note { font-size: 11.5px; color: var(--ink3); margin: 14px 0 0; }
+  .site-footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink3); }
+  .sf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px 28px; }
+  .site-footer h4 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink2); margin: 0 0 6px; }
+  .site-footer p { font-size: 13px; line-height: 1.55; margin: 0 0 6px; }
+  .site-footer a { color: var(--brand); font-weight: 600; }
+  .sf-copy { margin-top: 16px !important; font-size: 12px !important; }
   .certificate .coursename { font-size: 22px; font-weight: 800; margin: 6px 0 4px; letter-spacing: -.01em; }
   .certificate .meta { font-size: 12.5px; color: var(--ink3); margin-top: 22px; }
   .certificate .seal { margin: 24px auto 0; width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--cc), var(--cc2)); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 0 0 6px color-mix(in srgb, var(--cc) 15%, white); }
@@ -594,6 +624,8 @@
     .certificate { box-shadow: none; }
   }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11.15.0/dist/mermaid.min.js" integrity="sha384-yQ4mmBBT+vhTAwjFH0toJXNYJ6O4usWnt6EPIdWwrRvx2V/n5lXuDZQwQFeSFydF" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -6609,6 +6641,7 @@
       key: "fin", orbitIcon: "chart", short: "Finance", desc: "Read the numbers behind decisions",
       name: "Finance & Data Intelligence for Leaders",
       tagline: "Financial fluency for professionals moving into strategic and investment decision-making: dashboards, unit economics, forecasting, decision science and NPV.",
+      note: "First-principles content with generic, illustrative figures. Educational only; nothing here is financial or investment advice.",
       color: "#4338ca", color2: "#0ea5a3", art: "finance", level: "Intermediate", hours: "13–22 hrs",
       icons: ["chart","calc","calendar","flask","scale","flag"],
       skills: ["KPI dashboards","Unit economics","Forecasting","Decision science","NPV & ROI"],
@@ -6628,7 +6661,7 @@
       key: "inv", orbitIcon: "coin", short: "Investor thinking", desc: "Decide well under uncertainty",
       name: "Investor Thinking: Decisions, Trends and the Thesis Method",
       tagline: "The mental models investors use for high-stakes decisions under uncertainty: spotting real trends, tracing interdependencies, and building, testing and maintaining a thesis. Applied to delivery, career and side ventures.",
-      note: "First-principles content with generic and historical examples.",
+      note: "First-principles content with generic and historical examples. Educational only; nothing here is financial or investment advice. Examples are for learning, not recommendations to buy or sell anything.",
       color: "#7e22ce", color2: "#2563eb", art: "invest", level: "Intermediate", hours: "13–21 hrs",
       icons: ["coin","dice","radar","network","target","flag"],
       skills: ["Margin of safety","Expected value","Signal vs. hype","Value-chain mapping","Thesis writing"],
@@ -7665,6 +7698,144 @@
     return "<section class='sec "+(cls||"")+"' id='"+id+"'><div class='sec-head'><span class='sec-ico'>"+icon(ico,18)+"</span><h3>"+title+"</h3></div>"+inner+"</section>";
   }
 
+  // Lays out a word formula as maths: "a ÷ b" becomes a stacked fraction, operators are spaced,
+  // and the name on the left is set in bold. Lines that are not "name = expression" are shown as written.
+  function mathHtml(src){
+    var sups = [];
+    var s = src.replace(/<sup>(.*?)<\/sup>/g, function(_, x){ sups.push(x); return "\u0001" + (sups.length - 1) + "\u0002"; });
+    function supHtml(t){
+      return t.replace(/\u0001(\d+)\u0002/g, function(_, i){ return "<sup class='m-sup'>" + sups[+i].replace(/ ÷ /g, "/") + "</sup>"; });
+    }
+    var plain = "<div class='f-line math'><span>" + src + "</span></div>";
+    var pre = "", m = /^([A-Z][^:=()]*:|Worth it(?: only)? if)\s+(.*)$/.exec(s);
+    if (m){ pre = m[1]; s = m[2]; }
+    var rel = /\s(=|≈|>)\s/.exec(s);
+    if (!rel || !/^[A-Z]/.test(s)) return plain;
+
+    // Split at operators that sit outside any brackets.
+    function split(str){
+      var parts = [], ops = [], depth = 0, start = 0;
+      for (var i = 0; i < str.length; i++){
+        var ch = str[i];
+        if (ch === "(") depth++;
+        else if (ch === ")") depth--;
+        else if (depth === 0 && ch === " " && "×÷+−".indexOf(str[i+1]) > -1 && str[i+2] === " "){
+          parts.push(str.slice(start, i)); ops.push(str[i+1]); start = i + 3; i += 2;
+        }
+      }
+      parts.push(str.slice(start));
+      return { parts: parts, ops: ops };
+    }
+    function atom(str){
+      str = str.trim();
+      var g = /^\((.*)\)(\u0001\d+\u0002)?$/.exec(str);
+      if (g){
+        var depth = 0, whole = true;
+        for (var i = 0; i < g[1].length; i++){
+          if (g[1][i] === "(") depth++;
+          else if (g[1][i] === ")" && --depth < 0){ whole = false; break; }
+        }
+        if (whole && split(g[1]).ops.length) return { type: "group", inner: expr(g[1]), sup: g[2] || "" };
+      }
+      return { type: "text", text: str };
+    }
+    function expr(str){
+      var sp = split(str), terms = [], tops = [], acc = atom(sp.parts[0]);
+      for (var i = 0; i < sp.ops.length; i++){
+        var op = sp.ops[i], next = atom(sp.parts[i + 1]);
+        if (op === "÷") acc = { type: "frac", num: acc, den: next };
+        else if (op === "×") acc = acc.type === "mul" ? { type: "mul", items: acc.items.concat([next]) } : { type: "mul", items: [acc, next] };
+        else { terms.push(acc); tops.push(op); acc = next; }
+      }
+      terms.push(acc);
+      return terms.length === 1 ? terms[0] : { type: "sum", items: terms, ops: tops };
+    }
+    function draw(n, bare){
+      if (n.type === "text") return "<span class='m-t'>" + supHtml(n.text) + "</span>";
+      if (n.type === "group"){
+        if (!n.sup && (bare || n.inner.type === "frac")) return draw(n.inner);
+        var inner = draw(n.inner), big = inner.indexOf("m-frac") > -1 ? " big" : "";
+        return "<span class='m-grp'><span class='m-p" + big + "'>(</span>" + inner + "<span class='m-p" + big + "'>)</span>" + supHtml(n.sup) + "</span>";
+      }
+      if (n.type === "frac") return "<span class='m-frac'><span class='m-num'>" + draw(n.num, true) + "</span><span class='m-den'>" + draw(n.den, true) + "</span></span>";
+      if (n.type === "mul") return n.items.map(function(x){ return draw(x); }).join("<span class='m-op'>×</span>");
+      return n.items.map(function(x, i){ return "<span class='m-term'>" + (i ? "<span class='m-op'>" + n.ops[i - 1] + "</span>" : "") + draw(x) + "</span>"; }).join("");
+    }
+    // Typeset with KaTeX (LaTeX) when it has loaded; otherwise fall back to the HTML layout below.
+    if (window.katex){
+      var esc = function(t){ return t.replace(/[\\{}%$&#_^~]/g, function(c){ return c === "\\" ? "\\textbackslash{}" : c === "^" ? "\\^{}" : c === "~" ? "\\~{}" : "\\" + c; }); };
+      var texText = function(t){
+        return t.split(/(\u0001\d+\u0002|<sub>.*?<\/sub>|[₁₂₃₄])/).map(function(seg){
+          if (!seg) return "";
+          var k = /^\u0001(\d+)\u0002$/.exec(seg);
+          if (k) return "^{" + sups[+k[1]].split(" ÷ ").map(function(x){ return "\\text{" + esc(x) + "}"; }).join("/") + "}";
+          var b = /^<sub>(.*)<\/sub>$/.exec(seg);
+          if (b) return "_{\\text{" + esc(b[1]) + "}}";
+          if ("₁₂₃₄".indexOf(seg) > -1) return "_{" + ("₁₂₃₄".indexOf(seg) + 1) + "}";
+          return "\\text{" + esc(seg) + "}";
+        }).join("");
+      };
+      // On a phone, long words-only numerators and denominators are set on two lines.
+      var narrow = window.innerWidth < 560;
+      var fracPart = function(n){
+        if (n.type === "group" && !n.sup) n = n.inner;
+        if (narrow && (n.type === "sum" || n.type === "mul") && n.items.length === 2){
+          var op = n.type === "mul" ? "\\times " : n.ops[0] === "+" ? "+ " : "- ";
+          return "\\begin{gathered}" + tex(n.items[0]) + "\\\\[-2pt]{}" + op + tex(n.items[1]) + "\\end{gathered}";
+        }
+        if (!narrow || n.type !== "text" || n.text.length < 26 || /[\u0001<]/.test(n.text)) return tex(n, true);
+        var w = n.text.split(" "), cut = 1, len = 0;
+        while (cut < w.length - 1 && (len += w[cut - 1].length + 1) < n.text.length / 2) cut++;
+        return "\\begin{gathered}\\text{" + esc(w.slice(0, cut).join(" ")) + "}\\\\[-2pt]\\text{" + esc(w.slice(cut).join(" ")) + "}\\end{gathered}";
+      };
+      var tex = function(n, bare){
+        if (n.type === "text") return texText(n.text);
+        if (n.type === "group"){
+          if (!n.sup && (bare || n.inner.type === "frac")) return tex(n.inner);
+          var inner = tex(n.inner), tall = inner.indexOf("\\dfrac") > -1;
+          return (tall ? "\\left(" : "(") + inner + (tall ? "\\right)" : ")") + texText(n.sup);
+        }
+        if (n.type === "frac") return "\\dfrac{" + fracPart(n.num) + "}{" + fracPart(n.den) + "}";
+        if (n.type === "mul") return n.items.map(function(x){ return tex(x); }).join(" \\times ");
+        return n.items.map(function(x, i){ return (i ? (n.ops[i - 1] === "+" ? " + " : " - ") : "") + tex(x); }).join("");
+      };
+      // Typeset the name and each top-level term separately so long formulas can wrap between terms on small screens.
+      // Fractions stay whole; sums, products, brackets and words outside them become separate pieces.
+      var split2 = function(n){
+        var out = [];
+        if (n.type === "text"){ var ws = n.text.split(" "); return ws.map(function(w, i){ return texText(w) + (i < ws.length - 1 ? "\\ " : ""); }); }
+        if (n.type === "sum" || n.type === "mul"){
+          n.items.forEach(function(x, i){
+            if (i) out[out.length - 1] += (n.type === "mul" ? " \\times{}" : n.ops[i - 1] === "+" ? " +{}" : " -{}");
+            out = out.concat(split2(x));
+          });
+          return out;
+        }
+        if (n.type === "group" && !(n.inner.type === "frac" && !n.sup) && tex(n.inner).indexOf("\\dfrac") < 0 &&
+            tex(n.inner).replace(/\\[a-z]+|[{}_^]/g, "").length > 20){
+          out = split2(n.inner);
+          out[0] = "(" + out[0]; out[out.length - 1] += ")" + texText(n.sup);
+          return out;
+        }
+        return [tex(n)];
+      };
+      var pieces = split2(expr(s.slice(rel.index + rel[0].length)));
+      var head = (pre ? pre.split(" ").map(function(w, i, all){ return "\\textit{" + esc(w) + "}" + (i < all.length - 1 ? "\\ " : ""); }) : [])
+        .concat(s.slice(0, rel.index).split(" ").map(function(w){ return "\\textbf{" + esc(w) + "}\\ "; }));
+      if (pre) head[pre.split(" ").length - 1] += "\\;\\;";
+      head[head.length - 1] = head[head.length - 1].slice(0, -2) + " " + ({ "=": "=", "≈": "\\approx", ">": ">" })[rel[1]] + "{}";
+      pieces = head.concat(pieces);
+      try {
+        return "<div class='f-line math tex'>" + pieces.map(function(t){
+          return "<span class='tex-p'>" + katex.renderToString(t, { throwOnError: true, strict: "ignore" }) + "</span>";
+        }).join("") + "</div>";
+      } catch(e){ /* fall through to the HTML layout */ }
+    }
+    return "<div class='f-line math'>" + (pre ? "<span class='m-pre'>" + pre + "</span>" : "") +
+      "<span class='m-lhs'>" + supHtml(s.slice(0, rel.index)) + "</span><span class='m-rel'>" + rel[1] + "</span>" +
+      draw(expr(s.slice(rel.index + rel[0].length))) + "</div>";
+  }
+
   function renderModule(course, m){
     var main = setMain("");
     var ms = getModState(course.key, m.id);
@@ -7681,7 +7852,7 @@
         // Optional richer parts: key ideas, a formula box, and a step-by-step worked example.
         if (cn.points) c += "<ul class='kp'>"+cn.points.map(function(pt){ return "<li><b>"+pt[0]+"</b> "+pt[1]+"</li>"; }).join("")+"</ul>";
         if (cn.formula){
-          c += "<div class='formula'><span class='tag'>"+(cn.formulaLabel || "Formula")+"</span>"+cn.formula.map(function(f){ return "<div class='f-line'>"+f+"</div>"; }).join("");
+          c += "<div class='formula'><span class='tag'>"+(cn.formulaLabel || "Formula")+"</span>"+cn.formula.map(function(f){ return cn.formulaLabel ? "<div class='f-line'>"+f+"</div>" : mathHtml(f); }).join("");
           if (cn.formulaNote) c += "<p class='f-note'>"+cn.formulaNote+"</p>";
           c += "</div>";
         }
@@ -7915,10 +8086,24 @@
     h += "<div class='learner-name'>"+escapeHtml(name)+"</div><h2>has successfully completed</h2>";
     h += "<div class='coursename'>"+course.name+"</div>";
     h += "<p style='color:var(--ink3);font-size:13px;max-width:540px;margin:8px auto 0;'>"+course.modules.length+" modules: "+moduleNames+", plus a capstone case study</p>";
-    h += "<div class='seal'>"+icon("award",34)+"</div><div class='meta'>Completed on "+dateStr+"</div></div></div>";
+    h += "<div class='seal'>"+icon("award",34)+"</div><div class='meta'>Completed on "+dateStr+"</div><p class='cert-note'>A record of self-paced completion on Learning Hub. Not an accredited qualification.</p></div></div>";
     h += "<div class='cert-wrap no-print'><button class='btn' id='print-cert'>Print / save as PDF</button></div></div>";
     main.innerHTML = h;
     document.getElementById("print-cert").addEventListener("click", function(){ window.print(); });
+  }
+
+  // ---------- FOOTER ----------
+  var FEEDBACK_URL = "https://github.com/kareemrb27/miniLearnings/issues/new";
+  function footerHtml(){
+    return "<footer class='site-footer no-print'>" +
+      "<div class='sf-grid'>" +
+        "<div><h4>About</h4><p>Learning Hub is a personal project by Kareem Shaik. I'm still learning and sharing these courses along the way. They are created with the help of AI, so please check important figures independently.</p>" +
+          "<p><a href='https://awareagentsin.com/' target='_blank' rel='noopener'>awareagentsin.com</a></p></div>" +
+        "<div><h4>Feedback</h4><p>Spotted an error, or have an idea for a course? Suggestions are very welcome.</p>" +
+          "<p><a href='" + FEEDBACK_URL + "' target='_blank' rel='noopener'>Share feedback or a course idea</a></p></div>" +
+        "<div><h4>Good to know</h4><p>Educational content only, not financial, investment, legal or other professional advice. Certificates record self-paced completion and are not accredited. Books, reports and courses are referenced for further learning; no affiliation or endorsement is implied.</p></div>" +
+        "<div><h4>Privacy</h4><p>Visits are counted anonymously with GoatCounter: no cookies and no personal data. Your progress and the name on your certificates are stored only in this browser.</p></div>" +
+      "</div><p class='sf-copy'>© " + new Date().getFullYear() + " Kareem Shaik · Learning Hub</p></footer>";
   }
 
   // ---------- ROUTER ----------
@@ -7944,6 +8129,7 @@
     } else {
       renderHome();
     }
+    document.getElementById("main").insertAdjacentHTML("beforeend", footerHtml());
     // Home-page sections reachable from the top bar scroll to themselves; every other page starts at the top.
     var target = (!course && (route === "courses" || route === "profile")) ? document.getElementById(route) : null;
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
